@@ -12,7 +12,7 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="<%= Routes.session_path(@conn, :new) %>">Login</a></li>
+            <li><%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete %></li>
           </ul>
         </nav>
         <a href="<%= Routes.page_path(@conn, :index) %>" class="phx-logo">

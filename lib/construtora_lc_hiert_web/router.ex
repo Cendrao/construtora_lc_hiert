@@ -13,14 +13,28 @@ defmodule ConstrutoraLcHiertWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ConstrutoraLcHiertWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
+  pipeline :auth do
+    plug ConstrutoraLcHiert.Authentication.Pipeline
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ConstrutoraLcHiertWeb do
-  #   pipe_through :api
-  # end
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+    plug :put_layout, {ConstrutoraLcHiertWeb.LayoutView, :admin}
+  end
+
+  scope "/", ConstrutoraLcHiertWeb do
+    pipe_through [:browser, :auth]
+
+    get "/", PageController, :index
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+  end
+
+  scope "/admin", ConstrutoraLcHiertWeb, as: :admin do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    get "/", Admin.PageController, :index
+  end
 end
