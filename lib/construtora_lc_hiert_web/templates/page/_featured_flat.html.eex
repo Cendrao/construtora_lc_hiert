@@ -1,0 +1,92 @@
+<div class="featured-flat-area pt-115 pb-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title-2 text-center">
+          <h2>PROPRIEDADES EM DESTAQUE</h2>
+          <p>Sheltek is the best theme for  elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minim veniam, quis nostrud</p>
+        </div>
+      </div>
+    </div>
+    <div class="featured-flat">
+      <div class="row">
+        <!-- flat-item -->
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="flat-item">
+            <div class="flat-item-image">
+              <span class="for-sale">À venda</span>
+              <a href="#">
+                <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+              </a>
+              <div class="flat-link">
+                <a href="#">Mais Detalhes</a>
+              </div>
+              <ul class="flat-desc">
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/4.png") %>" alt="">
+                  <span>120 m²</span>
+                </li>
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/5.png") %>" alt="">
+                  <span>3</span>
+                </li>
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/6.png") %>" alt="">
+                  <span>2</span>
+                </li>
+              </ul>
+            </div>
+            <div class="flat-item-info">
+              <div class="flat-title-price">
+                <h5><a href="#">Vila Industrial</a></h5>
+                <span class="price">R$ 320.000</span>
+              </div>
+              <p>
+                <img src="<%= Routes.static_path(@conn, "/images/icons/location.png") %>" alt="">
+                Rua do Ricardo, 123, Toledo-PR
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- flat-item -->
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="flat-item">
+            <div class="flat-item-image">
+              <span class="for-sale">À venda</span>
+              <a href="#">
+                <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+              </a>
+              <div class="flat-link">
+                <a href="#">Mais Detalhes</a>
+              </div>
+              <ul class="flat-desc">
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/4.png") %>" alt="">
+                  <span>120 m²</span>
+                </li>
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/5.png") %>" alt="">
+                  <span>5</span>
+                </li>
+                <li>
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/6.png") %>" alt="">
+                  <span>3</span>
+                </li>
+              </ul>
+            </div>
+            <div class="flat-item-info">
+              <div class="flat-title-price">
+                <h5><a href="#">Vila Industrial</a></h5>
+                <span class="price">R$ 320.000</span>
+              </div>
+              <p>
+                <img src="<%= Routes.static_path(@conn, "/images/icons/location.png") %>" alt="">
+                Rua do Ricardo, 123, Toledo-PR
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

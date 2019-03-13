@@ -1,6 +1,8 @@
 defmodule ConstrutoraLcHiert.Authentication.ErrorHandler do
   import Plug.Conn
 
+  use Phoenix.Controller
+
   @behaviour Guardian.Plug.ErrorHandler
 
   @impl Guardian.Plug.ErrorHandler
@@ -8,7 +10,7 @@ defmodule ConstrutoraLcHiert.Authentication.ErrorHandler do
     body = to_string(type)
 
     conn
-    |> put_resp_content_type("text/plain")
-    |> send_resp(401, body)
+    |> put_flash(:error, body)
+    |> redirect(to: "/login")
   end
 end

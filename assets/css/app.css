@@ -1,3 +1,18 @@
-/* This file is for your main application css. */
+/* =========================
+  CSS for the main website
+========================= */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~typeface-montserrat/index.css';
+@import '~slick-carousel/slick/slick.css';
+@import '~bootstrap-select/dist/css/bootstrap-select.css';
+@import 'page/plugins/meanmenu.min.css';
 
-@import "./phoenix.css";
+@import 'page/shortcode/default.css';
+@import 'page/shortcode/header.css';
+@import 'page/shortcode/slider.css';
+@import 'page/shortcode/footer.css';
+
+@import 'page/style.css';
+@import 'page/responsive.css';
+
+@import 'page/theme-orange.css';

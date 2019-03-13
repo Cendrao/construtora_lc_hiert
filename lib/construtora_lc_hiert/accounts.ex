@@ -43,10 +43,10 @@ defmodule ConstrutoraLcHiert.Accounts do
 
   ## Examples
 
-      iex> create_user(%{field: value})
+      iex> create_user(%{username: "user", password: "pass"})
       {:ok, %User{}}
 
-      iex> create_user(%{field: bad_value})
+      iex> create_user(%{username: nil})
       {:error, %Ecto.Changeset{}}
 
   """
@@ -61,10 +61,10 @@ defmodule ConstrutoraLcHiert.Accounts do
 
   ## Examples
 
-      iex> update_user(user, %{field: new_value})
+      iex> update_user(user, %{password: "new_value"})
       {:ok, %User{}}
 
-      iex> update_user(user, %{field: bad_value})
+      iex> update_user(user, %{password: nil})
       {:error, %Ecto.Changeset{}}
 
   """

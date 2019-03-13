@@ -1,30 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ConstrutoraLcHiert · Phoenix Framework</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-  </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="<%= Routes.session_path(@conn, :new) %>">Login</a></li>
-          </ul>
-        </nav>
-        <a href="<%= Routes.page_path(@conn, :index) %>" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+<!doctype html>
+<html class="no-js" lang="pt_BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Construtora LC Hiert</title>
+  <meta name="description" content="Construtora LC Hiert - Venda de imóveis: casas, apartamentos e lotes em Toledo - PR.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.ico") %>">
+  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+</head>
+
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">Você está usando um navegador muito antigo. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para ter uma melhor experiência.</p>
+  <![endif]-->
+
+  <div class="wrapper">
+    <%= render(ConstrutoraLcHiertWeb.PageView, "_header.html", assigns) %>
+
+    <%= render @view_module, @view_template, assigns %>
+
+    <%= render(ConstrutoraLcHiertWeb.PageView, "_footer.html", assigns) %>
+  </div>
+
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
+
 </html>

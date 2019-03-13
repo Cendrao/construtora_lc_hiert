@@ -1,0 +1,69 @@
+<header class="header-area header-wrapper">
+  <div class="header-top-bar bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="logo">
+            <a href="<%= Routes.page_path(@conn, :index) %>">
+              <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 hidden-sm hidden-xs">
+          <div class="company-info clearfix">
+            <div class="company-info-item">
+              <div class="header-icon">
+                <img src="<%= Routes.static_path(@conn, "/images/icons/phone.png") %>" alt="Telefone">
+              </div>
+              <div class="header-info">
+                <h6>(45) 3055-4488</h6>
+                <p>Aberto das 7:30 - 12:00 e 13:30 - 17:30</p>
+              </div>
+            </div>
+            <div class="company-info-item">
+              <div class="header-icon">
+                <img src="<%= Routes.static_path(@conn, "/images/icons/whatsapp.png") %>" alt="WhatsApp">
+              </div>
+              <div class="header-info">
+                <h6><a href="http://api.whatsapp.com/send?1=pt_BR&phone=554599705998">(45) 99705-5998</a></h6>
+                <p>Mande um WhatsApp</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="header-search clearfix">
+            <form action="#">
+              <button class="search-icon" type="submit">
+                <img src="<%= Routes.static_path(@conn, "/images/icons/search.png") %>" alt="Buscar">
+              </button>
+              <input type="text" placeholder="Procurar...">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="sticky-header" class="header-middle-area transparent-header hidden-xs">
+    <div class="container">
+      <div class="full-width-mega-drop-menu">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sticky-logo">
+              <a href="<%= Routes.page_path(@conn, :index) %>">
+                <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
+              </a>
+            </div>
+            <nav id="primary-menu">
+              <ul class="main-menu text-center">
+                <%= render_shared("_menu_items.html", assigns) %>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<%= render(ConstrutoraLcHiertWeb.PageView, "_mobile_menu.html", assigns) %>

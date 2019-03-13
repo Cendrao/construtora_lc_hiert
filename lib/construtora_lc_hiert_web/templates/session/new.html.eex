@@ -1,5 +1,7 @@
 <h2>Login Page</h2>
 
+<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
 <%= form_for @changeset, @action, fn f -> %>
   <div class="form-group">
     <%= label f, :username, class: "control-label" %>

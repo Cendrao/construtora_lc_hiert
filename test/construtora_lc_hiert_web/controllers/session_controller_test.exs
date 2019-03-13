@@ -45,7 +45,7 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
       assert redirected_to(conn) == "/"
 
       conn = get(conn, "/admin")
-      assert conn.resp_body == "unauthenticated"
+      assert redirected_to(conn) == "/login"
     end
   end
 

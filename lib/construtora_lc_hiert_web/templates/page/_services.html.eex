@@ -1,0 +1,58 @@
+<div class="services-area pt-115 pb-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title-2 text-center">
+          <h2>SERVIÇOS</h2>
+          <p>Sheltek is the best theme for  elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minim veniam, quis nostrud</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-carousel">
+        <div class="col-md-12">
+          <div class="service-item">
+            <div class="service-item-image">
+              <a href="service-details.html">
+                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+              </a>
+            </div>
+            <div class="service-item-info">
+              <h5><a href="service-details.html">Venda de Apartamentos</a></h5>
+              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="service-item">
+            <div class="service-item-image">
+              <a href="service-details.html">
+                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+              </a>
+            </div>
+            <div class="service-item-info">
+              <h5><a href="service-details.html">Venda de Casas</a></h5>
+              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="service-item">
+            <div class="service-item-image">
+              <a href="service-details.html">
+                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+              </a>
+            </div>
+            <div class="service-item-info">
+              <h5><a href="service-details.html">Venda de Lotes</a></h5>
+              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
