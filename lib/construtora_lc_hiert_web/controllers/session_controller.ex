@@ -25,7 +25,7 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
   def delete(conn, _) do
     conn
     |> Guardian.Plug.sign_out()
-    |> redirect(to: Routes.page_path(conn, :index))
+    |> redirect(to: Routes.home_path(conn, :index))
   end
 
   defp login_reply({:ok, user}, conn) do

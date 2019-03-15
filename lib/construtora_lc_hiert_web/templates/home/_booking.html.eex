@@ -14,7 +14,7 @@
             <h2 class="h5">LIGUE PARA: (45) 3055-4488</h2>
           </div>
           <div class="booking-imgae">
-            <img src="images/others/booking.png" alt="">
+            <img src="<%= Routes.static_path(@conn, "/images/others/booking.png") %>" alt="">
           </div>
         </div>
       </div>

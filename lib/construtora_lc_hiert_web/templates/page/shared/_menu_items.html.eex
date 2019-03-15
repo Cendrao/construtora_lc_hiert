@@ -1,6 +1,0 @@
-<li><a href="<%= Routes.page_path(@conn, :index) %>">Home</a></li>
-<li><a href="#">Quem somos</a></li>
-<li><a href="#">Apartamentos</a></li>
-<li><a href="#">Casas</a></li>
-<li><a href="#">Lotes</a></li>
-<li><a href="#">Fale conosco</a></li>

@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiertWeb.PageControllerTest do
+defmodule ConstrutoraLcHiertWeb.HomeControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
 
   describe "GET /" do

@@ -1,8 +1,0 @@
-<%= render(ConstrutoraLcHiertWeb.PageView, "_slider.html", assigns) %>
-
-<section id="page-content" class="page-wrapper">
-  <%= render(ConstrutoraLcHiertWeb.PageView, "_services.html", assigns) %>
-  <%= render(ConstrutoraLcHiertWeb.PageView, "_booking.html", assigns) %>
-  <%= render(ConstrutoraLcHiertWeb.PageView, "_featured_flat.html", assigns) %>
-  <%= render(ConstrutoraLcHiertWeb.PageView, "_subscribe.html", assigns) %>
-</section>

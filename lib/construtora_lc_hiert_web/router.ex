@@ -25,7 +25,8 @@ defmodule ConstrutoraLcHiertWeb.Router do
   scope "/", ConstrutoraLcHiertWeb do
     pipe_through [:browser, :auth]
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
+    get "/quem-somos", AboutController, :index
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create

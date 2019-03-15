@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="logo">
-            <a href="<%= Routes.page_path(@conn, :index) %>">
+            <a href="<%= Routes.home_path(@conn, :index) %>">
               <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
             </a>
           </div>
@@ -50,7 +50,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="sticky-logo">
-              <a href="<%= Routes.page_path(@conn, :index) %>">
+              <a href="<%= Routes.home_path(@conn, :index) %>">
                 <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
               </a>
             </div>
@@ -66,4 +66,4 @@
   </div>
 </header>
 
-<%= render(ConstrutoraLcHiertWeb.PageView, "_mobile_menu.html", assigns) %>
+<%= render(ConstrutoraLcHiertWeb.SharedView, "_mobile_menu.html", assigns) %>

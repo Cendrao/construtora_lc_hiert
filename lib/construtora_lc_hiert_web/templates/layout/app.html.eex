@@ -18,11 +18,11 @@
   <![endif]-->
 
   <div class="wrapper">
-    <%= render(ConstrutoraLcHiertWeb.PageView, "_header.html", assigns) %>
+    <%= render(ConstrutoraLcHiertWeb.SharedView, "_header.html", assigns) %>
 
     <%= render @view_module, @view_template, assigns %>
 
-    <%= render(ConstrutoraLcHiertWeb.PageView, "_footer.html", assigns) %>
+    <%= render(ConstrutoraLcHiertWeb.SharedView, "_footer.html", assigns) %>
   </div>
 
   <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>

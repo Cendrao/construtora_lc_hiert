@@ -1,0 +1,41 @@
+<section id="page-content" class="page-wrapper">
+  <div class="about-sheltek-area pt-115 pb-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-push-6 col-xs-12">
+          <div class="section-title mb-30">
+            <h3>ALGUMAS PALAVRAS SOBRE</h3>
+            <h2>CONSTRUTORA LC HIERT</h2>
+          </div>
+          <div class="about-sheltek-info">
+            <p>
+              <span data-placement="top" data-toggle="tooltip" data-original-title="The name you can trust" class="tooltip-content">Sheltek</span>
+              is the best theme for  elit, sed do eiusmod tempor dolor sit amet,
+              conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et lorna aliquatd minim veniam, quis nostrud exercitation
+              oris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolo.
+            </p>
+            <p>
+              Lorem is a dummy text do eiusmod tempor dolor sit amet, onsectetur
+              adip iscing elit, sed do eiusmod tempor incididunt ut labore et
+              lorna aliqua Ut enim onsectetur
+            </p>
+            <p>
+              Lorem is a dummy text do eiusmod tempor dolor sit amet, onsectetur
+              adip iscing elit, sed do eiusmod tempor incididunt ut labore et
+              lorna aliqua Ut enim onsectetur
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-sm-pull-6 col-xs-12">
+          <div class="about-image">
+            <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_services.html", assigns) %>
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
+</section>
