@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
 
   alias ConstrutoraLcHiert.Accounts
   alias ConstrutoraLcHiert.Accounts.User
-  alias ConstrutoraLcHiert.Authentication.Guardian
+  alias ConstrutoraLcHiert.Authentication.{Guardian, ErrorHandler}
 
   def new(conn, _) do
     changeset = Accounts.change_user(%User{})
@@ -30,14 +30,14 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
 
   defp login_reply({:ok, user}, conn) do
     conn
-    |> put_flash(:success, "Welcome back!")
+    |> put_flash(:success, "Bem-vindo")
     |> Guardian.Plug.sign_in(user)
     |> redirect(to: Routes.admin_page_path(conn, :index))
   end
 
   defp login_reply({:error, reason}, conn) do
     conn
-    |> put_flash(:error, to_string(reason))
+    |> put_flash(:error, ErrorHandler.get_message(reason))
     |> new(%{})
   end
 end

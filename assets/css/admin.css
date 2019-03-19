@@ -2,3 +2,4 @@
   CSS for the admin page
 ===================== */
 @import '~bootstrap/dist/css/bootstrap.css';
+@import 'admin/dashboard.css';

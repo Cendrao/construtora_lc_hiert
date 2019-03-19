@@ -9,7 +9,7 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
   describe "GET /login" do
     test "accesses the login page", %{conn: conn} do
       conn = get(conn, "/login")
-      assert html_response(conn, 200) =~ "Login Page"
+      assert html_response(conn, 200) =~ "Login"
     end
   end
 
@@ -25,13 +25,13 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
     test "displays error message if user is not found", %{conn: conn} do
       conn = post(conn, "/login", user: %{username: "invalid_user", password: "some_pass"})
 
-      assert html_response(conn, 200) =~ "not_found"
+      assert html_response(conn, 200) =~ "não encontrado"
     end
 
     test "displays error message if password is incorrect", %{conn: conn} do
       conn = post(conn, "/login", user: %{username: "user", password: "wrong_pass"})
 
-      assert html_response(conn, 200) =~ "invalid_credentials"
+      assert html_response(conn, 200) =~ "senha está incorreta"
     end
   end
 

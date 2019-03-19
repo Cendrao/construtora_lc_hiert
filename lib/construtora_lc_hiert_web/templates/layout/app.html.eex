@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js" lang="pt_BR">
+<html class="no-js" lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Construtora LC Hiert</title>
   <meta name="description" content="Construtora LC Hiert - Venda de imóveis: casas, apartamentos e lotes em Toledo - PR.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Construtora LC Hiert</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.ico") %>">
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">

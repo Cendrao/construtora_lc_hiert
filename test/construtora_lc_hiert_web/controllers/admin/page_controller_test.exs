@@ -11,7 +11,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PageControllerTest do
 
     test "accesses the admin page", %{conn: conn} do
       conn = get(conn, "/admin")
-      assert html_response(conn, 200) =~ "Secret Page"
+      assert html_response(conn, 200) =~ "Dashboard"
     end
   end
 

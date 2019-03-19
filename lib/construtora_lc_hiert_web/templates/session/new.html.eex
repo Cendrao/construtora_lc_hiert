@@ -1,21 +1,39 @@
-<h2>Login Page</h2>
+<section id="page-content" class="page-wrapper">
+  <div class="pt-115 pb-60">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title-2 text-center">
+            <h2>Login</h2>
+          </div>
+        </div>
+      </div>
 
-<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= if error = get_flash(@conn, :error) do %>
+            <p class="alert alert-danger" role="alert"><%= error %></p>
+          <% end %>
 
-<%= form_for @changeset, @action, fn f -> %>
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
+          <%= form_for @changeset, @action, fn f -> %>
+            <div class="form-group">
+              <%= label f, :username, "Usuário", class: "control-label" %>
+              <%= text_input f, :username, class: "form-control" %>
+              <%= error_tag f, :username %>
+            </div>
+
+            <div class="form-group">
+              <%= label f, :password, "Senha", class: "control-label" %>
+              <%= password_input f, :password, class: "form-control" %>
+              <%= error_tag f, :password %>
+            </div>
+
+            <div class="form-group">
+              <%= submit "Entrar", class: "btn btn-primary btn-block" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</section>
