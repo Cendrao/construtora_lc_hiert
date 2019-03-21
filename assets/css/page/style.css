@@ -684,6 +684,9 @@
     margin-bottom: 0;
     width: 80%;
 }
+.subscribe input::placeholder {
+    color: #808080;
+}
 .subscribe button {
     background: #95c41f none repeat scroll 0 0;
     height: 40px;

@@ -20,7 +20,7 @@ defmodule ConstrutoraLcHiert.MixProject do
   def application do
     [
       mod: {ConstrutoraLcHiert.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :bamboo]
     ]
   end
 
@@ -45,7 +45,8 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12"}
+      {:bcrypt_elixir, "~> 0.12"},
+      {:bamboo, "~> 1.2"}
     ]
   end
 

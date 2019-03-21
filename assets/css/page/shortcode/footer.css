@@ -72,6 +72,8 @@
 .footer-contact > p {
   font-size: 12px;
   line-height: 20px;
+  color: #ff7f00;
+  font-weight: 400;
 }
 .footer-contact input {
     border-color: #706e6d;
@@ -149,10 +151,8 @@
 
 .address-info > span,
 .latest-news-info > p,
-.footer-contact > p,
 .footer-contact input,
 .footer-contact textarea,
 .copyright > p {
-  /*color: #919191;*/
   color: #ccc;
 }

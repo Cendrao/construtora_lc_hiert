@@ -27,6 +27,10 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Authentication.Guardian,
   issuer: "construtora_lc_hiert",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
+# Email configurations with Bamboo
+config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer,
+  adapter: Bamboo.SendGridAdapter,
+  api_key: System.get_env("SENDGRID_API_KEY")
 
 # Do not print debug messages in production
 config :logger, level: :info

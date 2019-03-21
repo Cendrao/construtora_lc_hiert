@@ -28,6 +28,8 @@ defmodule ConstrutoraLcHiertWeb.Router do
     get "/", HomeController, :index
     get "/quem-somos", AboutController, :index
 
+    post "/contato", ContactController, :create
+
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
@@ -37,5 +39,9 @@ defmodule ConstrutoraLcHiertWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/", Admin.PageController, :index
+  end
+
+  if Mix.env() == :dev do
+    forward "/sent_emails", Bamboo.SentEmailViewerPlug
   end
 end

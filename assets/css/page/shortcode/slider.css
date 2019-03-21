@@ -127,10 +127,7 @@
 }
 .find-home-box {
   background: rgba(31, 34, 62, 0.7) none repeat scroll 0 0;
-  border-bottom: 4px solid #95c41f;
-  margin-left: 20%;
   padding: 45px 30px 20px;
-  width: 440px;
 }
 .find-home-box .section-title {
   margin-bottom: 42px;

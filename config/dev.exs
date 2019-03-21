@@ -73,3 +73,6 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Repo,
   database: "construtora_lc_hiert_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Email configurations with Bamboo
+config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer, adapter: Bamboo.LocalAdapter

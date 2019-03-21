@@ -16,3 +16,6 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Repo,
   database: "construtora_lc_hiert_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Email configurations with Bamboo
+config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer, adapter: Bamboo.TestAdapter
