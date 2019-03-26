@@ -30,6 +30,8 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     post "/contato", ContactController, :create
 
+    post "/subscriber", SubscriberController, :create
+
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

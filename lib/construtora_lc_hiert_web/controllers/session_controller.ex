@@ -30,7 +30,6 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
 
   defp login_reply({:ok, user}, conn) do
     conn
-    |> put_flash(:success, "Bem-vindo")
     |> Guardian.Plug.sign_in(user)
     |> redirect(to: Routes.admin_page_path(conn, :index))
   end

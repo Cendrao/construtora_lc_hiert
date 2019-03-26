@@ -30,6 +30,9 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Authentication.Guardian,
   issuer: "construtora_lc_hiert",
   secret_key: "JSLU9lItJ1mO/DdogYUyb6dqt0O1BILFKFokecXM/itqyVBT6NEdq7NzA4sY6ctX"
 
+# Locale
+config :gettext, :default_locale, "pt_BR"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

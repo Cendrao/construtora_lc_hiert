@@ -9,11 +9,11 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
     |> Email.contact_message(name, message)
     |> Mailer.deliver_now()
 
-    json(conn, %{data: "Sua mensagem foi enviada com sucesso!"})
+    json(conn, %{data: gettext("Message successfully sent")})
   rescue
     _ ->
       conn
       |> put_status(500)
-      |> json(%{data: "Oops! Ocorreu um problema e sua mensagem não foi enviada."})
+      |> json(%{data: gettext("The message was not sent")})
   end
 end

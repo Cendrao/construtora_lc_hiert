@@ -12,4 +12,5 @@ import "slick-carousel"
 import "./page/plugins/meanmenu"
 
 import "./page/main"
-import "./page/ajax-mail"
+import "./page/ajax-footer-email"
+import "./page/ajax-subscriber"

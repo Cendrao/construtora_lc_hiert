@@ -1,0 +1,11 @@
+msgid "Unauthenticated"
+msgstr "Não autenticado! Faça login."
+
+msgid "User not found"
+msgstr "Usuário não encontrado."
+
+msgid "Invalid credentials"
+msgstr "A senha está incorreta."
+
+msgid "An error occurred"
+msgstr "Ocorreu um erro! Tente novamente."

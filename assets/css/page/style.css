@@ -695,6 +695,11 @@
     color: #fff;
     text-transform: uppercase;
 }
+.subscribe-response {
+    color: #ff7f00;
+    margin: 20px 0 0;
+    font-size: 16px;
+}
 /*button*/
 
 .button-1 {

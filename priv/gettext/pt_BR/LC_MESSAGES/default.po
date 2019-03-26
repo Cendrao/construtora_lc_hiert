@@ -1,0 +1,8 @@
+msgid "Successfully created"
+msgstr "Cadastrado com sucesso"
+
+msgid "Message successfully sent"
+msgstr "Mensagem enviada com sucesso"
+
+msgid "The message was not sent"
+msgstr "Oops! A mensagem não foi enviada"

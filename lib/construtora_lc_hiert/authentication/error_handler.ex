@@ -12,8 +12,12 @@ defmodule ConstrutoraLcHiert.Authentication.ErrorHandler do
     |> redirect(to: "/login")
   end
 
-  def get_message(:unauthenticated), do: "Não autenticado! Faça login."
-  def get_message(:not_found), do: "Usuário não encontrado."
-  def get_message(:invalid_credentials), do: "A senha está incorreta."
-  def get_message(_), do: "Ocorreu um erro! Tente novamente."
+  def get_message(:unauthenticated), do: translate("Unauthenticated")
+  def get_message(:not_found), do: translate("User not found")
+  def get_message(:invalid_credentials), do: translate("Invalid credentials")
+  def get_message(_), do: translate("An error occurred")
+
+  defp translate(message) do
+    Gettext.dgettext(ConstrutoraLcHiertWeb.Gettext, "authentication", message)
+  end
 end
