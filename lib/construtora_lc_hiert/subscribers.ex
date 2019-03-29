@@ -25,4 +25,17 @@ defmodule ConstrutoraLcHiert.Subscribers do
     |> Subscriber.changeset(attrs)
     |> Repo.insert()
   end
+
+  @doc """
+  Returns the list of subscribers.
+
+  ## Examples
+
+      iex> list_subscribers()
+      [%Subscriber{}, ...]
+
+  """
+  def list_subscribers do
+    Repo.all(Subscriber)
+  end
 end

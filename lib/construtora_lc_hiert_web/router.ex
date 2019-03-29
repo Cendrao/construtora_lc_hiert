@@ -29,7 +29,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
     get "/quem-somos", AboutController, :index
     resources "/contato", ContactController, only: [:index, :create]
 
-    post "/subscriber", SubscriberController, :create
+    post "/inscritos", SubscriberController, :create
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
@@ -40,6 +40,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/", Admin.PageController, :index
+    get "/inscritos", Admin.SubscriberController, :index
   end
 
   if Mix.env() == :dev do

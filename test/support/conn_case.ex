@@ -15,6 +15,8 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias ConstrutoraLcHiert.Authentication.Guardian
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -33,6 +35,13 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(ConstrutoraLcHiert.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    if tags[:sign_in_user] do
+      {:ok, user} = ConstrutoraLcHiert.Accounts.create_user(%{username: "user", password: "pass"})
+      conn = Guardian.Plug.sign_in(Phoenix.ConnTest.build_conn(), user)
+
+      {:ok, conn: conn, user: user}
+    else
+      {:ok, conn: Phoenix.ConnTest.build_conn()}
+    end
   end
 end

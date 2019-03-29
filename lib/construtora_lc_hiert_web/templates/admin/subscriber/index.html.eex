@@ -1,0 +1,22 @@
+<h1 class="page-header">Inscritos</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for subscriber <- @subscribers do %>
+        <tr>
+          <td><%= subscriber.id %></td>
+          <td><%= subscriber.email %></td>
+          <td><%= status_image(subscriber.status) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
