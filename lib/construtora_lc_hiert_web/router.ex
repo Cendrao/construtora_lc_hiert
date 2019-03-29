@@ -27,8 +27,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     get "/", HomeController, :index
     get "/quem-somos", AboutController, :index
-
-    post "/contato", ContactController, :create
+    resources "/contato", ContactController, only: [:index, :create]
 
     post "/subscriber", SubscriberController, :create
 

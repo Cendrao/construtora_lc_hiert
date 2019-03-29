@@ -4,6 +4,10 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
   alias ConstrutoraLcHiert.Mailer
   alias ConstrutoraLcHiertWeb.Email
 
+  def index(conn, _params) do
+    render(conn, "index.html")
+  end
+
   def create(conn, %{"email" => email, "name" => name, "message" => message}) do
     email
     |> Email.contact_message(name, message)

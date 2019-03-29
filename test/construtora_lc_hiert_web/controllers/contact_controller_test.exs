@@ -7,6 +7,13 @@ defmodule ConstrutoraLcHiertWeb.ContactControllerTest do
   @valid_params %{email: "guitar@human.com", name: "Guitarra", message: "Solta a pisadinha!"}
   @invalid_params %{email: nil, name: "Guitarra", message: "Solta a pisadinha!"}
 
+  describe "GET /contato" do
+    test "accesses the contact page", %{conn: conn} do
+      conn = get(conn, "/contato")
+      assert html_response(conn, 200) =~ "Envie uma mensagem"
+    end
+  end
+
   describe "POST /contato" do
     test "sends the email", %{conn: conn} do
       post(conn, "/contato", @valid_params)

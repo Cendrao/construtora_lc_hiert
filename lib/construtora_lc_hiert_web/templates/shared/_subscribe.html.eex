@@ -11,9 +11,9 @@
 
       <div class="col-md-9 col-sm-8 col-xs-12">
         <div class="subscribe">
-          <p class="js-subscriber-form-response subscribe-response"></p>
+          <p class="js-ajax-form-animation-response subscribe-response"></p>
 
-          <%= form_for @conn, Routes.subscriber_path(@conn, :create), [class: 'js-subscriber-form'], fn f -> %>
+          <%= form_for @conn, Routes.subscriber_path(@conn, :create), [class: 'js-ajax-form-animation'], fn f -> %>
             <%= email_input f, :email, placeholder: "Digite seu e-mail aqui...", required: true %>
             <%= submit "Enviar" %>
           <% end %>

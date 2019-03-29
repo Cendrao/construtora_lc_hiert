@@ -12,5 +12,5 @@ import "slick-carousel"
 import "./page/plugins/meanmenu"
 
 import "./page/main"
-import "./page/ajax-footer-email"
-import "./page/ajax-subscriber"
+import "./page/ajax-form-animation"
+import "./page/google-map"

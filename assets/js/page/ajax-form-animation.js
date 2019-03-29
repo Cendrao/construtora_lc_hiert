@@ -1,14 +1,15 @@
 $(function() {
-	const form = $('.js-footer-contact-form');
-	const formResponse = $('.js-footer-contact-form-response');
+	const form = $('.js-ajax-form-animation');
 	let responseData;
 
 	$(form).submit(function(e) {
 		e.preventDefault();
 
+		const formResponse = $(e.target).parent().find($('.js-ajax-form-animation-response'));
+
 		$.post({
-			url: $(form).attr('action'),
-			data: $(form).serialize()
+			url: $(e.target).attr('action'),
+			data: $(e.target).serialize()
 		})
 		.done(function(response) {
 			$(formResponse).removeClass('error');
@@ -23,7 +24,7 @@ $(function() {
 			responseData = response.responseJSON.data;
 		})
 		.always(function(response) {
-			$(form).slideUp('slow', function() {
+			$(e.target).slideUp('slow', function() {
 				$(formResponse).text(responseData);
 			});
 		});

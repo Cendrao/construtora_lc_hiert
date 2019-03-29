@@ -3,4 +3,4 @@
 <li><a href="#">Apartamentos</a></li>
 <li><a href="#">Casas</a></li>
 <li><a href="#">Lotes</a></li>
-<li><a href="#">Fale conosco</a></li>
+<li><a href="<%= Routes.contact_path(@conn, :index) %>">Fale conosco</a></li>

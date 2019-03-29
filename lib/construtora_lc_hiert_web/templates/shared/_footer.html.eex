@@ -82,9 +82,9 @@
           <div class="footer-widget">
             <h6 class="footer-titel">ENVIE UMA MENSAGEM</h6>
             <div class="footer-contact">
-              <p class="js-footer-contact-form-response"></p>
+              <p class="js-ajax-form-animation-response"></p>
 
-              <%= form_for @conn, Routes.contact_path(@conn, :create), [class: 'js-footer-contact-form'], fn f -> %>
+              <%= form_for @conn, Routes.contact_path(@conn, :create), [class: 'js-ajax-form-animation'], fn f -> %>
                 <%= text_input f, :name, placeholder: "Digite seu nome...", required: true %>
                 <%= email_input f, :email, placeholder: "Digite seu e-mail...", required: true %>
                 <%= textarea f, :message, placeholder: "Escreva sua mensagem...", required: true %>

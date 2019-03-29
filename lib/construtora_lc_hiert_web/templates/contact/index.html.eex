@@ -1,0 +1,64 @@
+<section id="page-content" class="page-wrapper">
+  <div class="contact-area pt-115 pb-115">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5 col-xs-12">
+
+          <div class="get-in-toch">
+            <div class="section-title mb-30">
+              <h3>ENTRE EM</h3>
+              <h2>CONTATO</h2>
+            </div>
+            <div class="contact-desc mb-50">
+              <p>
+                <span data-placement="top" data-toggle="tooltip" data-original-title="The name you can trust" class="tooltip-content">Sheltek</span>
+                is the best theme for  elit, sed do eiusmod tempor dolor sit ame
+                tse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et lorna aliquatd minim veniam, quis nostrud exercitation
+                oris nisi ut aliquip
+              </p>
+            </div>
+
+            <ul class="contact-address">
+              <li>
+                <div class="contact-address-icon">
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/location-2.png") %>" alt="">
+                </div>
+                <div class="contact-address-info">
+                  <span>Rua Carlos Barbosa, 1640</span>
+                  <span>Vila Industrial, Toledo-PR</span>
+                </div>
+              </li>
+              <li>
+                <div class="contact-address-icon">
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/phone-3.png") %>" alt="">
+                </div>
+                <div class="contact-address-info">
+                  <span>Telefone: (45) 3055-4488</span>
+                  <span>WhatsApp: (45) 99705-5998</span>
+                </div>
+              </li>
+              <li>
+                <div class="contact-address-icon">
+                  <img src="<%= Routes.static_path(@conn, "/images/icons/world.png") %>" alt="">
+                </div>
+                <div class="contact-address-info">
+                  <span>Email: construcao.lc@gmail.com</span>
+                  <span>Web: <a href="//www.construtoralc.com.br" target="_blank">www.construtoralc.com.br</a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <%= render(ConstrutoraLcHiertWeb.ContactView, "_contact_form.html", assigns) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="google-map-area">
+    <div id="googleMap"></div>
+  </div>
+
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
+</section>
