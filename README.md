@@ -20,7 +20,8 @@ To test your email messages on development environment you can visit
 
 ## Deployment
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+This app is on Heroku: [construtora-lc-hiert.herokuapp.com](https://construtora-lc-hiert.herokuapp.com/)
+It will be automatically deployed to production when pushed to master.
 
 #### Environment variables
 
@@ -34,8 +35,5 @@ You have to define the following variables **(Production environment only)**:
   - SENDGRID_API_KEY
 
 - Database configs:
-  - DB_USER
-  - DB_PASS
-  - DB_NAME
-  - DB_PORT
-  - DB_POOL
+  - DATABASE_URL
+  - POOL_SIZE

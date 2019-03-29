@@ -2,7 +2,7 @@ defmodule ConstrutoraLcHiertWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :construtora_lc_hiert
 
   socket "/socket", ConstrutoraLcHiertWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.

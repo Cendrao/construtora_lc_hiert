@@ -10,17 +10,17 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  http: [:inet6, port: System.get_env("PORT")],
+  url: [scheme: "https", host: "construtora-lc-hiert.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configure your database
 config :construtora_lc_hiert, ConstrutoraLcHiert.Repo,
-  username: System.get_env("DB_USER") || "postgres",
-  password: System.get_env("DB_PASS"),
-  database: System.get_env("DB_NAME") || "construtora_lc_hiert",
-  pool_size: System.get_env("DB_POOL") || 15
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
 
 # Guardian - Authentication configs
 config :construtora_lc_hiert, ConstrutoraLcHiert.Authentication.Guardian,
