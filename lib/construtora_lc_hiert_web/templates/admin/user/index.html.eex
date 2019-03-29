@@ -1,0 +1,20 @@
+<h1 class="page-header">Usuários</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Usuário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for user <- @users do %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

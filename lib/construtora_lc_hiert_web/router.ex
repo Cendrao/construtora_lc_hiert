@@ -41,6 +41,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     get "/", Admin.PageController, :index
     get "/inscritos", Admin.SubscriberController, :index
+    get "/usuarios", Admin.UserController, :index
   end
 
   if Mix.env() == :dev do
