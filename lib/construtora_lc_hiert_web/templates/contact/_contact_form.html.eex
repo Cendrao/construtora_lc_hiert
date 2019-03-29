@@ -1,7 +1,7 @@
 <div class="col-sm-7 col-xs-12">
   <div class="contact-messge contact-bg">
     <div class="leave-review">
-      <h5>Envie uma mensagem</h5>
+      <h5 class="h5">Envie uma mensagem</h5>
 
       <%= form_for @conn, Routes.contact_path(@conn, :create), [class: "js-ajax-form-animation"], fn f -> %>
         <%= text_input f, :name, placeholder: "Seu nome", required: true %>

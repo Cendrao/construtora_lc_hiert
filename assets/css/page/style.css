@@ -1378,9 +1378,11 @@
 .contact-address > li:last-child:before {
     display: none;
 }
+
 .contact-bg {
-    background: rgba(0, 0, 0, 0.1) url("/images/others/contact-2.jpg") no-repeat scroll right center / cover;
+  background: rgba(0, 0, 0, 0.1) url('/images/bg/contact.jpg') no-repeat scroll right center / cover;
 }
+
 .contact-messge {
     padding: 50px;
 }

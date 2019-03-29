@@ -29,7 +29,7 @@
         </div>
         <div class="col-sm-6 col-sm-pull-6 col-xs-12">
           <div class="about-image">
-            <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+            <img src="<%= Routes.static_path(@conn, "/images/about/about.jpg") %>" alt="">
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@
           <div class="service-item">
             <div class="service-item-image">
               <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+                <img src="<%= Routes.static_path(@conn, "/images/service/apto.jpg") %>" alt="">
               </a>
             </div>
             <div class="service-item-info">
@@ -29,7 +29,7 @@
           <div class="service-item">
             <div class="service-item-image">
               <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+                <img src="<%= Routes.static_path(@conn, "/images/service/casa.jpg") %>" alt="">
               </a>
             </div>
             <div class="service-item-info">
@@ -43,7 +43,7 @@
           <div class="service-item">
             <div class="service-item-image">
               <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/1.jpg") %>" alt="">
+                <img src="<%= Routes.static_path(@conn, "/images/service/lote.jpg") %>" alt="">
               </a>
             </div>
             <div class="service-item-info">
