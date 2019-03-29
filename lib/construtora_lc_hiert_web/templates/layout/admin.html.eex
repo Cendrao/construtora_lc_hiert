@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin · Construtora LC Hiert</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.ico") %>">
+    <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.png") %>">
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/admin.css") %>"/>
   </head>
 
@@ -20,7 +20,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Construtora LC Hiert</a>
+          <a class="navbar-brand" href="<%= Routes.home_path(@conn, :index) %>">Construtora LC Hiert</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">

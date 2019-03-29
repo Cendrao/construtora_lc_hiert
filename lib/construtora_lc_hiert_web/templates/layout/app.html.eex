@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Construtora LC Hiert</title>
 
-  <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.ico") %>">
+  <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/images/favicon.png") %>">
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
 </head>
 
