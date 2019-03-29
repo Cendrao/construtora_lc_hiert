@@ -1,5 +1,7 @@
 # Construtora LC Hiert
 
+|> [construtora-lc-hiert.herokuapp.com](https://construtora-lc-hiert.herokuapp.com/)
+
 ## Installation
 
 To start your Phoenix server:
@@ -20,7 +22,6 @@ To test your email messages on development environment you can visit
 
 ## Deployment
 
-This app is on Heroku: [construtora-lc-hiert.herokuapp.com](https://construtora-lc-hiert.herokuapp.com/)
 It will be automatically deployed to production when pushed to master.
 
 #### Environment variables
