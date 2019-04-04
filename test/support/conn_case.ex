@@ -36,7 +36,9 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
     end
 
     if tags[:sign_in_user] do
-      {:ok, user} = ConstrutoraLcHiert.Accounts.create_user(%{username: "user", password: "pass"})
+      {:ok, user} =
+        ConstrutoraLcHiert.Accounts.create_user(%{username: "mike", password: "rusbé"})
+
       conn = Guardian.Plug.sign_in(Phoenix.ConnTest.build_conn(), user)
 
       {:ok, conn: conn, user: user}
