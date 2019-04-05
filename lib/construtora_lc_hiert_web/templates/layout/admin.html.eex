@@ -40,7 +40,9 @@
             </li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Imóveis</a></li>
+            <li class="<%= active_class(@conn, Routes.admin_property_path(@conn, :index)) %>">
+              <a href="<%= Routes.admin_property_path(@conn, :index) %>">Imóveis</a>
+            </li>
             <li class="<%= active_class(@conn, Routes.admin_subscriber_path(@conn, :index)) %>">
               <a href="<%= Routes.admin_subscriber_path(@conn, :index) %>">Inscritos</a>
             </li>

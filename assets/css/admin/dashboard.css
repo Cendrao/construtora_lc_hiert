@@ -17,6 +17,11 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+.help-block {
+  color: #FF9494;
+  font-size: 12px;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
@@ -102,4 +107,13 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+
+/*
+ * Margins
+ */
+
+.mb-20 {
+  margin-bottom: 20px;
 }

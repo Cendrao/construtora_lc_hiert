@@ -46,7 +46,10 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
-      {:bamboo, "~> 1.2"}
+      {:bamboo, "~> 1.2"},
+      {:ecto_autoslug_field, "~> 1.0"},
+      {:ecto_enum, "~> 1.2"},
+      {:number, "~> 1.0.0"}
     ]
   end
 

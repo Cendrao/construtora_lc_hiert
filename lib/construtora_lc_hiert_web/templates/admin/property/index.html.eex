@@ -1,0 +1,32 @@
+<h1 class="page-header">Imóveis</h1>
+
+<a href="<%= Routes.admin_property_path(@conn, :new) %>" class="btn btn-primary mb-20">
+  Cadastrar novo imóvel
+</a>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tipo</th>
+        <th>Endereço</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for property <- @properties do %>
+        <tr>
+          <td><%= property.id %></td>
+          <td><%= translate_type(property.type) %></td>
+          <td><%= "#{property.address}, #{property.address_number}, #{property.complement}" %></td>
+          <td><%= property.neighborhood %></td>
+          <td><%= "#{property.city}-#{property.state}" %></td>
+          <td><%= number_to_currency(property.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
