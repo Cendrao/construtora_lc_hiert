@@ -4,7 +4,9 @@
       <div class="col-md-12">
         <div class="section-title-2 text-center">
           <h2>SERVIÇOS</h2>
-          <p>Sheltek is the best theme for  elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minim veniam, quis nostrud</p>
+          <p>
+            Trabalhamos com venda de imóveis: casas, apartamentos e lotes em Toledo-PR e região.
+          </p>
         </div>
       </div>
     </div>
@@ -14,13 +16,11 @@
         <div class="col-md-12">
           <div class="service-item">
             <div class="service-item-image">
-              <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/apto.jpg") %>" alt="">
-              </a>
+              <img src="<%= Routes.static_path(@conn, "/images/service/apto.jpg") %>" alt="Venda de apartamentos">
             </div>
             <div class="service-item-info">
-              <h5><a href="service-details.html">Venda de Apartamentos</a></h5>
-              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+              <h5>Venda de Apartamentos</h5>
+              <p>Apartamentos ideais para você e sua família viver com muito conforto e segurança</p>
             </div>
           </div>
         </div>
@@ -28,13 +28,11 @@
         <div class="col-md-12">
           <div class="service-item">
             <div class="service-item-image">
-              <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/casa.jpg") %>" alt="">
-              </a>
+              <img src="<%= Routes.static_path(@conn, "/images/service/casa.jpg") %>" alt="Venda de casas">
             </div>
             <div class="service-item-info">
-              <h5><a href="service-details.html">Venda de Casas</a></h5>
-              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+              <h5>Venda de Casas</h5>
+              <p>Você merece uma casa para passar mais momentos agradáveis com sua família</p>
             </div>
           </div>
         </div>
@@ -42,13 +40,11 @@
         <div class="col-md-12">
           <div class="service-item">
             <div class="service-item-image">
-              <a href="service-details.html">
-                <img src="<%= Routes.static_path(@conn, "/images/service/lote.jpg") %>" alt="">
-              </a>
+              <img src="<%= Routes.static_path(@conn, "/images/service/lote.jpg") %>" alt="Venda de lotes">
             </div>
             <div class="service-item-info">
-              <h5><a href="service-details.html">Venda de Lotes</a></h5>
-              <p>Property sale best theme for litdo eiusmod tempor dolor sit amet, conse tetur adiping eiusmo</p>
+              <h5>Venda de Lotes</h5>
+              <p>Venha conhecer nossas opções em lotes em Toledo e região e invista no seu futuro</p>
             </div>
           </div>
         </div>
