@@ -43,6 +43,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
     get "/inscritos", Admin.SubscriberController, :index
     get "/usuarios", Admin.UserController, :index
     resources "/imoveis", Admin.PropertyController, only: [:index, :new, :create]
+    resources "/comodidades", Admin.AmenityController, only: [:index, :new, :create]
   end
 
   if Mix.env() == :dev do

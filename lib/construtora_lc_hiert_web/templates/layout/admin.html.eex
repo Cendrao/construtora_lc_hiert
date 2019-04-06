@@ -43,6 +43,9 @@
             <li class="<%= active_class(@conn, Routes.admin_property_path(@conn, :index)) %>">
               <a href="<%= Routes.admin_property_path(@conn, :index) %>">Imóveis</a>
             </li>
+            <li class="<%= active_class(@conn, Routes.admin_amenity_path(@conn, :index)) %>">
+              <a href="<%= Routes.admin_amenity_path(@conn, :index) %>">Comodidades</a>
+            </li>
             <li class="<%= active_class(@conn, Routes.admin_subscriber_path(@conn, :index)) %>">
               <a href="<%= Routes.admin_subscriber_path(@conn, :index) %>">Inscritos</a>
             </li>
