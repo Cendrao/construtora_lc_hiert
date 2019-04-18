@@ -3,6 +3,9 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
 
   alias ConstrutoraLcHiert.Properties.Property
   alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.Amenities
+
+  plug :load_amenities when action in [:new, :create]
 
   def index(conn, _params) do
     properties = Properties.list_properties()
@@ -11,7 +14,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   end
 
   def new(conn, _params) do
-    changeset = Property.changeset(%Property{})
+    changeset = Properties.change_property(%Property{})
 
     render(conn, "new.html", changeset: changeset)
   end
@@ -24,9 +27,15 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
         |> redirect(to: Routes.admin_property_path(conn, :new))
 
       {:error, changeset} ->
+        data = Properties.load_amenities(changeset.data)
+
         conn
         |> put_flash(:error, gettext("Error occurred! Please fix the warnings"))
-        |> render("new.html", changeset: changeset)
+        |> render("new.html", changeset: %{changeset | data: data})
     end
+  end
+
+  defp load_amenities(conn, _) do
+    assign(conn, :amenities, Amenities.list_amenities())
   end
 end

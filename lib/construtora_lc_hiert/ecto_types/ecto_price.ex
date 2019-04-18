@@ -2,16 +2,20 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPrice do
   @behaviour Ecto.Type
   def type, do: :float
 
+  def cast(price) when is_binary(price) or is_number(price), do: {:ok, price}
+  def cast(_), do: :error
+
   @doc """
-  It removes all dots and then replaces the commas to dots when it is a String.
+  Removes all dots and then replaces the commas to dots when it is a String.
+  It gets the data ready to be written to the database.
 
   ## Example:
 
-      iex> cast("600.000,00")
+      iex> dump("600.000,00")
       600000.00
 
   """
-  def cast(price) when is_binary(price) do
+  def dump(price) when is_binary(price) do
     {float_price, _} =
       price
       |> String.replace(".", "")
@@ -20,9 +24,6 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPrice do
 
     {:ok, float_price}
   end
-
-  def cast(price) when is_number(price), do: {:ok, price}
-  def cast(_), do: :error
 
   def dump(price) when is_float(price), do: {:ok, price}
   def dump(_), do: :error

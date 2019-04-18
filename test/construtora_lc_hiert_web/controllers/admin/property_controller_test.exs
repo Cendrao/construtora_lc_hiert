@@ -19,7 +19,8 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
       qty_kitchens: "1",
       qty_rooms: "3",
       state: "PR",
-      type: :apartment
+      type: :apartment,
+      amenities: ["1", "2"]
     }
   }
   @invalid_params %{
@@ -37,7 +38,8 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
       qty_kitchens: "",
       qty_rooms: "",
       state: "",
-      type: ""
+      type: "",
+      amenities: []
     }
   }
 

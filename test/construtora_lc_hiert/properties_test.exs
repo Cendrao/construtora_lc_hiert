@@ -1,6 +1,7 @@
 defmodule ConstrutoraLcHiert.PropertiesTest do
   use ConstrutoraLcHiert.DataCase
 
+  alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Properties.Property
 
@@ -12,13 +13,14 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     complement: "",
     description: "Lorem ipsum dolor sit amet.",
     neighborhood: "Vila Industrial",
-    price: "1.000.000",
+    price: 1_000_000.0,
     qty_bathrooms: "2",
     qty_garages: "2",
     qty_kitchens: "1",
     qty_rooms: "3",
     state: "PR",
-    type: :apartment
+    type: :apartment,
+    amenities: []
   }
   @invalid_attrs %{
     address: nil,
@@ -34,7 +36,8 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     qty_kitchens: nil,
     qty_rooms: nil,
     state: nil,
-    type: nil
+    type: nil,
+    amenities: []
   }
 
   def property_fixture(attrs \\ %{}) do
@@ -46,7 +49,12 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     property
   end
 
-  describe "create_property/1" do
+  test "change_property/1 returns a property changeset" do
+    property = property_fixture()
+    assert %Ecto.Changeset{} = Properties.change_property(property)
+  end
+
+  describe "create_property/2" do
     test "with valid data creates a property" do
       assert {:ok, %Property{} = property} = Properties.create_property(@valid_attrs)
 
@@ -55,6 +63,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
                address_number: "1650",
                area: 50.0,
                city: "Toledo",
+               state: "PR",
                complement: nil,
                description: "Lorem ipsum dolor sit amet.",
                neighborhood: "Vila Industrial",
@@ -91,8 +100,15 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
 
   describe "list_properties/0" do
     test "returns all properties" do
+      property_fixture()
+      assert [%Property{}] = Properties.list_properties()
+    end
+  end
+
+  describe "load_amenities/1" do
+    test "loads the amenities of property" do
       property = property_fixture()
-      assert Properties.list_properties() == [property]
+      assert Properties.load_amenities(property) == Repo.preload(property, :amenities)
     end
   end
 

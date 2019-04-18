@@ -38,4 +38,19 @@ defmodule ConstrutoraLcHiert.Amenities do
   def list_amenities do
     Repo.all(Amenity)
   end
+
+  @doc """
+  Returns a list of amenities given its ids.
+
+  ## Examples
+
+      iex> get_amenities([1, 2])
+      [%Amenity{}, %Amenity{}]
+
+  """
+  def get_amenities(nil), do: []
+
+  def get_amenities(ids) do
+    Repo.all(from a in Amenity, where: a.id in ^ids)
+  end
 end

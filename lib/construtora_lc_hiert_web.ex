@@ -41,6 +41,7 @@ defmodule ConstrutoraLcHiertWeb do
 
       import ConstrutoraLcHiertWeb.ErrorHelpers
       import ConstrutoraLcHiertWeb.Gettext
+      import ConstrutoraLcHiertWeb.Helpers.CheckboxHelper
       alias ConstrutoraLcHiertWeb.Router.Helpers, as: Routes
     end
   end

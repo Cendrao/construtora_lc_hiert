@@ -7,22 +7,39 @@ defmodule ConstrutoraLcHiert.Properties do
 
   alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.Amenities
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking property changes.
+
+  ## Examples
+
+      iex> change_property(property)
+      %Ecto.Changeset{source: %Property{}}
+
+  """
+  def change_property(%Property{} = property) do
+    property
+    |> Repo.preload(:amenities)
+    |> Property.changeset(%{})
+  end
 
   @doc """
   Creates a property.
 
   ## Examples
 
-      iex> create_property(%{address: "Rua X", address_number: 6, city: "Toledo", ...})
+      iex> create_property(%{address: "Rua X", address_number: 6, city: "Toledo", ...}, [%Amenity{}])
       {:ok, %Property{}}
 
-      iex> create_property(%{address: nil, address_number: nil, city: nil, ...})
+      iex> create_property(%{address: nil, address_number: nil, city: nil, ...}, [%Amenity{}])
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_property(attrs \\ %{}) do
+  def create_property(attrs) do
     %Property{}
     |> Property.changeset(attrs)
+    |> maybe_put_amenities(attrs)
     |> Repo.insert()
   end
 
@@ -40,6 +57,19 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
+  Preloads the amenities of a given property.
+
+  ## Examples
+
+      iex> load_amenities(property)
+      %Property{..., amenities: [], ...}
+
+  """
+  def load_amenities(%Property{} = property) do
+    Repo.preload(property, :amenities)
+  end
+
+  @doc """
   Translate the type to a readable name to the user.
 
   ## Examples
@@ -51,4 +81,12 @@ defmodule ConstrutoraLcHiert.Properties do
   def translate_type(:apartment), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "Apartment")
   def translate_type(:house), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "House")
   def translate_type(:lot), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "Lot")
+
+  defp maybe_put_amenities(changeset, []), do: changeset
+
+  defp maybe_put_amenities(changeset, attrs) do
+    amenities = Amenities.get_amenities(attrs["amenities"])
+
+    Ecto.Changeset.put_assoc(changeset, :amenities, amenities)
+  end
 end

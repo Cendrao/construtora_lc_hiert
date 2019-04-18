@@ -36,4 +36,15 @@ defmodule ConstrutoraLcHiert.AmenitiesTest do
       assert Amenities.list_amenities() == [amenity]
     end
   end
+
+  describe "get_amenities/1" do
+    test "returns all amenities when given an array of amenity ids" do
+      amenity = amenity_fixture()
+      assert Amenities.get_amenities([amenity.id]) == [amenity]
+    end
+
+    test "returns empty array when given nil" do
+      assert Amenities.get_amenities(nil) == []
+    end
+  end
 end

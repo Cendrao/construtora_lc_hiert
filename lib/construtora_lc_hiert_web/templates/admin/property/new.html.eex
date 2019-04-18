@@ -123,6 +123,19 @@
     </div>
   </div>
 
+  <h4>Comodidades</h4>
+
+  <div class="form-group">
+    <%=
+      multiselect_checkboxes(
+        f,
+        :amenities,
+        Enum.map(@amenities, fn a -> { a.name, a.id } end),
+        selected: Enum.map(@changeset.data.amenities,&(&1.id))
+      )
+    %>
+  </div>
+
   <div class="form-group">
     <%= label f, :description, "Descrição" %>
     <%= textarea f, :description, class: "form-control", rows: 10 %>

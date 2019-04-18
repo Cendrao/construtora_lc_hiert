@@ -5,6 +5,8 @@ defmodule ConstrutoraLcHiert.Properties.Property do
 
   alias ConstrutoraLcHiert.Properties.PropertySlug
   alias ConstrutoraLcHiert.EctoTypes.EctoPrice
+  alias ConstrutoraLcHiert.PropertiesAmenities
+  alias ConstrutoraLcHiert.Amenities.Amenity
 
   @optional_params [:slug, :complement, :description, :status]
 
@@ -43,6 +45,8 @@ defmodule ConstrutoraLcHiert.Properties.Property do
     field :state, :string
     field :status, StatusEnum, default: :for_sale
     field :type, TypeEnum
+
+    many_to_many(:amenities, Amenity, join_through: PropertiesAmenities)
 
     timestamps()
   end

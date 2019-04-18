@@ -4,11 +4,8 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPriceTest do
   alias ConstrutoraLcHiert.EctoTypes.EctoPrice
 
   describe "cast/1" do
-    test "returns a float when given string" do
-      assert EctoPrice.cast("600.000") == {:ok, 600_000.0}
-      assert EctoPrice.cast("40000") == {:ok, 40_000.0}
-      assert EctoPrice.cast("200.000,00") == {:ok, 200_000.0}
-      assert EctoPrice.cast("10000,00") == {:ok, 10_000.0}
+    test "returns a string when given string" do
+      assert EctoPrice.cast("80000.0") == {:ok, "80000.0"}
     end
 
     test "returns a float when given integer" do
@@ -21,12 +18,15 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPriceTest do
   end
 
   describe "dump/1" do
-    test "returns a float when given float" do
-      assert EctoPrice.dump(80_000.0) == {:ok, 80_000.0}
+    test "returns a float when given string" do
+      assert EctoPrice.dump("600.000") == {:ok, 600_000.0}
+      assert EctoPrice.dump("40000") == {:ok, 40_000.0}
+      assert EctoPrice.dump("200.000,00") == {:ok, 200_000.0}
+      assert EctoPrice.dump("10000,00") == {:ok, 10_000.0}
     end
 
-    test "returns error when given string" do
-      assert EctoPrice.dump("80000") == :error
+    test "returns a float when given float" do
+      assert EctoPrice.dump(600_000.0) == {:ok, 600_000.0}
     end
 
     test "returns error when given integer" do
