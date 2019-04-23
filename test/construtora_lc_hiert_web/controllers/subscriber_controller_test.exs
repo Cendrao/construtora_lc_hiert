@@ -8,7 +8,7 @@ defmodule ConstrutoraLcHiertWeb.SubscriberControllerTest do
   @invalid_params %{email: nil}
 
   describe "POST /inscritos" do
-    test "creates a new active inscritos", %{conn: conn} do
+    test "creates a new active subscriber", %{conn: conn} do
       post(conn, "/inscritos", @valid_params)
 
       assert Repo.get_by!(Subscriber, email: "ciro@bottini.com").status == "active"

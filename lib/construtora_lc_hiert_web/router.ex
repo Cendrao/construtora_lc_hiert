@@ -41,7 +41,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     get "/", Admin.PageController, :index
     get "/inscritos", Admin.SubscriberController, :index
-    get "/usuarios", Admin.UserController, :index
+    resources "/usuarios", Admin.UserController
     resources "/imoveis", Admin.PropertyController, only: [:index, :new, :create]
     resources "/comodidades", Admin.AmenityController, only: [:index, :new, :create]
   end

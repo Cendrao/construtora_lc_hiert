@@ -19,7 +19,7 @@ defmodule ConstrutoraLcHiert.Accounts do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.all(from u in User, where: u.master == false and is_nil(u.deleted_at))
   end
 
   @doc """
@@ -75,18 +75,36 @@ defmodule ConstrutoraLcHiert.Accounts do
   end
 
   @doc """
-  Deletes a User.
+  Soft deletes a User.
 
   ## Examples
 
-      iex> delete_user(user)
+      iex> soft_delete_user(user)
       {:ok, %User{}}
 
-      iex> delete_user(user)
+      iex> soft_delete_user(user)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_user(%User{} = user) do
+  def soft_delete_user(%User{} = user) do
+    user
+    |> User.changeset(%{deleted_at: NaiveDateTime.utc_now()})
+    |> Repo.update()
+  end
+
+  @doc """
+  Hard deletes a User.
+
+  ## Examples
+
+      iex> hard_delete_user(user)
+      {:ok, %User{}}
+
+      iex> hard_delete_user(user)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def hard_delete_user(%User{} = user) do
     Repo.delete(user)
   end
 
@@ -119,7 +137,7 @@ defmodule ConstrutoraLcHiert.Accounts do
 
   """
   def verify_user_credentials(username, plain_text_password) do
-    query = from u in User, where: u.username == ^username
+    query = from u in User, where: u.username == ^username and is_nil(u.deleted_at)
     user = Repo.one(query)
 
     cond do

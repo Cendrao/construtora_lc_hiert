@@ -5,7 +5,7 @@ defmodule ConstrutoraLcHiertWeb.LayoutViewTest do
 
   @tag :sign_in_user
   test "current_user/1", %{conn: conn} do
-    assert LayoutView.current_user(conn).username == "mike"
+    assert LayoutView.current_user(conn).username == "maico"
   end
 
   describe "active_class/2" do

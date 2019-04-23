@@ -10,6 +10,12 @@ msgstr "Lote"
 msgid "Successfully created"
 msgstr "Cadastrado com sucesso"
 
+msgid "Successfully updated"
+msgstr "Atualizado com sucesso"
+
+msgid "Successfully deleted"
+msgstr "Excluído com sucesso"
+
 msgid "Message successfully sent"
 msgstr "Mensagem enviada com sucesso"
 
