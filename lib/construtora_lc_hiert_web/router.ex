@@ -29,6 +29,12 @@ defmodule ConstrutoraLcHiertWeb.Router do
     get "/quem-somos", AboutController, :index
     resources "/contato", ContactController, only: [:index, :create]
 
+    scope "/imoveis" do
+      get "/apartamentos", ApartmentController, :index
+
+      get "/:slug", PropertyController, :show
+    end
+
     post "/inscritos", SubscriberController, :create
 
     get "/login", SessionController, :new

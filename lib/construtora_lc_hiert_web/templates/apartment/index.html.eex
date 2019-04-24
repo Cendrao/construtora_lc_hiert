@@ -1,0 +1,42 @@
+<section id="page-content" class="page-wrapper">
+  <div class="featured-flat-area pt-115 pb-60">
+    <div class="container">
+      <div class="featured-flat">
+        <div class="row">
+          <%= for apartment <- @apartments do %>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <%=
+                render(
+                  ConstrutoraLcHiertWeb.PropertyView,
+                  "_property_item.html",
+                  Map.put(assigns, :property, apartment)
+                )
+              %>
+            </div>
+          <% end %>
+
+          <div class="col-xs-12">
+            <div class="pagination-area mb-60">
+              <ul class="pagination-list text-center">
+                <li>
+                  <a href="#">
+                    <%= icon_tag(@conn, "left-arrow") %>
+                  </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li>
+                  <a href="#">
+                    <%= icon_tag(@conn, "right-arrow") %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
+</section>

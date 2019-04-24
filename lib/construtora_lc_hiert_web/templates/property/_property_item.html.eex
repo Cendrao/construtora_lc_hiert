@@ -1,0 +1,40 @@
+<div class="flat-item">
+  <div class="flat-item-image">
+    <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
+      <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+    </a>
+    <div class="flat-link">
+      <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">Mais Detalhes</a>
+    </div>
+    <ul class="flat-desc">
+      <li>
+        <%= icon_tag(@conn, "area") %>
+        <span><%= trunc(@property.area) %> m²</span>
+      </li>
+      <li>
+        <%= icon_tag(@conn, "bed") %>
+        <span><%= @property.qty_rooms %></span>
+      </li>
+      <li>
+        <%= icon_tag(@conn, "bath") %>
+        <span><%= @property.qty_bathrooms %></span>
+      </li>
+    </ul>
+  </div>
+  <div class="flat-item-info">
+    <div class="flat-title-price">
+      <h5>
+        <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
+          <%= @property.neighborhood %>
+        </a>
+      </h5>
+      <span class="price">
+        <%= number_to_currency(@property.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+      </span>
+    </div>
+    <p>
+      <%= icon_tag(@conn, "location") %>
+      <%= full_address(@property) %>
+    </p>
+  </div>
+</div>

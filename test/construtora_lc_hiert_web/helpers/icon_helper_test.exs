@@ -5,21 +5,15 @@ defmodule ConstrutoraLcHiertWeb.Helpers.IconHelperTest do
 
   alias ConstrutoraLcHiertWeb.Helpers.IconHelper
 
-  describe "icon/1" do
-    test "when given active" do
-      image =
-        IconHelper.icon("active")
-        |> safe_to_string()
+  test "icon_tag/2 renders a svg icon" do
+    image =
+      ConstrutoraLcHiertWeb.Endpoint
+      |> IconHelper.icon_tag("phone", class: "biridin")
+      |> safe_to_string()
 
-      assert String.match?(image, ~r/<img.*src="\/images\/icons\/active.svg".*>/)
-    end
-
-    test "when given delete" do
-      image =
-        IconHelper.icon("delete")
-        |> safe_to_string()
-
-      assert String.match?(image, ~r/<img.*src="\/images\/icons\/delete.svg".*>/)
-    end
+    assert image ==
+             "<svg class=\"biridin icon\">" <>
+               "<use xlink:href=\"/images/icons.svg#phone\">" <>
+               "</svg>"
   end
 end

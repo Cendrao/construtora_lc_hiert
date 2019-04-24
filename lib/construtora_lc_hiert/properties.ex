@@ -44,6 +44,23 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
+  Gets a single property.
+
+  Raises `Ecto.NoResultsError` if the Property does not exist.
+
+  ## Examples
+
+      iex> get_property_by!(id)
+      %Property{}
+
+  """
+  def get_property_by!(attrs) do
+    Property
+    |> Repo.get_by!(attrs)
+    |> load_amenities()
+  end
+
+  @doc """
   Returns the list of properties.
 
   ## Examples
@@ -51,9 +68,21 @@ defmodule ConstrutoraLcHiert.Properties do
       iex> list_properties()
       [%Property{}, ...]
 
+      iex> list_properties(:apartment)
+      [%Property{}, ...]
+
+      iex> list_featured_properties(3)
+      [%Property{}, %Property{}, %Property{}]
+
   """
-  def list_properties do
-    Repo.all(Property)
+  def list_properties(), do: Repo.all(Property)
+
+  def list_properties(type) do
+    Repo.all(from p in Property, where: p.type == ^type)
+  end
+
+  def list_featured_properties(limit \\ 3) do
+    Repo.all(from p in Property, limit: ^limit, order_by: [desc: p.updated_at])
   end
 
   @doc """
@@ -65,12 +94,10 @@ defmodule ConstrutoraLcHiert.Properties do
       %Property{..., amenities: [], ...}
 
   """
-  def load_amenities(%Property{} = property) do
-    Repo.preload(property, :amenities)
-  end
+  def load_amenities(%Property{} = property), do: Repo.preload(property, :amenities)
 
   @doc """
-  Translate the type to a readable name to the user.
+  Translate the type to a human readable name.
 
   ## Examples
 

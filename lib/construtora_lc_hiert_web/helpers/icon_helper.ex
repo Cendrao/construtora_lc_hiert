@@ -3,9 +3,14 @@ defmodule ConstrutoraLcHiertWeb.Helpers.IconHelper do
   Give some icons to be used on templates.
   """
 
-  use Phoenix.HTML, only: [img_tag: 1]
+  use Phoenix.HTML
+  alias ConstrutoraLcHiertWeb.Router.Helpers, as: Routes
 
-  def icon(name, opts \\ %{width: "24px"}) do
-    img_tag("/images/icons/#{name}.svg", width: opts[:width])
+  def icon_tag(conn, name, opts \\ []) do
+    classes = Keyword.get(opts, :class, "") <> " icon"
+
+    content_tag(:svg, class: classes) do
+      tag(:use, "xlink:href": Routes.static_path(conn, "/images/icons.svg#" <> name))
+    end
   end
 end

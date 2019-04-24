@@ -1,0 +1,163 @@
+<section id="page-content" class="page-wrapper">
+  <div class="properties-details-area pt-115 pb-60">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="pro-details-image mb-60">
+
+            <div class="pro-details-big-image">
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="pro-1">
+                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
+                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                  </a>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="pro-2">
+                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
+                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                  </a>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="pro-3">
+                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
+                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                  </a>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="pro-4">
+                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
+                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                  </a>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="pro-5">
+                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
+                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pro-details-carousel">
+              <div class="pro-details-item">
+                <a href="#pro-1" data-toggle="tab">
+                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                </a>
+              </div>
+              <div class="pro-details-item">
+                <a href="#pro-2" data-toggle="tab">
+                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                </a>
+              </div>
+              <div class="pro-details-item">
+                <a href="#pro-3" data-toggle="tab">
+                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                </a>
+              </div>
+              <div class="pro-details-item">
+                <a href="#pro-4" data-toggle="tab">
+                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                </a>
+              </div>
+              <div class="pro-details-item">
+                <a href="#pro-5" data-toggle="tab">
+                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pro-details-short-info mb-60">
+            <div class="row">
+              <div class="col-sm-6 col-xs-12">
+                <div class="pro-details-condition">
+                  <h5>Detalhes</h5>
+
+                  <div class="pro-details-condition-inner bg-gray">
+                    <ul class="condition-list">
+                      <li>
+                        <%= icon_tag(@conn, "area") %>
+                        <%= trunc(@apartment.area) %> m²
+                      </li>
+                      <li>
+                        <%= icon_tag(@conn, "bed") %>
+                        <%= @apartment.qty_rooms %> quarto(s)
+                      </li>
+                      <li>
+                        <%= icon_tag(@conn, "bath") %>
+                        <%= @apartment.qty_bathrooms %> banheiro(s)
+                      </li>
+                      <li>
+                        <%= icon_tag(@conn, "kitchen") %>
+                        <%= @apartment.qty_kitchens %> cozinha(s)
+                      </li>
+                      <li>
+                        <%= icon_tag(@conn, "car") %>
+                        <%= @apartment.qty_garages %> garagem(ns)
+                      </li>
+                      <li>
+                        <%= icon_tag(@conn, "money") %>
+                        <%=
+                          number_to_currency(
+                            @apartment.price,
+                            unit: "R$ ",
+                            separator: ",",
+                            delimiter: "."
+                          )
+                        %>
+                      </li>
+                    </ul>
+                    <p>
+                      <%= icon_tag(@conn, "location") %>
+                      <%= full_address(@apartment) %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <div class="pro-details-amenities">
+                  <h5>Comodidades</h5>
+
+                  <div class="pro-details-amenities-inner bg-gray">
+                    <ul class="amenities-list">
+                      <%= for amenity <- @apartment.amenities do %>
+                        <li>
+                          <%= icon_tag(@conn, "check") %>
+                          <%= amenity.name %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pro-details-description mb-50">
+            <p><%= @apartment.description %></p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <aside class="widget widget-search-property">
+            <h5>Procure outro imóvel</h5>
+
+            <%= render(ConstrutoraLcHiertWeb.SharedView, "_search.html", assigns) %>
+          </aside>
+
+          <aside class="widget widget-featured-property">
+            <h5>Imóveis em destaque</h5>
+
+            <div class="row">
+              <%= for featured_property <- @featured_properties do %>
+                <div class="col-md-12 col-sm-6 col-xs-12">
+                  <%= render("_property_item.html", Map.put(assigns, :property, featured_property)) %>
+                </div>
+              <% end %>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
+</section>

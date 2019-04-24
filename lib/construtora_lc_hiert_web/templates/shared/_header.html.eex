@@ -13,7 +13,7 @@
           <div class="company-info clearfix">
             <div class="company-info-item">
               <div class="header-icon">
-                <img src="<%= Routes.static_path(@conn, "/images/icons/phone.png") %>" alt="Telefone">
+                <%= icon_tag(@conn, "phone") %>
               </div>
               <div class="header-info">
                 <h6>(45) 3055-4488</h6>
@@ -22,7 +22,7 @@
             </div>
             <div class="company-info-item">
               <div class="header-icon">
-                <img src="<%= Routes.static_path(@conn, "/images/icons/whatsapp.png") %>" alt="WhatsApp">
+                <%= icon_tag(@conn, "whatsapp") %>
               </div>
               <div class="header-info">
                 <h6><a href="http://api.whatsapp.com/send?1=pt_BR&phone=554599705998">(45) 99705-5998</a></h6>
@@ -35,7 +35,7 @@
           <div class="header-search clearfix">
             <form action="#">
               <button class="search-icon" type="submit">
-                <img src="<%= Routes.static_path(@conn, "/images/icons/search.png") %>" alt="Buscar">
+                <%= icon_tag(@conn, "search") %>
               </button>
               <input type="text" placeholder="Procurar...">
             </form>
@@ -56,7 +56,7 @@
             </div>
             <nav id="primary-menu">
               <ul class="main-menu text-center">
-                <%= render_shared("_menu_items.html", assigns) %>
+                <%= render("_menu_items.html", assigns) %>
               </ul>
             </nav>
           </div>
@@ -66,4 +66,4 @@
   </div>
 </header>
 
-<%= render(ConstrutoraLcHiertWeb.SharedView, "_mobile_menu.html", assigns) %>
+<%= render("_mobile_menu.html", assigns) %>

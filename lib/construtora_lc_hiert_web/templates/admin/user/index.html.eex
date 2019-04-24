@@ -20,12 +20,12 @@
           <td><%= user.username %></td>
           <td width="24">
             <a href="<%= Routes.admin_user_path(@conn, :edit, user.id) %>">
-              <%= icon("edit") %>
+              <%= icon_tag(@conn, "edit") %>
             </a>
           </td>
           <td width="24">
             <%=
-              link icon("delete"),
+              link icon_tag(@conn, "delete", class: "delete"),
                 to: Routes.admin_user_path(@conn, :delete, user),
                 method: :delete,
                 data: [confirm: "Tem certeza que quer excluir #{user.username}?"]

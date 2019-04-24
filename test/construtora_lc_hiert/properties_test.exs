@@ -51,6 +51,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
 
   test "change_property/1 returns a property changeset" do
     property = property_fixture()
+
     assert %Ecto.Changeset{} = Properties.change_property(property)
   end
 
@@ -98,16 +99,42 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     end
   end
 
+  describe "get_property_by!/1" do
+    test "returns a single property" do
+      property = property_fixture()
+
+      assert Properties.get_property_by!(slug: property.slug) == property
+    end
+  end
+
   describe "list_properties/0" do
     test "returns all properties" do
       property_fixture()
+
       assert [%Property{}] = Properties.list_properties()
+    end
+  end
+
+  describe "list_properties/1" do
+    test "returns all properties of given type" do
+      property = property_fixture()
+
+      assert [%Property{}] = Properties.list_properties(property.type)
+    end
+  end
+
+  describe "list_featured_properties/1" do
+    test "returns all featured properties given the limit" do
+      property_fixture()
+
+      assert [%Property{}] = Properties.list_featured_properties(1)
     end
   end
 
   describe "load_amenities/1" do
     test "loads the amenities of property" do
       property = property_fixture()
+
       assert Properties.load_amenities(property) == Repo.preload(property, :amenities)
     end
   end

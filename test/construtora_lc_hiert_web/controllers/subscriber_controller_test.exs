@@ -17,15 +17,13 @@ defmodule ConstrutoraLcHiertWeb.SubscriberControllerTest do
     test "returns the json response when success", %{conn: conn} do
       conn = post(conn, "/inscritos", @valid_params)
 
-      body = json_response(conn, 200)
-      assert body["data"] =~ "Cadastrado com sucesso"
+      assert json_response(conn, 200)["data"] =~ "Cadastrado com sucesso"
     end
 
     test "returns the json response when email is empty", %{conn: conn} do
       conn = post(conn, "/inscritos", @invalid_params)
 
-      body = json_response(conn, 500)
-      assert body["data"] =~ "Oops! email não pode ficar em branco"
+      assert json_response(conn, 500)["data"] =~ "Oops! email não pode ficar em branco"
     end
 
     test "returns the json response when email is already registered", %{conn: conn} do
@@ -33,8 +31,7 @@ defmodule ConstrutoraLcHiertWeb.SubscriberControllerTest do
 
       conn = post(conn, "/inscritos", @valid_params)
 
-      body = json_response(conn, 500)
-      assert body["data"] =~ "Oops! email já está cadastrado"
+      assert json_response(conn, 500)["data"] =~ "Oops! email já está cadastrado"
     end
   end
 end

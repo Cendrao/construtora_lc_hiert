@@ -1,8 +1,75 @@
-<%= render(ConstrutoraLcHiertWeb.HomeView, "_slider.html", assigns) %>
+<div class="slider-2 bg-slider bg-opacity-black-30">
+  <div class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="find-home-box">
+      <div class="section-title text-white">
+        <h3>ENCONTRE SEU</h3>
+        <h2 class="h1">NOVO LAR</h2>
+      </div>
+      <div class="find-homes">
+        <%= render(ConstrutoraLcHiertWeb.SharedView, "_search.html", assigns) %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section id="page-content" class="page-wrapper">
   <%= render(ConstrutoraLcHiertWeb.SharedView, "_services.html", assigns) %>
-  <%= render(ConstrutoraLcHiertWeb.HomeView, "_booking.html", assigns) %>
-  <%= render(ConstrutoraLcHiertWeb.HomeView, "_featured_flat.html", assigns) %>
+
+  <div class="booking-area bg-booking call-to-bg plr-140 pt-75">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="section-title text-white">
+            <h3>COMPRE SUA</h3>
+            <h2 class="h1">CASA AQUI</h2>
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12">
+          <div class="booking-conternt  clearfix">
+            <div class="book-house text-white">
+              <h2>APARTAMENTOS, CASAS E LOTES</h2>
+              <h2 class="h5">LIGUE PARA: (45) 3055-4488</h2>
+            </div>
+            <div class="booking-imgae">
+              <img src="<%= Routes.static_path(@conn, "/images/others/booking.png") %>" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="featured-flat-area pt-115 pb-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title-2 text-center">
+            <h2>IMÓVEIS EM DESTAQUE</h2>
+            <p>
+              Sua oportunidade de morar bem em Toledo e região está aqui. <br>
+              Na vida, atitude é tudo e nossos imóveis lhe trarão um novo status!
+              Invista no seu futuro.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="featured-flat">
+        <div class="row">
+          <%= for featured_property <- @featured_properties do %>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <%=
+                render(
+                  ConstrutoraLcHiertWeb.PropertyView,
+                  "_property_item.html",
+                  Map.put(assigns, :property, featured_property)
+                )
+              %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
 </section>

@@ -14,7 +14,7 @@
         <tr>
           <td><%= subscriber.id %></td>
           <td><%= subscriber.email %></td>
-          <td><%= icon(subscriber.status) %></td>
+          <td><%= icon_tag(@conn, subscriber.status) %></td>
         </tr>
       <% end %>
     </tbody>

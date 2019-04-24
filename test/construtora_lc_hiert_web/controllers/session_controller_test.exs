@@ -9,6 +9,7 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
   describe "GET /login" do
     test "accesses the login page", %{conn: conn} do
       conn = get(conn, "/login")
+
       assert html_response(conn, 200) =~ "Login"
     end
   end

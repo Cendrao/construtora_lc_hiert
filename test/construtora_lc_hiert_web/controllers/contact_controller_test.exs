@@ -10,6 +10,7 @@ defmodule ConstrutoraLcHiertWeb.ContactControllerTest do
   describe "GET /contato" do
     test "accesses the contact page", %{conn: conn} do
       conn = get(conn, "/contato")
+
       assert html_response(conn, 200) =~ "Envie uma mensagem"
     end
   end
@@ -26,15 +27,13 @@ defmodule ConstrutoraLcHiertWeb.ContactControllerTest do
     test "returns the json response when success", %{conn: conn} do
       conn = post(conn, "/contato", @valid_params)
 
-      body = json_response(conn, 200)
-      assert body["data"] =~ "enviada com sucesso"
+      assert json_response(conn, 200)["data"] =~ "enviada com sucesso"
     end
 
     test "returns the json response when failure", %{conn: conn} do
       conn = post(conn, "/contato", @invalid_params)
 
-      body = json_response(conn, 500)
-      assert body["data"] =~ "mensagem não foi enviada"
+      assert json_response(conn, 500)["data"] =~ "mensagem não foi enviada"
     end
   end
 end

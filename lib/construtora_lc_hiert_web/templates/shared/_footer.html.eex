@@ -8,7 +8,7 @@
             <ul class="footer-address">
               <li>
                 <div class="address-icon">
-                  <img src="<%= Routes.static_path(@conn, "/images/icons/location-2.png") %>" alt="">
+                  <%= icon_tag(@conn, "location") %>
                 </div>
                 <div class="address-info">
                   <span>Rua Carlos Barbosa, 1640</span>
@@ -17,7 +17,7 @@
               </li>
               <li>
                 <div class="address-icon">
-                  <img src="<%= Routes.static_path(@conn, "/images/icons/phone-3.png") %>" alt="">
+                  <%= icon_tag(@conn, "phone") %>
                 </div>
                 <div class="address-info">
                   <span>Telefone: (45) 3055-4488</span>
@@ -26,7 +26,7 @@
               </li>
               <li>
                 <div class="address-icon">
-                  <img src="<%= Routes.static_path(@conn, "/images/icons/world.png") %>" alt="">
+                  <%= icon_tag(@conn, "world") %>
                 </div>
                 <div class="address-info">
                   <span>E-mail: construcao.lc@gmail.com</span>
