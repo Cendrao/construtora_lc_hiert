@@ -16,6 +16,12 @@ msgstr "Atualizado com sucesso"
 msgid "Successfully deleted"
 msgstr "Excluído com sucesso"
 
+msgid "Successfully activated"
+msgstr "Ativado com sucesso"
+
+msgid "Successfully deactivated"
+msgstr "Desativado com sucesso"
+
 msgid "Message successfully sent"
 msgstr "Mensagem enviada com sucesso"
 

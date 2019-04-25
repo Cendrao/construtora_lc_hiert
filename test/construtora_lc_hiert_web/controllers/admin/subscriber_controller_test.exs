@@ -5,6 +5,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.SubscriberControllerTest do
     @tag :sign_in_user
     test "accesses the subscribers page", %{conn: conn} do
       conn = get(conn, "/admin/inscritos")
+
       assert html_response(conn, 200) =~ "Inscritos"
     end
   end

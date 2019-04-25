@@ -33,4 +33,22 @@ defmodule ConstrutoraLcHiert.SubscribersTest do
       assert Subscribers.list_subscribers() == [subscriber]
     end
   end
+
+  test "get_subscriber!/1 returns the subscriber with given id" do
+    subscriber = subscriber_fixture()
+
+    assert Subscribers.get_subscriber!(subscriber.id) == subscriber
+  end
+
+  test "activate_subscriber/1 changes the subscriber status to active" do
+    subscriber = subscriber_fixture(status: "inactive")
+
+    assert {:ok, %Subscriber{status: "active"}} = Subscribers.activate_subscriber(subscriber)
+  end
+
+  test "deactivate_subscriber/1 changes the subscriber status to inactive" do
+    subscriber = subscriber_fixture(status: "active")
+
+    assert {:ok, %Subscriber{status: "inactive"}} = Subscribers.deactivate_subscriber(subscriber)
+  end
 end

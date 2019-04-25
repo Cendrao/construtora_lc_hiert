@@ -14,7 +14,21 @@
         <tr>
           <td><%= subscriber.id %></td>
           <td><%= subscriber.email %></td>
-          <td><%= icon_tag(@conn, subscriber.status) %></td>
+          <td>
+            <%= if subscriber.status == "active" do %>
+              <%=
+                link icon_tag(@conn, "active", class: "active"),
+                  to: Routes.admin_subscriber_activation_path(@conn, :delete, subscriber.id),
+                  method: :delete
+              %>
+            <% else %>
+              <%=
+                link icon_tag(@conn, "inactive", class: "inactive"),
+                  to: Routes.admin_subscriber_activation_path(@conn, :create, subscriber.id),
+                  method: :post
+              %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -11,6 +11,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.AmenityControllerTest do
     @tag :sign_in_user
     test "accesses the amenities page", %{conn: conn} do
       conn = get(conn, "/admin/comodidades")
+
       assert html_response(conn, 200) =~ "Comodidades"
     end
   end
@@ -19,6 +20,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.AmenityControllerTest do
     @tag :sign_in_user
     test "accesses the new amenities page", %{conn: conn} do
       conn = get(conn, "/admin/comodidades/new")
+
       assert html_response(conn, 200) =~ "Cadastrar Comodidade"
     end
   end

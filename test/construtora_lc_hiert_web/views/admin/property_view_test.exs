@@ -16,4 +16,10 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyViewTest do
     assert PropertyView.translate_type(:house) == "Casa"
     assert PropertyView.translate_type(:lot) == "Lote"
   end
+
+  test "address/1" do
+    property = %{address: "Rua do Paraíso", address_number: "595", complement: nil}
+
+    assert PropertyView.address(property) == "Rua do Paraíso, 595"
+  end
 end

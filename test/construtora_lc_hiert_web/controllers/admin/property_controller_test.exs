@@ -47,6 +47,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
     @tag :sign_in_user
     test "accesses the properties page", %{conn: conn} do
       conn = get(conn, "/admin/imoveis")
+
       assert html_response(conn, 200) =~ "Imóveis"
     end
   end
@@ -55,6 +56,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
     @tag :sign_in_user
     test "accesses the new properties page", %{conn: conn} do
       conn = get(conn, "/admin/imoveis/new")
+
       assert html_response(conn, 200) =~ "Cadastrar Imóvel"
     end
   end

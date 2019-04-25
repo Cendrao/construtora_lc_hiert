@@ -29,4 +29,10 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyView do
   def translate_type(type) do
     Properties.translate_type(type)
   end
+
+  def address(property) do
+    [property.address, property.address_number, property.complement]
+    |> Enum.reject(&is_nil/1)
+    |> Enum.join(", ")
+  end
 end

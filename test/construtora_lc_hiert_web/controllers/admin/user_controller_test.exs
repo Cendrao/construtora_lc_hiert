@@ -106,6 +106,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
 
       refute Repo.get_by(User, username: user.username).deleted_at == nil
 
+      assert get_flash(conn, :info) =~ "Excluído com sucesso"
       assert redirected_to(conn) == "/admin/usuarios"
     end
   end

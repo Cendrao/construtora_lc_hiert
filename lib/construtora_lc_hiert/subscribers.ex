@@ -27,6 +27,24 @@ defmodule ConstrutoraLcHiert.Subscribers do
   end
 
   @doc """
+  Gets a single subscriber.
+
+  Raises `Ecto.NoResultsError` if the Subscriber does not exist.
+
+  ## Examples
+
+      iex> get_subscriber!(123)
+      %Subscriber{}
+
+      iex> get_subscriber!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_subscriber!(id) do
+    Repo.get!(Subscriber, id)
+  end
+
+  @doc """
   Returns the list of subscribers.
 
   ## Examples
@@ -37,5 +55,29 @@ defmodule ConstrutoraLcHiert.Subscribers do
   """
   def list_subscribers do
     Repo.all(Subscriber)
+  end
+
+  @doc """
+  Activate or deactivate a single subscriber.
+
+  ## Examples
+
+      iex> activate_subscriber(subscriber)
+      {:ok, %Subscriber{}}
+
+      iex> deactivate_subscriber(subscriber)
+      {:ok, %Subscriber{}}
+
+  """
+  def activate_subscriber(%Subscriber{} = subscriber) do
+    subscriber
+    |> Subscriber.changeset(%{status: "active"})
+    |> Repo.update()
+  end
+
+  def deactivate_subscriber(%Subscriber{} = subscriber) do
+    subscriber
+    |> Subscriber.changeset(%{status: "inactive"})
+    |> Repo.update()
   end
 end

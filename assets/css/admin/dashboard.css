@@ -109,16 +109,26 @@ body {
 /*
  * SVG icons
  */
-svg {
+.icon {
   width: 15px;
   height: 15px;
-  fill: #3f51b5;
+  fill: currentColor;
+  vertical-align: -.15em;
+  display: inline-block;
 }
 
-a:hover > svg {
-  fill: #2196f3;
+.icon.active {
+  color: #6AC259;
 }
 
-a:hover > svg.delete {
-  fill: #f44336;
+.icon.inactive {
+  color: #E04F5F;
+}
+
+a:hover .icon {
+  opacity: .7;
+}
+
+a:hover .icon.delete {
+  color: #f44336;
 }

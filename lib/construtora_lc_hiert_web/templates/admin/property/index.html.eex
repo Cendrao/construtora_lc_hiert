@@ -21,7 +21,7 @@
         <tr>
           <td><%= property.id %></td>
           <td><%= translate_type(property.type) %></td>
-          <td><%= "#{property.address}, #{property.address_number}, #{property.complement}" %></td>
+          <td><%= address(property) %></td>
           <td><%= property.neighborhood %></td>
           <td><%= "#{property.city}-#{property.state}" %></td>
           <td><%= number_to_currency(property.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>

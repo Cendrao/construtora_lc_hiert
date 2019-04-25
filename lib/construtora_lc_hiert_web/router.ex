@@ -46,7 +46,13 @@ defmodule ConstrutoraLcHiertWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/", Admin.PageController, :index
-    get "/inscritos", Admin.SubscriberController, :index
+
+    resources "/inscritos", Admin.SubscriberController, only: [:index] do
+      resources "/ativacao", Admin.Subscriber.ActivationController,
+        only: [:create, :delete],
+        singleton: true
+    end
+
     resources "/usuarios", Admin.UserController
     resources "/imoveis", Admin.PropertyController, only: [:index, :new, :create]
     resources "/comodidades", Admin.AmenityController, only: [:index, :new, :create]
