@@ -1,0 +1,7 @@
+<h1 class="page-header">Alterar Comodidade</h1>
+
+<a href="<%= Routes.admin_amenity_path(@conn, :index) %>" class="btn btn-default mb-20">
+  Voltar
+</a>
+
+<%= render("_form.html", Map.put(assigns, :action, Routes.admin_amenity_path(@conn, :update, @amenity.id))) %>

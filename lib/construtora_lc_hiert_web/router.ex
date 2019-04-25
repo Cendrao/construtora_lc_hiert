@@ -55,7 +55,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     resources "/usuarios", Admin.UserController
     resources "/imoveis", Admin.PropertyController, only: [:index, :new, :create]
-    resources "/comodidades", Admin.AmenityController, only: [:index, :new, :create]
+    resources "/comodidades", Admin.AmenityController, except: [:show]
   end
 
   if Mix.env() == :dev do

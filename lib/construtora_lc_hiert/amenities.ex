@@ -27,6 +27,42 @@ defmodule ConstrutoraLcHiert.Amenities do
   end
 
   @doc """
+  Updates an amenity.
+
+  ## Examples
+
+      iex> update_amenity(amenity, %{name: "Piscina"})
+      {:ok, %Amenity{}}
+
+      iex> update_amenity(amenity, %{name: nil})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_amenity(%Amenity{} = amenity, attrs) do
+    amenity
+    |> Amenity.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Gets a single amenity.
+
+  Raises `Ecto.NoResultsError` if the Amenity does not exist.
+
+  ## Examples
+
+      iex> get_amenity!(123)
+      %Amenity{}
+
+      iex> get_amenity!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_amenity!(id) do
+    Repo.get!(Amenity, id)
+  end
+
+  @doc """
   Returns the list of amenities.
 
   ## Examples
@@ -52,5 +88,21 @@ defmodule ConstrutoraLcHiert.Amenities do
 
   def get_amenities(ids) do
     Repo.all(from a in Amenity, where: a.id in ^ids)
+  end
+
+  @doc """
+  Hard deletes a Amenity.
+
+  ## Examples
+
+      iex> hard_delete_amenity(amenity)
+      {:ok, %Amenity{}}
+
+      iex> hard_delete_amenity(amenity)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def hard_delete_amenity(%Amenity{} = amenity) do
+    Repo.delete(amenity)
   end
 end

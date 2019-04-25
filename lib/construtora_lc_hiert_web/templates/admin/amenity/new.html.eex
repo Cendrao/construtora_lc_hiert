@@ -4,12 +4,4 @@
   Voltar
 </a>
 
-<%= form_for @changeset, Routes.admin_amenity_path(@conn, :create), fn f -> %>
-  <div class="form-group">
-    <%= label f, :name, "Nome" %>
-    <%= text_input f, :name, class: "form-control" %>
-    <%= error_tag f, :name %>
-  </div>
-
-  <%= submit "Cadastrar", class: "btn btn-primary" %>
-<% end %>
+<%= render("_form.html", Map.put(assigns, :action, Routes.admin_amenity_path(@conn, :create))) %>

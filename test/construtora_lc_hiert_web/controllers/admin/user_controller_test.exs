@@ -68,7 +68,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
 
   describe "GET /admin/usuarios/:id/edit" do
     @tag :sign_in_user
-    test "accesses the users new page", %{conn: conn, user: user} do
+    test "accesses the users edit page", %{conn: conn, user: user} do
       conn = get(conn, "/admin/usuarios/#{user.id}/edit")
 
       assert html_response(conn, 200) =~ "Alterar Usuário"

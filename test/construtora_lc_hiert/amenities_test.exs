@@ -5,6 +5,7 @@ defmodule ConstrutoraLcHiert.AmenitiesTest do
   alias ConstrutoraLcHiert.Amenities.Amenity
 
   @valid_attrs %{name: "Piscina"}
+  @update_attrs %{name: "Ar condicionado"}
   @invalid_attrs %{name: nil}
 
   def amenity_fixture(attrs \\ %{}) do
@@ -30,11 +31,40 @@ defmodule ConstrutoraLcHiert.AmenitiesTest do
     end
   end
 
+  describe "update_amenity/2" do
+    test "with valid data updates the amenity" do
+      amenity = amenity_fixture()
+
+      assert {:ok, %Amenity{} = amenity} = Amenities.update_amenity(amenity, @update_attrs)
+      assert amenity.name == "Ar condicionado"
+    end
+
+    test "with invalid data returns error changeset" do
+      amenity = amenity_fixture()
+
+      assert {:error, %Ecto.Changeset{}} = Amenities.update_amenity(amenity, @invalid_attrs)
+      assert amenity == Amenities.get_amenity!(amenity.id)
+    end
+  end
+
+  test "get_amenity!/1 returns the amenity with given id" do
+    amenity = amenity_fixture()
+
+    assert Amenities.get_amenity!(amenity.id) == amenity
+  end
+
   describe "list_amenities/0" do
     test "returns all amenities" do
       amenity = amenity_fixture()
       assert Amenities.list_amenities() == [amenity]
     end
+  end
+
+  test "hard_delete_amenity/1 deletes the amenity" do
+    amenity = amenity_fixture()
+
+    assert {:ok, %Amenity{}} = Amenities.hard_delete_amenity(amenity)
+    assert_raise Ecto.NoResultsError, fn -> Amenities.get_amenity!(amenity.id) end
   end
 
   describe "get_amenities/1" do
