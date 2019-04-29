@@ -1,5 +1,5 @@
 /* Normal desktop :1366px. */
-@media (min-width: 1170px) and (max-width: 1400px) {
+@media (min-width: 1170px) {
   .plr-140 {
     padding-left: 2%;
     padding-right: 2%;
