@@ -1,19 +1,19 @@
-defmodule ConstrutoraLcHiertWeb.ApartmentControllerTest do
+defmodule ConstrutoraLcHiertWeb.LotControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
 
   alias ConstrutoraLcHiert.Properties
 
-  describe "GET /imoveis/apartamentos" do
-    test "accesses the page when there are apartments", %{conn: conn} do
+  describe "GET /imoveis/lotes" do
+    test "accesses the page when there are lots", %{conn: conn} do
       property = property_fixture()
 
-      conn = get(conn, "/imoveis/apartamentos")
+      conn = get(conn, "/imoveis/lotes")
 
       assert html_response(conn, 200) =~ property.address
     end
 
-    test "show no results found when there are no apartments", %{conn: conn} do
-      conn = get(conn, "/imoveis/apartamentos")
+    test "show no results found when there are no lots", %{conn: conn} do
+      conn = get(conn, "/imoveis/lotes")
 
       assert html_response(conn, 200) =~ "não foi encontrado nenhum resultado"
     end
@@ -28,13 +28,13 @@ defmodule ConstrutoraLcHiertWeb.ApartmentControllerTest do
         area: "50",
         city: "Toledo",
         neighborhood: "Vila Industrial",
-        price: 800_000.0,
-        qty_bathrooms: "2",
-        qty_garages: "2",
-        qty_kitchens: "1",
-        qty_rooms: "3",
+        price: 200_000.0,
+        qty_bathrooms: "0",
+        qty_garages: "0",
+        qty_kitchens: "0",
+        qty_rooms: "0",
         state: "PR",
-        type: :apartment
+        type: :lot
       })
       |> Properties.create_property()
 

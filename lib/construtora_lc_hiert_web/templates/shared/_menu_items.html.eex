@@ -1,6 +1,6 @@
 <li><a href="<%= Routes.home_path(@conn, :index) %>">Home</a></li>
 <li><a href="<%= Routes.about_path(@conn, :index) %>">Quem somos</a></li>
 <li><a href="<%= Routes.apartment_path(@conn, :index) %>">Apartamentos</a></li>
-<li><a href="#">Casas</a></li>
-<li><a href="#">Lotes</a></li>
+<li><a href="<%= Routes.house_path(@conn, :index) %>">Casas</a></li>
+<li><a href="<%= Routes.lot_path(@conn, :index) %>">Lotes</a></li>
 <li><a href="<%= Routes.contact_path(@conn, :index) %>">Fale conosco</a></li>

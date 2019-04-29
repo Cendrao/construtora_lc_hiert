@@ -1,10 +1,10 @@
-defmodule ConstrutoraLcHiertWeb.ApartmentController do
+defmodule ConstrutoraLcHiertWeb.HouseController do
   use ConstrutoraLcHiertWeb, :controller
 
   alias ConstrutoraLcHiert.Properties
 
   def index(conn, _params) do
-    properties = Properties.list_properties(:apartment)
+    properties = Properties.list_properties(:house)
 
     conn
     |> put_view(ConstrutoraLcHiertWeb.PropertyView)

@@ -31,6 +31,8 @@ defmodule ConstrutoraLcHiertWeb.Router do
 
     scope "/imoveis" do
       get "/apartamentos", ApartmentController, :index
+      get "/casas", HouseController, :index
+      get "/lotes", LotController, :index
 
       get "/:slug", PropertyController, :show
     end

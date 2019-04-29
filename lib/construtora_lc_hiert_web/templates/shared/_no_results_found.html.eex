@@ -1,0 +1,6 @@
+<div class="col-md-12 text-center">
+  <div class="alert no-results">
+    <%= icon_tag(@conn, "sad-face") %>
+    <p>Desculpe, não foi encontrado nenhum resultado.</p>
+  </div>
+</div>
