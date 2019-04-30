@@ -1,8 +1,6 @@
 defmodule ConstrutoraLcHiertWeb.PropertyView do
   use ConstrutoraLcHiertWeb, :view
 
-  import Number.Currency
-
   def full_address(apartment) do
     "#{address(apartment)}, #{city(apartment)}"
   end

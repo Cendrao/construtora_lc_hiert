@@ -36,7 +36,7 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPriceTest do
 
   describe "load/1" do
     test "returns a float when given float" do
-      assert EctoPrice.load(5_000.0) == {:ok, 5_000.0}
+      assert EctoPrice.load(5_000_000.0) == {:ok, "5.000.000"}
     end
 
     test "returns error when given integer" do

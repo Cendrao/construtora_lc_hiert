@@ -56,7 +56,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
     end
 
     resources "/usuarios", Admin.UserController
-    resources "/imoveis", Admin.PropertyController, only: [:index, :new, :create]
+    resources "/imoveis", Admin.PropertyController, except: [:show]
     resources "/comodidades", Admin.AmenityController, except: [:show]
   end
 

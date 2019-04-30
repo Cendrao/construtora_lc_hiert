@@ -29,7 +29,7 @@
         </a>
       </h5>
       <span class="price">
-        <%= number_to_currency(@property.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+        <%= number_to_currency(@property.price, unit: "R$ ", decimals: 2) %>
       </span>
     </div>
     <p>

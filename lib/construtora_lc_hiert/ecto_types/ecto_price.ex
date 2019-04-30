@@ -1,4 +1,10 @@
 defmodule ConstrutoraLcHiert.EctoTypes.EctoPrice do
+  @moduledoc """
+  An EctoType to deal with Prices.
+  """
+
+  alias ConstrutoraLcHiertWeb.Helpers.CurrencyHelper
+
   @behaviour Ecto.Type
   def type, do: :float
 
@@ -28,6 +34,9 @@ defmodule ConstrutoraLcHiert.EctoTypes.EctoPrice do
   def dump(price) when is_float(price), do: {:ok, price}
   def dump(_), do: :error
 
-  def load(price) when is_float(price), do: {:ok, price}
+  def load(price) when is_float(price) do
+    {:ok, CurrencyHelper.number_to_currency(price)}
+  end
+
   def load(_), do: :error
 end

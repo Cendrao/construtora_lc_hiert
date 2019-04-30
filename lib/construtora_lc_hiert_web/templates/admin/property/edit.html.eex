@@ -1,0 +1,7 @@
+<h1 class="page-header">Alterar Imóvel</h1>
+
+<a href="<%= Routes.admin_property_path(@conn, :index) %>" class="btn btn-default mb-20">
+  Voltar
+</a>
+
+<%= render("_form.html", Map.put(assigns, :action, Routes.admin_property_path(@conn, :update, @property.id))) %>

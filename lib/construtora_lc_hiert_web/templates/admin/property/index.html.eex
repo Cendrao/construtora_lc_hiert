@@ -14,6 +14,7 @@
         <th>Bairro</th>
         <th>Cidade</th>
         <th>Preço</th>
+        <th colspan="2">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +25,20 @@
           <td><%= address(property) %></td>
           <td><%= property.neighborhood %></td>
           <td><%= "#{property.city}-#{property.state}" %></td>
-          <td><%= number_to_currency(property.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+          <td><%= number_to_currency(property.price, unit: "R$ ", decimals: 2) %></td>
+          <td width="24">
+            <a href="<%= Routes.admin_property_path(@conn, :edit, property.id) %>">
+              <%= icon_tag(@conn, "edit") %>
+            </a>
+          </td>
+          <td width="24">
+            <%=
+              link icon_tag(@conn, "delete", class: "delete"),
+                to: Routes.admin_property_path(@conn, :delete, property),
+                method: :delete,
+                data: [confirm: "Tem certeza que quer excluir este imóvel em #{property.address}?"]
+            %>
+          </td>
         </tr>
       <% end %>
     </tbody>

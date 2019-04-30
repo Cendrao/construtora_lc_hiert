@@ -94,14 +94,7 @@
                       </li>
                       <li>
                         <%= icon_tag(@conn, "money") %>
-                        <%=
-                          number_to_currency(
-                            @apartment.price,
-                            unit: "R$ ",
-                            separator: ",",
-                            delimiter: "."
-                          )
-                        %>
+                        <%= number_to_currency(@apartment.price, unit: "R$ ", decimals: 2) %>
                       </li>
                     </ul>
                     <p>

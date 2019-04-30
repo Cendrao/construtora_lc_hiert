@@ -44,19 +44,46 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
+  Updates a property.
+
+  ## Examples
+
+      iex> update_property(property, %{address: "Rua dos bobos"})
+      {:ok, %Property{}}
+
+      iex> update_property(property, %{address: nil})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_property(%Property{} = property, attrs) do
+    property
+    |> Property.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
   Gets a single property.
 
   Raises `Ecto.NoResultsError` if the Property does not exist.
 
   ## Examples
 
-      iex> get_property_by!(id)
+      iex> get_property_by!(slug: "casa-rua-harmonia-942-sao-paulo-sp")
+      %Property{}
+
+      iex> get_property!(id)
       %Property{}
 
   """
   def get_property_by!(attrs) do
     Property
     |> Repo.get_by!(attrs)
+    |> load_amenities()
+  end
+
+  def get_property!(id) do
+    Property
+    |> Repo.get!(id)
     |> load_amenities()
   end
 
@@ -75,14 +102,36 @@ defmodule ConstrutoraLcHiert.Properties do
       [%Property{}, %Property{}, %Property{}]
 
   """
-  def list_properties(), do: Repo.all(Property)
+  def list_properties() do
+    Repo.all(from p in Property, where: is_nil(p.deleted_at))
+  end
 
   def list_properties(type) do
-    Repo.all(from p in Property, where: p.type == ^type)
+    Repo.all(from p in Property, where: p.type == ^type and is_nil(p.deleted_at))
   end
 
   def list_featured_properties(limit \\ 3) do
-    Repo.all(from p in Property, limit: ^limit, order_by: [desc: p.updated_at])
+    Repo.all(
+      from p in Property,
+        where: is_nil(p.deleted_at),
+        limit: ^limit,
+        order_by: [desc: p.updated_at]
+    )
+  end
+
+  @doc """
+  Soft deletes a Property.
+
+  ## Examples
+
+      iex> soft_delete_property(property)
+      {:ok, %Property{}}
+
+  """
+  def soft_delete_property(%Property{} = property) do
+    property
+    |> Property.changeset(%{deleted_at: NaiveDateTime.utc_now()})
+    |> Repo.update()
   end
 
   @doc """

@@ -1,8 +1,6 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyView do
   use ConstrutoraLcHiertWeb, :view
 
-  import Number.Currency
-
   alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Properties.Property
 

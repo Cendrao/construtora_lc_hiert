@@ -8,7 +8,7 @@ defmodule ConstrutoraLcHiert.Properties.Property do
   alias ConstrutoraLcHiert.PropertiesAmenities
   alias ConstrutoraLcHiert.Amenities.Amenity
 
-  @optional_params [:slug, :complement, :description, :status]
+  @optional_params [:slug, :complement, :description, :status, :deleted_at]
 
   @required_params [
     :type,
@@ -34,6 +34,7 @@ defmodule ConstrutoraLcHiert.Properties.Property do
     field :area, :float
     field :city, :string
     field :complement, :string
+    field :deleted_at, :naive_datetime, default: nil
     field :description, :string
     field :neighborhood, :string
     field :price, EctoPrice
