@@ -36,6 +36,8 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(ConstrutoraLcHiert.Repo, {:shared, self()})
     end
 
+    on_exit(fn -> File.rm_rf("uploads/test") end)
+
     if tags[:sign_in_user] do
       {:ok, user} = Accounts.create_user(%{username: "maico", password: "rusbé"})
 

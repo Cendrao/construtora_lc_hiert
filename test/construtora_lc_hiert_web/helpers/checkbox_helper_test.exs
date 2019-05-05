@@ -20,11 +20,9 @@ defmodule ConstrutoraLcHiertWeb.Helpers.CheckboxHelperTest do
     html = Phoenix.HTML.safe_to_string(first_checkbox)
 
     assert html =~
-             "<div class=\"checkbox\">" <>
-               "<label>" <>
+             "<label class=\"checkbox-inline\">" <>
                "<input id=\"property_amenities_1\" name=\"property[amenities][]\" type=\"checkbox\" value=\"1\">" <>
                "Piscina" <>
-               "</label>" <>
-               "</div>"
+               "</label>"
   end
 end

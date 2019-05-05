@@ -8,3 +8,4 @@ import "jquery"
 import "bootstrap"
 
 import "./admin/masks"
+import "./admin/uppy"

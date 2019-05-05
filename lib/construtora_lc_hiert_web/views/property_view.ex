@@ -1,17 +1,17 @@
 defmodule ConstrutoraLcHiertWeb.PropertyView do
   use ConstrutoraLcHiertWeb, :view
 
-  def full_address(apartment) do
-    "#{address(apartment)}, #{city(apartment)}"
+  def full_address(property) do
+    "#{address(property)}, #{city(property)}"
   end
 
-  defp address(apartment) do
-    [apartment.address, apartment.address_number, apartment.complement]
+  defp address(property) do
+    [property.address, property.address_number, property.complement]
     |> Enum.reject(&is_nil/1)
     |> Enum.join(", ")
   end
 
-  defp city(apartment) do
-    "#{apartment.city}-#{apartment.state}"
+  defp city(property) do
+    "#{property.city}-#{property.state}"
   end
 end

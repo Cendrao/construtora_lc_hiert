@@ -3,13 +3,15 @@ defmodule ConstrutoraLcHiertWeb.Helpers.CurrencyHelper do
   Give some currency helper functions.
   """
 
+  def number_to_currency(number, opts \\ [decimals: 0, unit: ""])
+
   def number_to_currency(number, opts) when is_float(number) do
     number
     |> :erlang.float_to_binary(decimals: 0)
     |> number_to_currency(opts)
   end
 
-  def number_to_currency(number, opts \\ [decimals: 0, unit: ""]) do
+  def number_to_currency(number, opts) do
     number
     |> get_only_numbers()
     |> add_decimals(opts[:decimals])

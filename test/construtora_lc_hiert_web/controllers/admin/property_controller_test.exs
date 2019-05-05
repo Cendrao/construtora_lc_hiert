@@ -92,7 +92,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
     end
 
     @tag :sign_in_user
-    test "creates a new property with invalid params", %{conn: conn} do
+    test "does not create a new property with invalid params", %{conn: conn} do
       conn = post(conn, "/admin/imoveis", @invalid_params)
 
       assert html_response(conn, 200) =~ "Cadastrar Imóvel"

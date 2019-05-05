@@ -76,3 +76,6 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Repo,
 
 # Email configurations with Bamboo
 config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer, adapter: Bamboo.LocalAdapter
+
+# ARC Storage
+config :arc, storage: Arc.Storage.Local

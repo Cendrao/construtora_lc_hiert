@@ -28,5 +28,8 @@ msgstr "Mensagem enviada com sucesso"
 msgid "The message was not sent"
 msgstr "Oops! A mensagem não foi enviada"
 
+msgid "The file was not uploaded"
+msgstr "Oops! O arquivo não foi enviado"
+
 msgid "Error occurred! Please fix the warnings"
 msgstr "Oops! Ocorreu um problema. Por favor, resolva os erros abaixo."

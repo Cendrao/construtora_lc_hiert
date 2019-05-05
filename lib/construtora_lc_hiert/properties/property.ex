@@ -7,6 +7,7 @@ defmodule ConstrutoraLcHiert.Properties.Property do
   alias ConstrutoraLcHiert.EctoTypes.EctoPrice
   alias ConstrutoraLcHiert.PropertiesAmenities
   alias ConstrutoraLcHiert.Amenities.Amenity
+  alias ConstrutoraLcHiert.Storage.PropertyImage
 
   @optional_params [:slug, :complement, :description, :status, :deleted_at]
 
@@ -48,6 +49,7 @@ defmodule ConstrutoraLcHiert.Properties.Property do
     field :type, TypeEnum
 
     many_to_many(:amenities, Amenity, join_through: PropertiesAmenities)
+    has_many :images, PropertyImage
 
     timestamps()
   end

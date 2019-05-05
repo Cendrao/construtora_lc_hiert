@@ -32,6 +32,8 @@ defmodule ConstrutoraLcHiert.DataCase do
       Ecto.Adapters.SQL.Sandbox.mode(ConstrutoraLcHiert.Repo, {:shared, self()})
     end
 
+    on_exit(fn -> File.rm_rf("uploads/test") end)
+
     :ok
   end
 

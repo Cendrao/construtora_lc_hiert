@@ -1,0 +1,14 @@
+<h1 class="page-header">Cadastrar Fotos de Imóvel</h1>
+
+<a href="<%= Routes.admin_property_path(@conn, :index) %>" class="btn btn-default mb-20">
+  Voltar
+</a>
+
+<div class="alert alert-info">
+  <b>O imóvel selecionado é:</b> <br>
+  <%= ConstrutoraLcHiertWeb.PropertyView.full_address(@property) %>
+</div>
+
+<div id="select-files"
+  data-endpoint="<%= Routes.admin_property_image_path(@conn, :create, @property.id) %>">
+</div>

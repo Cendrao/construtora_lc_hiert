@@ -32,9 +32,14 @@ You have to define the following variables **(Production environment only)**:
   - SECRET_KEY_BASE
   - GUARDIAN_SECRET_KEY
 
-- External Services Keys:
+- Email Services Keys:
   - SENDGRID_API_KEY
 
-- Database configs:
+- Database Keys:
   - DATABASE_URL
-  - POOL_SIZE
+  - POOL_SIZE: `10`
+
+- AWS S3 Keys
+  - S3_BUCKET
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY

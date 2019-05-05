@@ -32,6 +32,15 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer,
   adapter: Bamboo.SendGridAdapter,
   api_key: System.get_env("SENDGRID_API_KEY")
 
+# ARC S3 Storage
+config :arc,
+  storage: Arc.Storage.S3,
+  bucket: System.get_env("S3_BUCKET")
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY")
+
 # Do not print debug messages in production
 config :logger, level: :info
 

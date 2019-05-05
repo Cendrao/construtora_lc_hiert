@@ -20,7 +20,7 @@ defmodule ConstrutoraLcHiert.MixProject do
   def application do
     [
       mod: {ConstrutoraLcHiert.Application, []},
-      extra_applications: [:logger, :runtime_tools, :bamboo]
+      extra_applications: [:logger, :runtime_tools, :bamboo, :arc_ecto]
     ]
   end
 
@@ -48,7 +48,11 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:bcrypt_elixir, "~> 0.12"},
       {:bamboo, "~> 1.2"},
       {:ecto_autoslug_field, "~> 1.0"},
-      {:ecto_enum, "~> 1.2"}
+      {:ecto_enum, "~> 1.2"},
+      {:arc_ecto, "~> 0.11.1"},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 

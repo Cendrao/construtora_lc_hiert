@@ -25,19 +25,17 @@ defmodule ConstrutoraLcHiertWeb.Helpers.CheckboxHelper do
     selected_as_strings = Enum.map(selected, &"#{&1}")
 
     for {value, key} <- options, into: [] do
-      content_tag(:div, class: "checkbox") do
-        content_tag(:label) do
-          [
-            tag(:input,
-              name: input_name(form, field) <> "[]",
-              id: input_id(form, field, key),
-              type: "checkbox",
-              value: key,
-              checked: Enum.member?(selected_as_strings, "#{key}")
-            ),
-            value
-          ]
-        end
+      content_tag(:label, class: "checkbox-inline") do
+        [
+          tag(:input,
+            name: input_name(form, field) <> "[]",
+            id: input_id(form, field, key),
+            type: "checkbox",
+            value: key,
+            checked: Enum.member?(selected_as_strings, "#{key}")
+          ),
+          value
+        ]
       end
     end
   end
