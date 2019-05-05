@@ -48,8 +48,8 @@ defmodule ConstrutoraLcHiert.Properties.Property do
     field :status, StatusEnum, default: :for_sale
     field :type, TypeEnum
 
-    many_to_many(:amenities, Amenity, join_through: PropertiesAmenities)
-    has_many :images, PropertyImage
+    many_to_many(:amenities, Amenity, join_through: PropertiesAmenities, on_replace: :delete)
+    has_many(:images, PropertyImage)
 
     timestamps()
   end

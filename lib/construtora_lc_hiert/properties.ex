@@ -58,6 +58,7 @@ defmodule ConstrutoraLcHiert.Properties do
   def update_property(%Property{} = property, attrs) do
     property
     |> Property.changeset(attrs)
+    |> maybe_put_amenities(attrs)
     |> Repo.update()
   end
 

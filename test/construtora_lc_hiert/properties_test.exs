@@ -2,59 +2,57 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
   use ConstrutoraLcHiert.DataCase
 
   alias ConstrutoraLcHiert.Repo
+  alias ConstrutoraLcHiert.Amenities
   alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Properties.Property
 
   @valid_attrs %{
-    address: "Rua Carlos Barbosa",
-    address_number: "1650",
-    area: "50",
-    city: "Toledo",
-    complement: "",
-    description: "Lorem ipsum dolor sit amet.",
-    neighborhood: "Vila Industrial",
-    price: "1.000.000",
-    qty_bathrooms: "2",
-    qty_garages: "2",
-    qty_kitchens: "1",
-    qty_rooms: "3",
-    state: "PR",
-    type: :apartment,
-    amenities: []
+    "address" => "Rua Carlos Barbosa",
+    "address_number" => "1650",
+    "area" => "50",
+    "city" => "Toledo",
+    "complement" => "",
+    "description" => "Lorem ipsum dolor sit amet.",
+    "neighborhood" => "Vila Industrial",
+    "price" => "1.000.000",
+    "qty_bathrooms" => "2",
+    "qty_garages" => "2",
+    "qty_kitchens" => "1",
+    "qty_rooms" => "3",
+    "state" => "PR",
+    "type" => :apartment
   }
   @update_attrs %{
-    address: "Rua do Paraíso",
-    address_number: "595",
-    area: "150",
-    city: "São Paulo",
-    complement: "",
-    description: "",
-    neighborhood: "Paraíso",
-    price: "2.000.000",
-    qty_bathrooms: "4",
-    qty_garages: "8",
-    qty_kitchens: "1",
-    qty_rooms: "1",
-    state: "SP",
-    type: :apartment,
-    amenities: []
+    "address" => "Rua do Paraíso",
+    "address_number" => "595",
+    "area" => "150",
+    "city" => "São Paulo",
+    "complement" => "",
+    "description" => "",
+    "neighborhood" => "Paraíso",
+    "price" => "2.000.000",
+    "qty_bathrooms" => "4",
+    "qty_garages" => "8",
+    "qty_kitchens" => "1",
+    "qty_rooms" => "1",
+    "state" => "SP",
+    "type" => :apartment
   }
   @invalid_attrs %{
-    address: nil,
-    address_number: nil,
-    area: nil,
-    city: nil,
-    complement: nil,
-    description: nil,
-    neighborhood: nil,
-    price: nil,
-    qty_bathrooms: nil,
-    qty_garages: nil,
-    qty_kitchens: nil,
-    qty_rooms: nil,
-    state: nil,
-    type: nil,
-    amenities: []
+    "address" => nil,
+    "address_number" => nil,
+    "area" => nil,
+    "city" => nil,
+    "complement" => nil,
+    "description" => nil,
+    "neighborhood" => nil,
+    "price" => nil,
+    "qty_bathrooms" => nil,
+    "qty_garages" => nil,
+    "qty_kitchens" => nil,
+    "qty_rooms" => nil,
+    "state" => nil,
+    "type" => nil
   }
 
   def property_fixture(attrs \\ %{}) do
@@ -64,6 +62,15 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
       |> Properties.create_property()
 
     property
+  end
+
+  def amenity_fixture(attrs \\ %{}) do
+    {:ok, amenity} =
+      attrs
+      |> Enum.into(%{name: "Piscina"})
+      |> Amenities.create_amenity()
+
+    amenity
   end
 
   test "change_property/1 returns a property changeset" do
@@ -136,9 +143,26 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
                qty_kitchens: 1,
                qty_rooms: 1,
                state: "SP",
-               type: :apartment,
-               amenities: []
+               type: :apartment
              } = property
+    end
+
+    test "updates when adding amenities" do
+      amenity = amenity_fixture()
+      property = property_fixture()
+      attrs = Map.put(@update_attrs, "amenities", [amenity.id])
+
+      assert {:ok, %Property{} = property} = Properties.update_property(property, attrs)
+      assert property.amenities == [amenity]
+    end
+
+    test "updates when removing amenities" do
+      amenity = amenity_fixture()
+      property = property_fixture(%{"amenities" => [amenity.id]})
+      attrs = Map.put(@update_attrs, "amenities", [])
+
+      assert {:ok, %Property{} = property} = Properties.update_property(property, attrs)
+      assert property.amenities == []
     end
 
     test "keeps the same slug" do
@@ -178,7 +202,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
   describe "list_properties/0" do
     test "returns all properties" do
       property_fixture()
-      property_fixture(complement: "AP 1", deleted_at: NaiveDateTime.utc_now())
+      property_fixture(%{"complement" => "AP 1", "deleted_at" => NaiveDateTime.utc_now()})
 
       assert [%Property{}] = Properties.list_properties()
     end
@@ -187,7 +211,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
   describe "list_properties/1" do
     test "returns all properties of given type" do
       property = property_fixture()
-      property_fixture(complement: "AP 2", deleted_at: NaiveDateTime.utc_now())
+      property_fixture(%{"complement" => "AP 2", "deleted_at" => NaiveDateTime.utc_now()})
 
       assert [%Property{}] = Properties.list_properties(property.type)
     end
@@ -196,7 +220,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
   describe "list_featured_properties/1" do
     test "returns all featured properties given the limit" do
       property_fixture()
-      property_fixture(complement: "AP 3", deleted_at: NaiveDateTime.utc_now())
+      property_fixture(%{"complement" => "AP 3", "deleted_at" => NaiveDateTime.utc_now()})
 
       assert [%Property{}] = Properties.list_featured_properties(2)
     end
