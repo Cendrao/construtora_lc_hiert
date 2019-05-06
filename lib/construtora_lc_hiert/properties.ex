@@ -80,12 +80,14 @@ defmodule ConstrutoraLcHiert.Properties do
     Property
     |> Repo.get_by!(attrs)
     |> load_amenities()
+    |> load_images()
   end
 
   def get_property!(id) do
     Property
     |> Repo.get!(id)
     |> load_amenities()
+    |> load_images()
   end
 
   @doc """
@@ -104,19 +106,31 @@ defmodule ConstrutoraLcHiert.Properties do
 
   """
   def list_properties() do
-    Repo.all(from p in Property, where: is_nil(p.deleted_at))
+    Repo.all(
+      from p in Property,
+        where: is_nil(p.deleted_at),
+        left_join: images in assoc(p, :images),
+        preload: [images: images]
+    )
   end
 
   def list_properties(type) do
-    Repo.all(from p in Property, where: p.type == ^type and is_nil(p.deleted_at))
+    Repo.all(
+      from p in Property,
+        where: p.type == ^type and is_nil(p.deleted_at),
+        left_join: images in assoc(p, :images),
+        preload: [images: images]
+    )
   end
 
   def list_featured_properties(limit \\ 3) do
     Repo.all(
       from p in Property,
         where: is_nil(p.deleted_at),
+        left_join: images in assoc(p, :images),
         limit: ^limit,
-        order_by: [desc: p.updated_at]
+        order_by: [desc: p.updated_at],
+        preload: [images: images]
     )
   end
 
@@ -145,6 +159,17 @@ defmodule ConstrutoraLcHiert.Properties do
 
   """
   def load_amenities(%Property{} = property), do: Repo.preload(property, :amenities)
+
+  @doc """
+  Preloads the images of a given property.
+
+  ## Examples
+
+      iex> load_images(property)
+      %Property{..., images: [], ...}
+
+  """
+  def load_images(%Property{} = property), do: Repo.preload(property, :images)
 
   @doc """
   Translate the type to a human readable name.

@@ -3,9 +3,12 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
 
   alias ConstrutoraLcHiert.Mailer
   alias ConstrutoraLcHiertWeb.Email
+  alias ConstrutoraLcHiert.Properties
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    footer_properties = Properties.list_featured_properties(3)
+
+    render(conn, "index.html", footer_properties: footer_properties)
   end
 
   def create(conn, %{"email" => email, "name" => name, "message" => message}) do

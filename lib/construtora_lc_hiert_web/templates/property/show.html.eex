@@ -7,60 +7,26 @@
 
             <div class="pro-details-big-image">
               <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="pro-1">
-                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
-                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="pro-2">
-                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
-                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="pro-3">
-                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
-                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="pro-4">
-                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
-                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="pro-5">
-                  <a href="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>">
-                    <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                  </a>
-                </div>
+                <%= for image <- @property.images do %>
+                  <div role="tabpanel" class="<%= image_class(image, @property.images) %>" id="<%= image.id %>">
+                    <img
+                      src="<%= image_url(image, %{width: 760, height: 389}) %>"
+                      alt="<%= description(@property) %>">
+                  </div>
+                <% end %>
               </div>
             </div>
 
             <div class="pro-details-carousel">
-              <div class="pro-details-item">
-                <a href="#pro-1" data-toggle="tab">
-                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                </a>
-              </div>
-              <div class="pro-details-item">
-                <a href="#pro-2" data-toggle="tab">
-                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                </a>
-              </div>
-              <div class="pro-details-item">
-                <a href="#pro-3" data-toggle="tab">
-                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                </a>
-              </div>
-              <div class="pro-details-item">
-                <a href="#pro-4" data-toggle="tab">
-                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                </a>
-              </div>
-              <div class="pro-details-item">
-                <a href="#pro-5" data-toggle="tab">
-                  <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
-                </a>
-              </div>
+              <%= for image <- @property.images do %>
+                <div class="pro-details-item">
+                  <a href="#<%= image.id %>" data-toggle="tab">
+                    <img
+                      src="<%= image_url(image, %{width: 180, height: 115}) %>"
+                      alt="<%= description(@property) %>">
+                  </a>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -74,32 +40,32 @@
                     <ul class="condition-list">
                       <li>
                         <%= icon_tag(@conn, "area") %>
-                        <%= trunc(@apartment.area) %> m²
+                        <%= trunc(@property.area) %> m²
                       </li>
                       <li>
                         <%= icon_tag(@conn, "bed") %>
-                        <%= @apartment.qty_rooms %> quarto(s)
+                        <%= @property.qty_rooms %> quarto(s)
                       </li>
                       <li>
                         <%= icon_tag(@conn, "bath") %>
-                        <%= @apartment.qty_bathrooms %> banheiro(s)
+                        <%= @property.qty_bathrooms %> banheiro(s)
                       </li>
                       <li>
                         <%= icon_tag(@conn, "kitchen") %>
-                        <%= @apartment.qty_kitchens %> cozinha(s)
+                        <%= @property.qty_kitchens %> cozinha(s)
                       </li>
                       <li>
                         <%= icon_tag(@conn, "car") %>
-                        <%= @apartment.qty_garages %> garagem(ns)
+                        <%= @property.qty_garages %> garagem(ns)
                       </li>
                       <li>
                         <%= icon_tag(@conn, "money") %>
-                        <%= number_to_currency(@apartment.price, unit: "R$ ", decimals: 2) %>
+                        <%= number_to_currency(@property.price, unit: "R$ ", decimals: 2) %>
                       </li>
                     </ul>
                     <p>
                       <%= icon_tag(@conn, "location") %>
-                      <%= full_address(@apartment) %>
+                      <%= full_address(@property) %>
                     </p>
                   </div>
                 </div>
@@ -111,7 +77,7 @@
 
                   <div class="pro-details-amenities-inner bg-gray">
                     <ul class="amenities-list">
-                      <%= for amenity <- @apartment.amenities do %>
+                      <%= for amenity <- @property.amenities do %>
                         <li>
                           <%= icon_tag(@conn, "check") %>
                           <%= amenity.name %>
@@ -125,7 +91,7 @@
           </div>
 
           <div class="pro-details-description mb-50">
-            <p><%= @apartment.description %></p>
+            <p><%= @property.description %></p>
           </div>
         </div>
 

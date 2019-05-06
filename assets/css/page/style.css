@@ -162,8 +162,11 @@
 }
 .flat-item-image > a > img {
     width: 100%;
-    -webkit-transition: all 0.8s ease 0s;
-    transition: all 0.8s ease 0s;
+    -webkit-transition: all .8s ease;
+    transition: all .8s ease;
+    width: 360px;
+    height: 289px;
+    object-fit: cover;
 }
 .flat-item:hover .flat-item-image > a > img {
     -webkit-transform: scale(1.05);
@@ -348,6 +351,11 @@
 .pro-details-big-image {
     margin-bottom: 10px;
 }
+.pro-details-big-image img {
+    width: 760px;
+    height: 389px;
+    object-fit: cover;
+}
 .pro-details-carousel {
     margin: 0 -5px;
 }
@@ -357,6 +365,9 @@
 }
 .pro-details-item img {
     width: 100%;
+    max-width: 180px;
+    height: 115px;
+    object-fit: cover;
 }
 
 .pro-details-condition h5,

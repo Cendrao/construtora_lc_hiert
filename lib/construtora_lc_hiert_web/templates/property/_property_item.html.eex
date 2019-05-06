@@ -1,7 +1,9 @@
 <div class="flat-item">
   <div class="flat-item-image">
     <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
-      <img src="<%= Routes.static_path(@conn, "/images/flat/1.jpg") %>" alt="">
+      <img
+        src="<%= image_url(@property.images, %{width: 360, height: 289}) %>"
+        alt="<%= description(@property) %>">
     </a>
     <div class="flat-link">
       <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">Mais Detalhes</a>

@@ -30,7 +30,11 @@
                 </div>
                 <div class="address-info">
                   <span>E-mail: construcao.lc@gmail.com</span>
-                  <span>Web: <a href="//www.construtoralc.com.br" target="_blank">www.construtoralc.com.br</a></span>
+                  <span>Web:
+                    <a href="//www.construtoralc.com.br" target="_blank">
+                      www.construtoralc.com.br
+                    </a>
+                  </span>
                 </div>
               </li>
             </ul>
@@ -41,39 +45,39 @@
           <div class="footer-widget middle">
             <h6 class="footer-titel">ÚLTIMOS IMÓVEIS</h6>
             <ul class="footer-latest-news">
-              <li>
-                <div class="latest-news-image">
-                  <a href="#">
-                    <img src="<%= Routes.static_path(@conn, "/images/blog/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div class="latest-news-info">
-                  <h6><a href="#">Apartamento em Novo Sarandi-PR</a></h6>
-                  <p>3 quartos e 2 banheiros - Bairro Vila Industrial</p>
-                </div>
-              </li>
-              <li>
-                <div class="latest-news-image">
-                  <a href="#">
-                    <img src="<%= Routes.static_path(@conn, "/images/blog/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div class="latest-news-info">
-                  <h6><a href="#">Apartamento em Novo Sarandi-PR</a></h6>
-                  <p>3 quartos e 2 banheiros - Bairro Vila Industrial</p>
-                </div>
-              </li>
-              <li>
-                <div class="latest-news-image">
-                  <a href="#">
-                    <img src="<%= Routes.static_path(@conn, "/images/blog/1.jpg") %>" alt="">
-                  </a>
-                </div>
-                <div class="latest-news-info">
-                  <h6><a href="#">Apartamento em Novo Sarandi-PR</a></h6>
-                  <p>3 quartos e 2 banheiros - Bairro Vila Industrial</p>
-                </div>
-              </li>
+
+              <%= if length(@footer_properties) == 0 do %>
+                <li>
+                  <div class="latest-news-info">
+                    <p>Nenhum resultado encontrado para esta categoria :(</p>
+                  </div>
+                </li>
+              <% else %>
+                <%= for property <- @footer_properties do %>
+                  <li>
+                    <div class="latest-news-image">
+                      <a href="<%= Routes.property_path(@conn, :show, property.slug) %>">
+                        <img
+                          src="<%= ConstrutoraLcHiertWeb.PropertyView.image_url(property.images, %{width: 82, height: 53}) %>"
+                          alt="<%= ConstrutoraLcHiertWeb.PropertyView.full_address(property) %>">
+                      </a>
+                    </div>
+                    <div class="latest-news-info">
+                      <h6>
+                        <a href="<%= Routes.property_path(@conn, :show, property.slug) %>">
+                          <%= ConstrutoraLcHiertWeb.PropertyView.translate_type(property.type) %>
+                          em <%= ConstrutoraLcHiertWeb.PropertyView.city(property) %>
+                        </a>
+                      </h6>
+                      <p>
+                        <%= property.qty_rooms %> quarto(s) e <%= property.qty_bathrooms %> banheiro(s)
+                        - Bairro <%= property.neighborhood %>
+                      </p>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+
             </ul>
           </div>
         </div>

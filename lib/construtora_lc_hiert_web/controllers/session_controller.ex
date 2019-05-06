@@ -12,7 +12,11 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
     if maybe_user do
       redirect(conn, to: Routes.admin_page_path(conn, :index))
     else
-      render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :create))
+      render(conn, "new.html",
+        changeset: changeset,
+        action: Routes.session_path(conn, :create),
+        footer_properties: []
+      )
     end
   end
 

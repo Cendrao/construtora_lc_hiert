@@ -61,7 +61,7 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
       |> Enum.into(@valid_attrs)
       |> Properties.create_property()
 
-    property
+    Properties.load_images(property)
   end
 
   def amenity_fixture(attrs \\ %{}) do
@@ -238,6 +238,14 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
       property = property_fixture()
 
       assert Properties.load_amenities(property) == Repo.preload(property, :amenities)
+    end
+  end
+
+  describe "load_images/1" do
+    test "loads the images of property" do
+      property = property_fixture()
+
+      assert Properties.load_images(property) == Repo.preload(property, :images)
     end
   end
 
