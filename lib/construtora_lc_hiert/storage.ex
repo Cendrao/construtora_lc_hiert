@@ -4,9 +4,10 @@ defmodule ConstrutoraLcHiert.Storage do
   """
 
   import Ecto.Query, warn: false
-  alias ConstrutoraLcHiert.Repo
 
+  alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Storage.PropertyImage
+  alias ConstrutoraLcHiert.Storage.Uploaders.Image
 
   @doc """
   Creates a property_image.
@@ -27,6 +28,19 @@ defmodule ConstrutoraLcHiert.Storage do
   end
 
   @doc """
+  Gets a single property image.
+
+  Raises `Ecto.NoResultsError` if the Property Image does not exist.
+
+  ## Examples
+
+      iex> get_property_image_by!(property_id: 1, image_id: 1)
+      %PropertyImage{}
+
+  """
+  def get_property_image_by!(attrs), do: Repo.get_by!(PropertyImage, attrs)
+
+  @doc """
   Deletes a PropertyImage.
 
   ## Examples
@@ -39,6 +53,7 @@ defmodule ConstrutoraLcHiert.Storage do
 
   """
   def delete_property_image(%PropertyImage{} = property_image) do
+    Image.delete({property_image.image.file_name, property_image})
     Repo.delete(property_image)
   end
 end

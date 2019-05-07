@@ -59,7 +59,9 @@ defmodule ConstrutoraLcHiertWeb.Router do
     resources "/comodidades", Admin.AmenityController, except: [:show]
 
     resources "/imoveis", Admin.PropertyController, except: [:show] do
-      resources "/fotos", Admin.Property.ImageController, only: [:new, :create], singleton: true
+      resources "/fotos", Admin.Property.ImageController,
+        only: [:new, :create, :delete],
+        singleton: true
     end
   end
 

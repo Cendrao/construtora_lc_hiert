@@ -12,3 +12,23 @@
 <div id="select-files"
   data-endpoint="<%= Routes.admin_property_image_path(@conn, :create, @property.id) %>">
 </div>
+
+<%= if length(@property.images) > 0 do %>
+  <div class="edit-images">
+    <h2 class="page-header">Fotos já cadastradas</h2>
+
+    <div class="row">
+      <%= for image <- @property.images do %>
+        <div class="col-md-3 mb-20">
+          <img src="<%= image_url(image, %{width: 285, height: 160}) %>" alt="">
+          <%=
+            link icon_tag(@conn, "inactive", class: "inactive"),
+              to: Routes.admin_property_image_path(@conn, :delete, @property, %{image: image}),
+              method: :delete,
+              data: [confirm: "Tem certeza que quer excluir esta imagem?"]
+          %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
