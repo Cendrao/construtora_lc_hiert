@@ -33,6 +33,7 @@ defmodule ConstrutoraLcHiertWeb.Router do
       get "/apartamentos", ApartmentController, :index
       get "/casas", HouseController, :index
       get "/lotes", LotController, :index
+      get "/busca", SearchController, :index
 
       get "/:slug", PropertyController, :show
     end

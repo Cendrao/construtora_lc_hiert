@@ -1,71 +1,46 @@
 <div class="row">
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item custom-select">
-      <select class="selectpicker" title="Cidade" data-hide-disabled="true" data-live-search="true">
-        <optgroup label="Paraná">
-          <option>Toledo</option>
-          <option>Novo Sarandi</option>
-        </optgroup>
-      </select>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item custom-select">
-      <select class="selectpicker" title="Bairro" data-hide-disabled="true" data-live-search="true">
-        <optgroup label="Toledo">
-          <option>Centro</option>
-          <option>Vila Industrial</option>
-          <option>Zona 1</option>
-        </optgroup>
-      </select>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item">
-      <input type="text" name="min-area" placeholder="Área mínima">
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item">
-      <input type="text" name="max-area" placeholder="Área máxima">
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item  custom-select">
-      <select class="selectpicker" title="Qtde. Quartos" data-hide-disabled="true">
-        <option>1 Quarto</option>
-        <option>2 Quartos</option>
-        <option>3 Quartos</option>
-        <option>4 Quartos</option>
-        <option>5 Quartos</option>
-      </select>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item custom-select">
-      <select class="selectpicker" title="Qtde. Banheiros" data-hide-disabled="true">
-        <option>1 Banheiro</option>
-        <option>2 Banheiros</option>
-        <option>3 Banheiros</option>
-        <option>4 Banheiros</option>
-        <option>5 Banheiros</option>
-      </select>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item">
+  <%= form_for @conn, Routes.search_path(@conn, :index), [method: :get], fn f -> %>
+    <div class="col-sm-6 col-xs-12">
       <div class="find-home-item custom-select">
-        <select class="selectpicker" title="Tipo" data-hide-disabled="true">
-          <option>Apartamento</option>
-          <option>Casa</option>
-          <option>Lote</option>
-        </select>
+        <%= select f, :city, @cities, class: "selectpicker", title: "Cidade" %>
       </div>
     </div>
-  </div>
-  <div class="col-sm-6 col-xs-12">
-    <div class="find-home-item">
-      <a class="button-1 btn-block btn-hover-1" href="#">BUSCAR</a>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item custom-select">
+        <%= select f, :neighborhood, @neighborhoods, class: "selectpicker", title: "Bairro" %>
+      </div>
     </div>
-  </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item">
+        <%= text_input f, :min_area, placeholder: "Área mínima" %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item">
+        <%= text_input f, :max_area, placeholder: "Área máxima" %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item  custom-select">
+        <%= select f, :qty_rooms, ConstrutoraLcHiertWeb.PropertyView.property_rooms_for_select(), class: "selectpicker", title: "Qtde. Quartos" %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item custom-select">
+        <%= select f, :qty_bathrooms, ConstrutoraLcHiertWeb.PropertyView.property_bathrooms_for_select(), class: "selectpicker", title: "Qtde. Banheiros" %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item">
+        <div class="find-home-item custom-select">
+          <%= select f, :type, ConstrutoraLcHiertWeb.PropertyView.property_types_for_select(), class: "selectpicker", title: "Tipo" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="find-home-item">
+        <%= submit "BUSCAR", class: "button-1 btn-block btn-hover-1" %>
+      </div>
+    </div>
+  <% end %>
 </div>

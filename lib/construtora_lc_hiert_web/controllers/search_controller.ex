@@ -1,11 +1,11 @@
-defmodule ConstrutoraLcHiertWeb.LotController do
+defmodule ConstrutoraLcHiertWeb.SearchController do
   use ConstrutoraLcHiertWeb, :controller
 
   alias ConstrutoraLcHiert.Properties
 
-  def index(conn, _params) do
-    properties = Properties.list_properties(%{"type" => :lot})
-    footer_properties = Enum.take(properties, 3)
+  def index(conn, params) do
+    properties = Properties.list_properties(params)
+    footer_properties = Properties.list_properties(%{}, 3)
 
     conn
     |> put_view(ConstrutoraLcHiertWeb.PropertyView)

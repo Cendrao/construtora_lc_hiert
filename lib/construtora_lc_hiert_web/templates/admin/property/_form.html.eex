@@ -1,7 +1,7 @@
 <%= form_for @changeset, @action, fn f -> %>
   <div class="form-group">
     <%= label f, :type, "Tipo" %>
-    <%= select f, :type, property_types_for_select(), class: "form-control" %>
+    <%= select f, :type, ConstrutoraLcHiertWeb.PropertyView.property_types_for_select(), class: "form-control" %>
     <%= error_tag f, :type %>
   </div>
 

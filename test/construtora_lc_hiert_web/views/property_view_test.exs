@@ -25,6 +25,14 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
     end
   end
 
+  describe "address/1" do
+    test "display the address" do
+      property = %{address: "Rua do Paraíso", address_number: "595", complement: "4º andar"}
+
+      assert PropertyView.address(property) == "Rua do Paraíso, 595, 4º andar"
+    end
+  end
+
   describe "description/1" do
     test "display the description of the property" do
       property = %{
@@ -86,6 +94,40 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
       assert PropertyView.image_class(first_image, images) == "tab-pane fade in active"
       assert PropertyView.image_class(second_image, images) == "tab-pane fade"
       assert PropertyView.image_class(third_image, images) == "tab-pane fade"
+    end
+  end
+
+  describe "property_types_for_select/0" do
+    test "returns a list of the available types" do
+      assert PropertyView.property_types_for_select() == [
+               {"Apartamento", :apartment},
+               {"Casa", :house},
+               {"Lote", :lot}
+             ]
+    end
+  end
+
+  describe "property_bathrooms_for_select/0" do
+    test "returns a list of bathrooms quantity" do
+      assert PropertyView.property_bathrooms_for_select() == %{
+               "1 Banheiro": 1,
+               "2 Banheiros": 2,
+               "3 Banheiros": 3,
+               "4 Banheiros": 4,
+               "5 Banheiros": 5
+             }
+    end
+  end
+
+  describe "property_rooms_for_select/0" do
+    test "returns a list of rooms quantity" do
+      assert PropertyView.property_rooms_for_select() == %{
+               "1 Quarto": 1,
+               "2 Quartos": 2,
+               "3 Quartos": 3,
+               "4 Quartos": 4,
+               "5 Quartos": 5
+             }
     end
   end
 end

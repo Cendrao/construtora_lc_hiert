@@ -2,6 +2,7 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
   use ConstrutoraLcHiertWeb, :view
 
   alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.Properties.Property
   alias ConstrutoraLcHiert.Storage.Uploaders.Image
 
   @doc """
@@ -78,7 +79,7 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
     "#{address(property)}, #{city(property)}"
   end
 
-  defp address(property) do
+  def address(property) do
     [property.address, property.address_number, property.complement]
     |> Enum.reject(&is_nil/1)
     |> Enum.join(", ")
@@ -117,5 +118,20 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
   """
   def translate_type(type) do
     Properties.translate_type(type)
+  end
+
+  def property_types_for_select() do
+    Property.TypeEnum.__enum_map__()
+    |> Enum.map(fn {type, _} ->
+      {translate_type(type), type}
+    end)
+  end
+
+  def property_bathrooms_for_select() do
+    %{"1 Banheiro": 1, "2 Banheiros": 2, "3 Banheiros": 3, "4 Banheiros": 4, "5 Banheiros": 5}
+  end
+
+  def property_rooms_for_select() do
+    %{"1 Quarto": 1, "2 Quartos": 2, "3 Quartos": 3, "4 Quartos": 4, "5 Quartos": 5}
   end
 end

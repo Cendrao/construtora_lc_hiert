@@ -91,6 +91,42 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
+  List all the cities available in the database
+
+  ## Examples
+
+      iex> list_cities()
+      ["Toledo", "Umuarama"]
+
+  """
+  def list_cities() do
+    Repo.all(
+      from p in Property,
+        distinct: p.city,
+        where: is_nil(p.deleted_at),
+        select: p.city
+    )
+  end
+
+  @doc """
+  List all the neighborhoods available in the database
+
+  ## Examples
+
+      iex> list_neighborhoods()
+      ["Vila Industrial", "Jardim dos Príncipes", "Zona 2"]
+
+  """
+  def list_neighborhoods() do
+    Repo.all(
+      from p in Property,
+        distinct: p.neighborhood,
+        where: is_nil(p.deleted_at),
+        select: p.neighborhood
+    )
+  end
+
+  @doc """
   Returns the list of properties.
 
   ## Examples
@@ -98,7 +134,7 @@ defmodule ConstrutoraLcHiert.Properties do
       iex> list_properties()
       [%Property{}, ...]
 
-      iex> list_properties(:apartment)
+      iex> list_properties(%{"type" => "apartment", "q" => "rua harmonia"})
       [%Property{}, ...]
 
       iex> list_featured_properties(3)
@@ -106,32 +142,24 @@ defmodule ConstrutoraLcHiert.Properties do
 
   """
   def list_properties() do
-    Repo.all(
-      from p in Property,
-        where: is_nil(p.deleted_at),
-        left_join: images in assoc(p, :images),
-        preload: [images: images]
-    )
+    Property
+    |> Property.default_query()
+    |> Repo.all()
   end
 
-  def list_properties(type) do
-    Repo.all(
-      from p in Property,
-        where: p.type == ^type and is_nil(p.deleted_at),
-        left_join: images in assoc(p, :images),
-        preload: [images: images]
-    )
-  end
-
-  def list_featured_properties(limit \\ 3) do
-    Repo.all(
-      from p in Property,
-        where: is_nil(p.deleted_at),
-        left_join: images in assoc(p, :images),
-        limit: ^limit,
-        order_by: [desc: p.updated_at],
-        preload: [images: images]
-    )
+  def list_properties(params, limit \\ nil) do
+    Property
+    |> Property.default_query()
+    |> Property.search_query(params["q"])
+    |> Property.city_query(params["city"])
+    |> Property.neighborhood_query(params["neighborhood"])
+    |> Property.min_area_query(params["min_area"])
+    |> Property.max_area_query(params["max_area"])
+    |> Property.qty_bathrooms_query(params["qty_bathrooms"])
+    |> Property.qty_rooms_query(params["qty_rooms"])
+    |> Property.type_query(params["type"])
+    |> Property.limit_query(limit)
+    |> Repo.all()
   end
 
   @doc """

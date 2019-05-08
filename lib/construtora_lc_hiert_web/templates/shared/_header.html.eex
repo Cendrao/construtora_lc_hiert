@@ -33,12 +33,10 @@
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="header-search clearfix">
-            <form action="#">
-              <button class="search-icon" type="submit">
-                <%= icon_tag(@conn, "search") %>
-              </button>
-              <input type="text" placeholder="Procurar...">
-            </form>
+            <%= form_for @conn, Routes.search_path(@conn, :index), [method: :get], fn f -> %>
+              <%= submit icon_tag(@conn, "search"), class: "search-icon" %>
+              <%= text_input f, :q, placeholder: "Procurar...", value: @conn.params["q"], required: true %>
+            <% end %>
           </div>
         </div>
       </div>

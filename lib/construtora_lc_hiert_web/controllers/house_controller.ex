@@ -4,7 +4,7 @@ defmodule ConstrutoraLcHiertWeb.HouseController do
   alias ConstrutoraLcHiert.Properties
 
   def index(conn, _params) do
-    properties = Properties.list_properties(:house)
+    properties = Properties.list_properties(%{"type" => :house})
     footer_properties = Enum.take(properties, 3)
 
     conn

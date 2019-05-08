@@ -199,30 +199,103 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     end
   end
 
+  describe "list_cities/0" do
+    test "returns all cities" do
+      property_fixture(%{"city" => "Umuarama"})
+      property_fixture(%{"city" => "Toledo"})
+
+      assert ["Toledo", "Umuarama"] = Properties.list_cities()
+    end
+  end
+
+  describe "list_neighborhoods/0" do
+    test "returns all neighborhoods" do
+      property_fixture(%{"neighborhood" => "Sumarezinho"})
+      property_fixture(%{"neighborhood" => "Paraíso"})
+
+      assert ["Paraíso", "Sumarezinho"] = Properties.list_neighborhoods()
+    end
+  end
+
   describe "list_properties/0" do
     test "returns all properties" do
-      property_fixture()
-      property_fixture(%{"complement" => "AP 1", "deleted_at" => NaiveDateTime.utc_now()})
+      property = property_fixture()
+      _deleted_property = property_fixture(%{"complement" => "AP 1", "deleted_at" => NaiveDateTime.utc_now()})
 
-      assert [%Property{}] = Properties.list_properties()
+      assert Properties.list_properties() == [property]
     end
   end
 
   describe "list_properties/1" do
-    test "returns all properties of given type" do
-      property = property_fixture()
-      property_fixture(%{"complement" => "AP 2", "deleted_at" => NaiveDateTime.utc_now()})
+    test "returns all properties of given search" do
+      property = property_fixture(%{"address" => "Rua Harmonia"})
+      _other_property = property_fixture(%{"address" => "Rua do Paraíso"})
 
-      assert [%Property{}] = Properties.list_properties(property.type)
+      assert Properties.list_properties(%{"q" => "rua harmonia"}) == [property]
+    end
+
+    test "returns all properties of given city" do
+      property = property_fixture(%{"city" => "Umuarama"})
+      _other_property = property_fixture(%{"city" => "Toledo"})
+
+      assert Properties.list_properties(%{"city" => "Umuarama"}) == [property]
+    end
+
+    test "returns all properties of given neighborhood" do
+      property = property_fixture(%{"neighborhood" => "Jardim dos Príncipes"})
+      _other_property = property_fixture(%{"neighborhood" => "Zona 2"})
+
+      assert Properties.list_properties(%{"neighborhood" => "Jardim dos Príncipes"}) == [property]
+    end
+
+    test "returns all properties of given area" do
+      property = property_fixture(%{"area" => "66"})
+      _other_property = property_fixture(%{"area" => "68", "complement" => "AP 4"})
+
+      assert Properties.list_properties(%{"min_area" => "65", "max_area" => "67"}) == [property]
+    end
+
+    test "returns all properties of given quantity of bathrooms" do
+      property = property_fixture(%{"qty_bathrooms" => "2"})
+      _other_property = property_fixture(%{"qty_bathrooms" => "1", "complement" => "AP 2"})
+
+      assert Properties.list_properties(%{"qty_bathrooms" => "2"}) == [property]
+    end
+
+    test "returns all properties of given quantity of rooms" do
+      property = property_fixture(%{"qty_rooms" => "3"})
+      _other_property = property_fixture(%{"qty_rooms" => "2", "complement" => "AP 3"})
+
+      assert Properties.list_properties(%{"qty_rooms" => "3"}) == [property]
+    end
+
+    test "returns all properties of given type" do
+      property = property_fixture(%{"type" => "lot"})
+      _other_property = property_fixture(%{"type" => "house"})
+
+      assert Properties.list_properties(%{"type" => "lot"}) == [property]
+    end
+
+    test "returns all properties of given amount of params" do
+      property = property_fixture()
+
+      assert Properties.list_properties(%{
+               "min_area" => "45",
+               "city" => "Toledo",
+               "neighborhood" => "Vila Industrial",
+               "qty_rooms" => "3",
+               "type" => "apartment"
+             }) == [property]
     end
   end
 
-  describe "list_featured_properties/1" do
-    test "returns all featured properties given the limit" do
-      property_fixture()
-      property_fixture(%{"complement" => "AP 3", "deleted_at" => NaiveDateTime.utc_now()})
+  describe "list_properties/2" do
+    test "returns all properties of given search" do
+      _first_property = property_fixture(%{"complement" => "AP 1"})
+      second_property = property_fixture(%{"complement" => "AP 2"})
+      third_property = property_fixture(%{"complement" => "AP 3"})
 
-      assert [%Property{}] = Properties.list_featured_properties(2)
+      assert Properties.list_properties(%{}, 2) == [third_property, second_property]
     end
   end
 
