@@ -1,6 +1,6 @@
 # Construtora LC Hiert
 
-|> [construtora-lc-hiert.herokuapp.com](https://construtora-lc-hiert.herokuapp.com/)
+|> [construtoralchiert.com.br](https://construtoralchiert.com.br)
 
 ## Installation
 

@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
   http: [:inet6, port: System.get_env("PORT")],
-  url: [scheme: "https", host: "construtora-lc-hiert.herokuapp.com", port: 443],
+  url: [scheme: "https", host: "construtoralchiert.com.br", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   cache_static_manifest: "priv/static/cache_manifest.json"
