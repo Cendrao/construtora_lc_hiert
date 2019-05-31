@@ -43,3 +43,6 @@ You have to define the following variables **(Production environment only)**:
   - S3_BUCKET
   - AWS_ACCESS_KEY_ID
   - AWS_SECRET_ACCESS_KEY
+
+- Sentry
+  - SENTRY_DSN

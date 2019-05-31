@@ -20,7 +20,7 @@ defmodule ConstrutoraLcHiert.MixProject do
   def application do
     [
       mod: {ConstrutoraLcHiert.Application, []},
-      extra_applications: [:logger, :runtime_tools, :bamboo, :arc_ecto]
+      extra_applications: [:sentry, :logger, :runtime_tools, :bamboo, :arc_ecto]
     ]
   end
 
@@ -52,7 +52,8 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:arc_ecto, "~> 0.11.1"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+      {:sentry, "~> 6.4"}
     ]
   end
 

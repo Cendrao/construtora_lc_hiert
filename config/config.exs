@@ -30,6 +30,12 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Authentication.Guardian,
   issuer: "construtora_lc_hiert",
   secret_key: "JSLU9lItJ1mO/DdogYUyb6dqt0O1BILFKFokecXM/itqyVBT6NEdq7NzA4sY6ctX"
 
+# Sentry
+config :sentry,
+  dsn: System.get_env("SENTRY_DSN"),
+  included_environments: [:prod],
+  environment_name: Mix.env()
+
 # Locale
 config :gettext, :default_locale, "pt_BR"
 

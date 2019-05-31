@@ -18,7 +18,9 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
 
     json(conn, %{data: gettext("Message successfully sent")})
   rescue
-    _ ->
+    exception ->
+      Sentry.capture_exception(exception, stacktrace: System.stacktrace())
+
       conn
       |> put_status(500)
       |> json(%{data: gettext("The message was not sent")})
