@@ -13,7 +13,8 @@ defmodule ConstrutoraLcHiertWeb.Endpoint do
     at: "/",
     from: :construtora_lc_hiert,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js robots.txt),
+    only_matching: ~w(favicon)
 
   plug Plug.Static, at: "/uploads", from: "uploads"
 
