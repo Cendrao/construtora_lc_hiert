@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Construtora LC Hiert - Venda de imóveis: casas, apartamentos e lotes em Toledo - PR.">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+  <title>Página não encontrada - Construtora LC Hiert</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Merriweather:400,600');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Merriweather', sans-serif;
+      font-weight: 400;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    main {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      justify-items: center;
+      align-items: center;
+      height: 100vh;
+      background: url('/images/errors/404.jpg');
+      background-repeat: repeat-x;
+      background-size: cover;
+      background-position: left top;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 16rem;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 2.8rem;
+    }
+
+    a {
+      display: inline-block;
+      border: 1px solid #ff6243;
+      border-radius: 10rem;
+      margin-top: 3rem;
+      padding: 1rem 2rem;
+      color: #fff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: 2px;
+      -webkit-transition: all .3s ease-in;
+      -moz-transition: all .3s ease-in;
+      -ms-transition: all .3s ease-in;
+      -o-transition: all .3s ease-in;
+      transition: all .3s ease-in;
+    }
+
+    a:hover {
+      background-color: #ff6243;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
+    }
+
+    @-moz-keyframes move-cloud { 100% {-moz-transform: translate(-60rem, -10rem);} }
+    @-webkit-keyframes move-cloud {100% {-webkit-transform: translate(-60rem,-10rem); } }
+    @keyframes move-cloud { 100% {transform: translate(-60rem,-10rem);} }
+
+    .cloud {
+      position: absolute;
+      z-index: 90;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .first-cloud {
+      width: 12rem;
+      height: 12rem;
+      top: 10%;
+      right: 15%;
+      animation: move-cloud 80s linear infinite both alternate;
+    }
+
+    .second-cloud {
+      width: 15rem;
+      height: 15rem;
+      top: 15%;
+      right: 25%;
+      animation: move-cloud 100s linear infinite both alternate;
+    }
+
+    @-moz-keyframes move-house { 100% { -moz-transform: translate(60rem, 8rem);} }
+    @-webkit-keyframes move-house { 100% { -webkit-transform: translate(60rem, 8rem);} }
+    @keyframes move-house { 100% { transform:translate(60rem, 8rem); } }
+
+    .house {
+      position: absolute;
+      width: 18rem;
+      height: 18rem;
+      top: 13%;
+      left: 15%;
+      z-index: 110;
+      pointer-events: none;
+      will-change: transform;
+      animation: move-house 60s infinite linear both alternate;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <svg class="cloud first-cloud"><use xlink:href="/images/icons.svg#clouds"></use></svg>
+    <svg class="cloud second-cloud"><use xlink:href="/images/icons.svg#clouds"></use></svg>
+    <svg class="house"><use xlink:href="/images/icons.svg#house-balloons"></use></svg>
+
+    <h1>404</h1>
+    <h2>Página não encontrada</h2>
+
+    <a href="/">Voltar ao site</a>
+  </main>
+</body>
+</html>
