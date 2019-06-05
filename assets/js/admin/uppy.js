@@ -49,7 +49,7 @@ const translations = {
 
 const uppyOpts = {
   restrictions: {
-    maxFileSize: 2000000, // in bytes
+    maxFileSize: 600000, // 600kb in bytes
     allowedFileTypes: ['image/*']
   }
 }
