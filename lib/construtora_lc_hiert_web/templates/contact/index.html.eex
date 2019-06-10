@@ -43,8 +43,16 @@
                   <%= icon_tag(@conn, "world") %>
                 </div>
                 <div class="contact-address-info">
-                  <span>Email: construcao.lc@gmail.com</span>
-                  <span>Web: <a href="//www.construtoralc.com.br" target="_blank">www.construtoralc.com.br</a></span>
+                  <span>
+                    <a href="//www.construtoralchiert.com.br" target="_blank">
+                      www.construtoralchiert.com.br
+                    </a>
+                  </span>
+                  <span>
+                    <a href="//www.facebook.com/construtoralchiert" target="_blank">
+                      www.facebook.com/construtoralchiert
+                    </a>
+                  </span>
                 </div>
               </li>
             </ul>
