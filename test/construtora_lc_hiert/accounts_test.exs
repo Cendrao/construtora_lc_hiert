@@ -1,22 +1,10 @@
 defmodule ConstrutoraLcHiert.AccountsTest do
   use ConstrutoraLcHiert.DataCase
+  use ConstrutoraLcHiert.Fixtures, [:user]
 
   alias ConstrutoraLcHiert.Accounts
   alias ConstrutoraLcHiert.Accounts.User
   alias Comeonin.Bcrypt
-
-  @valid_attrs %{password: "rusbé", username: "biridin"}
-  @update_attrs %{password: "rusbé_updated", username: "biridin_updated"}
-  @invalid_attrs %{password: nil, username: nil}
-
-  def user_fixture(attrs \\ %{}) do
-    {:ok, user} =
-      attrs
-      |> Enum.into(@valid_attrs)
-      |> Accounts.create_user()
-
-    user
-  end
 
   describe "list_users/0" do
     test "returns all users" do
@@ -40,13 +28,13 @@ defmodule ConstrutoraLcHiert.AccountsTest do
 
   describe "create_user/1" do
     test "with valid data creates a user" do
-      assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
+      assert {:ok, %User{} = user} = Accounts.create_user(@valid_user_attrs)
       assert Bcrypt.checkpw("rusbé", user.password)
       assert user.username == "biridin"
     end
 
     test "with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{} = changeset} = Accounts.create_user(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{} = changeset} = Accounts.create_user(@invalid_user_attrs)
       assert %{username: ["can't be blank"], password: ["can't be blank"]} = errors_on(changeset)
     end
 
@@ -69,7 +57,7 @@ defmodule ConstrutoraLcHiert.AccountsTest do
     test "with valid data updates the user" do
       user = user_fixture()
 
-      assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
+      assert {:ok, %User{} = user} = Accounts.update_user(user, @update_user_attrs)
       assert Bcrypt.checkpw("rusbé_updated", user.password)
       assert user.username == "biridin_updated"
     end
@@ -77,7 +65,7 @@ defmodule ConstrutoraLcHiert.AccountsTest do
     test "with invalid data returns error changeset" do
       user = user_fixture()
 
-      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_user_attrs)
       assert user == Accounts.get_user!(user.id)
     end
   end

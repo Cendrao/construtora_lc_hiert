@@ -1,20 +1,9 @@
 defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
+  use ConstrutoraLcHiert.Fixtures, [:user]
 
   alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Accounts.User
-
-  @valid_params %{
-    user: %{username: "sinforoso", password: "boneco", password_confirmation: "boneco"}
-  }
-  @update_params %{
-    user: %{
-      username: "sinforoso_updated",
-      password: "boneco_updated",
-      password_confirmation: "boneco_updated"
-    }
-  }
-  @invalid_params %{user: %{username: nil, password: nil, password_confirmation: nil}}
 
   describe "GET /admin/usuarios" do
     @tag :sign_in_user
@@ -46,16 +35,16 @@ defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
   describe "POST /admin/usuarios" do
     @tag :sign_in_user
     test "creates a new user", %{conn: conn} do
-      conn = post(conn, "/admin/usuarios", @valid_params)
+      conn = post(conn, "/admin/usuarios", %{user: @valid_user_attrs})
 
-      refute Repo.get_by(User, username: "sinforoso") == nil
+      refute Repo.get_by(User, username: "biridin") == nil
 
       assert redirected_to(conn) == "/admin/usuarios/new"
     end
 
     @tag :sign_in_user
     test "returns the error page when the params are invalid", %{conn: conn} do
-      conn = post(conn, "/admin/usuarios", @invalid_params)
+      conn = post(conn, "/admin/usuarios", %{user: @invalid_user_attrs})
 
       assert html_response(conn, 200) =~ "Cadastrar Usuário"
 
@@ -78,17 +67,17 @@ defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
   describe "PUT /admin/usuarios/:id" do
     @tag :sign_in_user
     test "updates the given user", %{conn: conn, user: user} do
-      conn = put(conn, "/admin/usuarios/#{user.id}", @update_params)
+      conn = put(conn, "/admin/usuarios/#{user.id}", %{user: @update_user_attrs})
 
-      assert Repo.get_by(User, username: "sinforoso") == nil
-      refute Repo.get_by(User, username: "sinforoso_updated") == nil
+      assert Repo.get_by(User, username: "biridin") == nil
+      refute Repo.get_by(User, username: "biridin_updated") == nil
 
       assert redirected_to(conn) == "/admin/usuarios/#{user.id}/edit"
     end
 
     @tag :sign_in_user
     test "returns the error page when the params are invalid", %{conn: conn, user: user} do
-      conn = put(conn, "/admin/usuarios/#{user.id}", @invalid_params)
+      conn = put(conn, "/admin/usuarios/#{user.id}", %{user: @invalid_user_attrs})
 
       assert html_response(conn, 200) =~ "Alterar Usuário"
 

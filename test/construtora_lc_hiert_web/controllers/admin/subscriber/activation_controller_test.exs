@@ -1,7 +1,6 @@
 defmodule ConstrutoraLcHiertWeb.Admin.Subscriber.ActivationControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
-
-  alias ConstrutoraLcHiert.Subscribers
+  use ConstrutoraLcHiert.Fixtures, [:subscriber]
 
   describe "POST /admin/inscritos/:id/ativacao" do
     setup [:create_subscriber]
@@ -28,7 +27,8 @@ defmodule ConstrutoraLcHiertWeb.Admin.Subscriber.ActivationControllerTest do
   end
 
   defp create_subscriber(_) do
-    {:ok, subscriber} = Subscribers.create_subscriber(%{email: "lindomar@subzero.br"})
+    subscriber = subscriber_fixture()
+
     {:ok, subscriber: subscriber}
   end
 end

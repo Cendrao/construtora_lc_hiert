@@ -1,31 +1,20 @@
 defmodule ConstrutoraLcHiert.AmenitiesTest do
   use ConstrutoraLcHiert.DataCase
+  use ConstrutoraLcHiert.Fixtures, [:amenity]
 
   alias ConstrutoraLcHiert.Amenities
   alias ConstrutoraLcHiert.Amenities.Amenity
 
-  @valid_attrs %{name: "Piscina"}
-  @update_attrs %{name: "Ar condicionado"}
-  @invalid_attrs %{name: nil}
-
-  def amenity_fixture(attrs \\ %{}) do
-    {:ok, amenity} =
-      attrs
-      |> Enum.into(@valid_attrs)
-      |> Amenities.create_amenity()
-
-    amenity
-  end
-
   describe "create_amenity/1" do
     test "with valid data creates a amenity" do
-      assert {:ok, %Amenity{} = amenity} = Amenities.create_amenity(@valid_attrs)
+      assert {:ok, %Amenity{} = amenity} = Amenities.create_amenity(@valid_amenity_attrs)
 
       assert %Amenity{name: "Piscina"} = amenity
     end
 
     test "with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{} = changeset} = Amenities.create_amenity(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{} = changeset} =
+               Amenities.create_amenity(@invalid_amenity_attrs)
 
       assert %{name: ["can't be blank"]} = errors_on(changeset)
     end
@@ -35,14 +24,18 @@ defmodule ConstrutoraLcHiert.AmenitiesTest do
     test "with valid data updates the amenity" do
       amenity = amenity_fixture()
 
-      assert {:ok, %Amenity{} = amenity} = Amenities.update_amenity(amenity, @update_attrs)
+      assert {:ok, %Amenity{} = amenity} =
+               Amenities.update_amenity(amenity, @update_amenity_attrs)
+
       assert amenity.name == "Ar condicionado"
     end
 
     test "with invalid data returns error changeset" do
       amenity = amenity_fixture()
 
-      assert {:error, %Ecto.Changeset{}} = Amenities.update_amenity(amenity, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} =
+               Amenities.update_amenity(amenity, @invalid_amenity_attrs)
+
       assert amenity == Amenities.get_amenity!(amenity.id)
     end
   end

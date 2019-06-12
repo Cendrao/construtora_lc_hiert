@@ -1,10 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
+  use ConstrutoraLcHiert.Fixtures, [:user]
 
-  alias ConstrutoraLcHiert.Accounts
   alias ConstrutoraLcHiert.Authentication.Guardian
-
-  @valid_attrs %{username: "user", password: "password"}
 
   describe "GET /login" do
     test "accesses the login page", %{conn: conn} do
@@ -18,7 +16,7 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
     setup [:create_user]
 
     test "redirects to admin page if user is authenticated", %{conn: conn} do
-      conn = post(conn, "/login", user: @valid_attrs)
+      conn = post(conn, "/login", user: @valid_user_attrs)
 
       assert redirected_to(conn) == "/admin"
     end
@@ -30,7 +28,7 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
     end
 
     test "displays error message if password is incorrect", %{conn: conn} do
-      conn = post(conn, "/login", user: %{username: "user", password: "wrong_pass"})
+      conn = post(conn, "/login", user: %{username: "biridin", password: "wrong_pass"})
 
       assert html_response(conn, 200) =~ "senha está incorreta"
     end
@@ -51,7 +49,8 @@ defmodule ConstrutoraLcHiertWeb.SessionControllerTest do
   end
 
   defp create_user(_) do
-    {:ok, user} = Accounts.create_user(@valid_attrs)
+    user = user_fixture()
+
     {:ok, user: user}
   end
 end

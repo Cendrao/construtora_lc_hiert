@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiert.StorageTest do
   use ConstrutoraLcHiert.DataCase
+  use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Storage
   alias ConstrutoraLcHiert.Storage.PropertyImage
 
@@ -18,7 +18,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
     test "with valid data creates a property_image", %{property: property} do
       attrs = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => property.id
@@ -31,7 +31,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
     test "with invalid data returns error changeset" do
       attrs = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => nil
@@ -47,7 +47,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
     test "returns the property image", %{property: property} do
       attrs = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => property.id
@@ -66,7 +66,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
     test "deletes the property_image and the file", %{property: property} do
       attrs = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => property.id
@@ -81,21 +81,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
   end
 
   defp create_property(_) do
-    {:ok, property} =
-      Properties.create_property(%{
-        address: "Rua Carlos Barbosa",
-        address_number: "1650",
-        area: "50",
-        city: "Toledo",
-        neighborhood: "Vila Industrial",
-        price: 1_000_000.0,
-        qty_bathrooms: "2",
-        qty_garages: "2",
-        qty_kitchens: "1",
-        qty_rooms: "3",
-        state: "PR",
-        type: :apartment
-      })
+    property = property_fixture()
 
     {:ok, property: property}
   end

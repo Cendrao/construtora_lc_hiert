@@ -4,40 +4,25 @@
       <div class="featured-flat">
         <div class="row">
 
-          <%= if length(@properties) == 0 do %>
+          <%= if length(@paged_properties.list) == 0 do %>
             <%= render(ConstrutoraLcHiertWeb.SharedView, "_no_results_found.html", assigns) %>
           <% else %>
-            <%= for property <- @properties do %>
+            <%= for property <- @paged_properties.list do %>
               <div class="col-md-4 col-sm-6 col-xs-12">
+                <%= render("_property_item.html", Map.put(assigns, :property, property)) %>
+              </div>
+            <% end %>
+
+            <div class="col-xs-12">
+              <div class="pagination-area mb-60">
                 <%=
-                  render(
-                    ConstrutoraLcHiertWeb.PropertyView,
-                    "_property_item.html",
-                    Map.put(assigns, :property, property)
+                  ConstrutoraLcHiertWeb.Helpers.PaginatorHelper.render(
+                    @conn, @paged_properties, class: "pagination-list text-center"
                   )
                 %>
               </div>
-            <% end %>
-          <% end %>
-
-          <div class="col-xs-12">
-            <div class="pagination-area mb-60">
-              <ul class="pagination-list text-center">
-                <li>
-                  <a href="#">
-                    <%= icon_tag(@conn, "left-arrow") %>
-                  </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li>
-                  <a href="#">
-                    <%= icon_tag(@conn, "right-arrow") %>
-                  </a>
-                </li>
-              </ul>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

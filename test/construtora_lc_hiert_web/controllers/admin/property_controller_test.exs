@@ -1,67 +1,9 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
+  use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Properties.Property
-  alias ConstrutoraLcHiert.Properties
-
-  @valid_params %{
-    property: %{
-      address: "Rua Carlos Barbosa",
-      address_number: "1650",
-      area: "50",
-      city: "Toledo",
-      complement: "",
-      description: "Lorem ipsum dolor sit amet.",
-      neighborhood: "Vila Industrial",
-      price: "1.000.000",
-      qty_bathrooms: "2",
-      qty_garages: "2",
-      qty_kitchens: "1",
-      qty_rooms: "3",
-      state: "PR",
-      type: :apartment,
-      amenities: ["1", "2"]
-    }
-  }
-  @update_params %{
-    property: %{
-      address: "Rua do Paraíso",
-      address_number: "595",
-      area: "150",
-      city: "São Paulo",
-      complement: "",
-      description: "",
-      neighborhood: "Paraíso",
-      price: "2.000.000",
-      qty_bathrooms: "4",
-      qty_garages: "8",
-      qty_kitchens: "1",
-      qty_rooms: "1",
-      state: "SP",
-      type: :apartment,
-      amenities: ["1"]
-    }
-  }
-  @invalid_params %{
-    property: %{
-      address: "",
-      address_number: "",
-      area: "",
-      city: "",
-      complement: "",
-      description: "",
-      neighborhood: "",
-      price: "",
-      qty_bathrooms: "",
-      qty_garages: "",
-      qty_kitchens: "",
-      qty_rooms: "",
-      state: "",
-      type: "",
-      amenities: []
-    }
-  }
 
   describe "GET /admin/imoveis" do
     @tag :sign_in_user
@@ -84,7 +26,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
   describe "POST /admin/imoveis" do
     @tag :sign_in_user
     test "creates a new property with valid params", %{conn: conn} do
-      post(conn, "/admin/imoveis", @valid_params)
+      post(conn, "/admin/imoveis", %{property: @valid_property_attrs})
 
       assert Repo.get_by!(Property,
                slug: "apartamento-rua-carlos-barbosa-1650-vila-industrial-toledo-pr"
@@ -93,7 +35,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
 
     @tag :sign_in_user
     test "does not create a new property with invalid params", %{conn: conn} do
-      conn = post(conn, "/admin/imoveis", @invalid_params)
+      conn = post(conn, "/admin/imoveis", %{property: @invalid_property_attrs})
 
       assert html_response(conn, 200) =~ "Cadastrar Imóvel"
 
@@ -120,7 +62,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
 
     @tag :sign_in_user
     test "updates the given property", %{conn: conn, property: property} do
-      conn = put(conn, "/admin/imoveis/#{property.id}", @update_params)
+      conn = put(conn, "/admin/imoveis/#{property.id}", %{property: @update_property_attrs})
 
       assert Repo.get_by(Property, address: "Rua Carlos Barbosa") == nil
       refute Repo.get_by(Property, address: "Rua do Paraíso") == nil
@@ -130,7 +72,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
 
     @tag :sign_in_user
     test "returns the error page when the params are invalid", %{conn: conn, property: property} do
-      conn = put(conn, "/admin/imoveis/#{property.id}", @invalid_params)
+      conn = put(conn, "/admin/imoveis/#{property.id}", %{property: @invalid_property_attrs})
 
       assert html_response(conn, 200) =~ "Alterar Imóvel"
 
@@ -156,21 +98,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
   end
 
   defp create_property(_) do
-    {:ok, property} =
-      Properties.create_property(%{
-        address: "Rua Carlos Barbosa",
-        address_number: "1650",
-        area: "50",
-        city: "Toledo",
-        neighborhood: "Vila Industrial",
-        price: 1_000_000.0,
-        qty_bathrooms: "2",
-        qty_garages: "2",
-        qty_kitchens: "1",
-        qty_rooms: "3",
-        state: "PR",
-        type: :apartment
-      })
+    property = property_fixture()
 
     {:ok, property: property}
   end

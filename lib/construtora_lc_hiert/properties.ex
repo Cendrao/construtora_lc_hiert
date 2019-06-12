@@ -8,6 +8,8 @@ defmodule ConstrutoraLcHiert.Properties do
   alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.Properties.Property
   alias ConstrutoraLcHiert.Amenities
+  alias ConstrutoraLcHiert.Paginator
+  alias ConstrutoraLcHiert.Filters
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking property changes.
@@ -20,7 +22,7 @@ defmodule ConstrutoraLcHiert.Properties do
   """
   def change_property(%Property{} = property) do
     property
-    |> Repo.preload(:amenities)
+    |> load_amenities()
     |> Property.changeset(%{})
   end
 
@@ -91,74 +93,99 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
-  List all the cities available in the database
+  List all the data available in the database
 
   ## Examples
 
       iex> list_cities()
       ["Toledo", "Umuarama"]
 
-  """
-  def list_cities() do
-    Repo.all(
-      from p in Property,
-        distinct: p.city,
-        where: is_nil(p.deleted_at),
-        select: p.city
-    )
-  end
-
-  @doc """
-  List all the neighborhoods available in the database
-
-  ## Examples
-
       iex> list_neighborhoods()
       ["Vila Industrial", "Jardim dos Príncipes", "Zona 2"]
 
   """
+  def list_cities() do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> distinct([p], p.city)
+    |> select([p], p.city)
+    |> Repo.all()
+  end
+
   def list_neighborhoods() do
-    Repo.all(
-      from p in Property,
-        distinct: p.neighborhood,
-        where: is_nil(p.deleted_at),
-        select: p.neighborhood
-    )
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> distinct([p], p.neighborhood)
+    |> select([p], p.neighborhood)
+    |> Repo.all()
   end
 
   @doc """
   Returns the list of properties.
 
+  You can choose if you want to return paged results, or all results.
+  If you use `list_paged_properties(params)` it will add a limit and offset in
+  the query and return just a part of the results.
+
+  ## Examples
+
+      iex> list_paged_properties(%{"page" => 1})
+      { list: [%Property{id: 1}, %Property{id: 2}, %Property{id: 3}], page: 1, ... }
+
+      iex> list_paged_properties(%{"page" => 2})
+      { list: [%Property{id: 4}, %Property{id: 5}, %Property{id: 6}], page: 2, ... }
+
+      iex> list_paged_properties(%{"type" => "apartment", "page" => 1})
+      { list: [%Property{id: 1}, %Property{id: 3}, %Property{id: 6}], page: 1, ... }
+
+
+  But if you want to return all the results of the query at once, you can use
+  `list_properties()`.
+
   ## Examples
 
       iex> list_properties()
-      [%Property{}, ...]
+      [%Property{}, %Property{}, %Property{}, %Property{}, %Property{}, ...]
 
       iex> list_properties(%{"type" => "apartment", "q" => "rua harmonia"})
-      [%Property{}, ...]
-
-      iex> list_featured_properties(3)
-      [%Property{}, %Property{}, %Property{}]
+      [%Property{}, %Property{}, ...]
 
   """
+  def list_paged_properties(params) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> order_by([p], desc: p.updated_at)
+    |> preload([:images, :amenities])
+    |> Filters.apply(params)
+    |> Paginator.paginate(params["page"])
+  end
+
   def list_properties() do
     Property
-    |> Property.default_query()
+    |> where([p], is_nil(p.deleted_at))
+    |> order_by([p], desc: p.updated_at)
+    |> join(:left, [p], a in assoc(p, :amenities), as: :amenities)
+    |> join(:left, [p], i in assoc(p, :images), as: :images)
+    |> preload([amenities: a, images: i], amenities: a, images: i)
     |> Repo.all()
   end
 
-  def list_properties(params, limit \\ nil) do
+  def list_properties(params) do
     Property
-    |> Property.default_query()
-    |> Property.search_query(params["q"])
-    |> Property.city_query(params["city"])
-    |> Property.neighborhood_query(params["neighborhood"])
-    |> Property.min_area_query(params["min_area"])
-    |> Property.max_area_query(params["max_area"])
-    |> Property.qty_bathrooms_query(params["qty_bathrooms"])
-    |> Property.qty_rooms_query(params["qty_rooms"])
-    |> Property.type_query(params["type"])
-    |> Property.limit_query(limit)
+    |> where([p], is_nil(p.deleted_at))
+    |> order_by([p], desc: p.updated_at)
+    |> preload([:images, :amenities])
+    |> Filters.apply(params)
+    |> Repo.all()
+  end
+
+  def list_properties(params, limit) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> order_by([p], desc: p.updated_at)
+    |> preload([:images, :amenities])
+    |> limit(^limit)
+    |> Filters.apply(params)
     |> Repo.all()
   end
 
@@ -178,26 +205,19 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
-  Preloads the amenities of a given property.
+  Preloads the associations of a given property.
 
   ## Examples
 
       iex> load_amenities(property)
       %Property{..., amenities: [], ...}
 
-  """
-  def load_amenities(%Property{} = property), do: Repo.preload(property, :amenities)
-
-  @doc """
-  Preloads the images of a given property.
-
-  ## Examples
-
       iex> load_images(property)
       %Property{..., images: [], ...}
 
   """
-  def load_images(%Property{} = property), do: Repo.preload(property, :images)
+  def load_amenities(property), do: Repo.preload(property, :amenities)
+  def load_images(property), do: Repo.preload(property, :images)
 
   @doc """
   Translate the type to a human readable name.

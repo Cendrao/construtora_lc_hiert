@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
   use ConstrutoraLcHiertWeb.ConnCase
+  use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Storage
   alias ConstrutoraLcHiert.Storage.PropertyImage
 
@@ -24,7 +24,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
     test "creates a new property image", %{conn: conn, property: property} do
       params = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => property.id
@@ -43,7 +43,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
     test "deletes the property image", %{conn: conn, property: property} do
       params = %{
         "image" => %Plug.Upload{
-          path: "test/fixtures/aprovameupr.png",
+          path: "test/fixtures/images/aprovameupr.png",
           filename: "aprovameupr.png"
         },
         "property_id" => property.id
@@ -58,21 +58,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
   end
 
   defp create_property(_) do
-    {:ok, property} =
-      Properties.create_property(%{
-        address: "Rua Carlos Barbosa",
-        address_number: "1650",
-        area: "50",
-        city: "Toledo",
-        neighborhood: "Vila Industrial",
-        price: 1_000_000.0,
-        qty_bathrooms: "2",
-        qty_garages: "2",
-        qty_kitchens: "1",
-        qty_rooms: "3",
-        state: "PR",
-        type: :apartment
-      })
+    property = property_fixture()
 
     {:ok, property: property}
   end
