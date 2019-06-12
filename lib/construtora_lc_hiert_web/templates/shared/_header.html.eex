@@ -25,7 +25,7 @@
                 <%= icon_tag(@conn, "whatsapp") %>
               </div>
               <div class="header-info">
-                <h6><a href="http://api.whatsapp.com/send?1=pt_BR&phone=554599705998">(45) 99705-5998</a></h6>
+                <h6><a href="http://api.whatsapp.com/send?1=pt_BR&phone=5545999705998">(45) 99970-5998</a></h6>
                 <p>Mande um WhatsApp</p>
               </div>
             </div>
