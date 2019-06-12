@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [autocomplete: "off"], fn f -> %>
   <div class="form-group">
     <%= label f, :type, "Tipo" %>
     <%= select f, :type, ConstrutoraLcHiertWeb.PropertyView.property_types_for_select(), class: "form-control" %>
@@ -9,7 +9,7 @@
     <div class="col-md-9">
       <div class="form-group">
         <%= label f, :address, "Endereço" %>
-        <%= text_input f, :address, class: "form-control" %>
+        <%= text_input f, :address, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :address %>
       </div>
     </div>
@@ -17,7 +17,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <%= label f, :address_number, "Número" %>
-        <%= text_input f, :address_number, class: "form-control" %>
+        <%= text_input f, :address_number, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :address_number %>
       </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= label f, :complement, "Complemento" %>
-        <%= text_input f, :complement, class: "form-control" %>
+        <%= text_input f, :complement, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :complement %>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= label f, :neighborhood, "Bairro" %>
-        <%= text_input f, :neighborhood, class: "form-control" %>
+        <%= text_input f, :neighborhood, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :neighborhood %>
       </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="col-md-8">
       <div class="form-group">
         <%= label f, :city, "Cidade" %>
-        <%= text_input f, :city, class: "form-control" %>
+        <%= text_input f, :city, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :city %>
       </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <%= label f, :state, "Estado" %>
-        <%= text_input f, :state, maxlength: 2, class: "form-control" %>
+        <%= text_input f, :state, maxlength: 2, class: "form-control", autocomplete: "new-password" %>
         <%= error_tag f, :state %>
       </div>
     </div>
@@ -110,7 +110,7 @@
         <%= label f, :price, "Preço" %>
         <div class="input-group">
           <div class="input-group-addon">R$</div>
-          <%= text_input f, :price, maxlength: 10, class: "form-control js-currency-mask" %>
+          <%= text_input f, :price, maxlength: 10, class: "form-control js-currency-mask", autocomplete: "new-password" %>
         </div>
         <%= error_tag f, :price %>
       </div>
