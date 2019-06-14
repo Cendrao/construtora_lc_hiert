@@ -27,10 +27,14 @@ config :construtora_lc_hiert, ConstrutoraLcHiert.Authentication.Guardian,
   issuer: "construtora_lc_hiert",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
-# Email configurations with Bamboo
+# Email configurations
 config :construtora_lc_hiert, ConstrutoraLcHiert.Mailer,
-  adapter: Bamboo.SendGridAdapter,
-  api_key: System.get_env("SENDGRID_API_KEY")
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.sendgrid.net",
+  port: 587,
+  username: "apikey",
+  password: System.get_env("SENDGRID_API_KEY"),
+  tls: :always
 
 # ARC S3 Storage
 config :arc,
