@@ -20,13 +20,28 @@
     <div class="row">
       <%= for image <- @property.images do %>
         <div class="col-md-3 mb-20">
-          <img src="<%= image_url(image, %{width: 285, height: 160}) %>" alt="">
-          <%=
-            link icon_tag(@conn, "inactive", class: "inactive"),
-              to: Routes.admin_property_image_path(@conn, :delete, @property, %{image: image}),
-              method: :delete,
-              data: [confirm: "Tem certeza que quer excluir esta imagem?"]
-          %>
+          <div class="dropdown">
+            <%= icon_tag(@conn, "dots", class: "dropbtn") %>
+            <div class="dropdown-content">
+              <%=
+                link "Tornar capa",
+                  to: Routes.admin_property_image_featured_path(@conn, :create, @property.id, %{image: image}),
+                  method: :post
+              %>
+              <%=
+                link "Excluir",
+                  to: Routes.admin_property_image_path(@conn, :delete, @property, %{image: image}),
+                  method: :delete,
+                  class: "delete",
+                  data: [confirm: "Tem certeza que quer excluir esta imagem?"]
+              %>
+            </div>
+          </div>
+
+          <img
+            src="<%= image_url(image, %{width: 285, height: 160}) %>"
+            alt="<%= ConstrutoraLcHiertWeb.PropertyView.full_address(@property) %>"
+            class="<%= if image.featured, do: "featured" %>">
         </div>
       <% end %>
     </div>

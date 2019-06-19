@@ -10,6 +10,9 @@ msgstr "Lote"
 msgid "Successfully created"
 msgstr "Cadastrado com sucesso"
 
+msgid "Successfully featured"
+msgstr "Alterado para capa com sucesso"
+
 msgid "Successfully updated"
 msgstr "Atualizado com sucesso"
 

@@ -80,6 +80,36 @@ defmodule ConstrutoraLcHiert.StorageTest do
     end
   end
 
+  describe "set_featured_property_image/1" do
+    setup [:create_property]
+
+    test "sets the given image as featured", %{property: property} do
+      first_property_image =
+        property_image_fixture(%{
+          "image" => %Plug.Upload{
+            path: "test/fixtures/images/aprovameupr.png",
+            filename: "to_aqui_fazendo_nada.png"
+          },
+          "property_id" => property.id
+        })
+
+      second_property_image =
+        property_image_fixture(%{
+          "image" => %Plug.Upload{
+            path: "test/fixtures/images/aprovameupr.png",
+            filename: "ce_ta_doido.png"
+          },
+          "property_id" => property.id,
+          "featured" => true
+        })
+
+      assert {:ok, %PropertyImage{featured: true}} =
+               Storage.set_featured_property_image(first_property_image)
+
+      assert Repo.get(PropertyImage, second_property_image.id).featured == false
+    end
+  end
+
   defp create_property(_) do
     property = property_fixture()
 

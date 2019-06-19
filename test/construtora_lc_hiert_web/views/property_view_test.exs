@@ -68,11 +68,14 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
     end
 
     test "display the featured image url when given a list" do
-      image = %{image: %{file_name: "xablau.jpg"}, property_id: 1}
-      images = [image]
+      first_image = %{image: %{file_name: "pereba.jpg"}, property_id: 1, featured: false}
+      second_image = %{image: %{file_name: "furuncu.jpg"}, property_id: 1, featured: true}
+      third_image = %{image: %{file_name: "berne.jpg"}, property_id: 1, featured: false}
+
+      images = [first_image, second_image, third_image]
       opts = %{width: 666, height: 333}
 
-      assert PropertyView.image_url(images, opts) == "/uploads/test/1/xablau.jpg?tr=w-666,h-333"
+      assert PropertyView.image_url(images, opts) == "/uploads/test/1/furuncu.jpg?tr=w-666,h-333"
     end
 
     test "display the url when given an image" do

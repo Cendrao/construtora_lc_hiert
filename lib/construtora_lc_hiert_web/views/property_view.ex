@@ -29,8 +29,12 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
     "https://placehold.it/#{opts[:width]}x#{opts[:height]}?text=Nenhuma+Imagem"
   end
 
+  # Select the property's featured image
   def image_url(images, opts) when is_list(images) do
-    image = List.first(images)
+    image =
+      images
+      |> Enum.sort(fn i, _ -> i.featured end)
+      |> List.first()
 
     image_url(image, opts)
   end

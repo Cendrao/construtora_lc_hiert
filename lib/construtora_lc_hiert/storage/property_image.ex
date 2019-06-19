@@ -1,6 +1,7 @@
 defmodule ConstrutoraLcHiert.Storage.PropertyImage do
   use Ecto.Schema
   use Arc.Ecto.Schema
+
   import Ecto.Changeset
 
   alias ConstrutoraLcHiert.Properties.Property
@@ -9,6 +10,7 @@ defmodule ConstrutoraLcHiert.Storage.PropertyImage do
 
   schema "property_images" do
     field :image, Uploaders.Image.Type
+    field :featured, :boolean, default: false
 
     belongs_to :property, Property
 
@@ -20,7 +22,7 @@ defmodule ConstrutoraLcHiert.Storage.PropertyImage do
     attrs = change_filename(attrs)
 
     property_image
-    |> cast(attrs, [:property_id])
+    |> cast(attrs, [:property_id, :featured])
     |> cast_attachments(attrs, [:image])
     |> validate_required([:image, :property_id])
   end
@@ -29,6 +31,8 @@ defmodule ConstrutoraLcHiert.Storage.PropertyImage do
     image = %Plug.Upload{image | filename: create_filename(name)}
     %{attrs | "image" => image}
   end
+
+  defp change_filename(attrs), do: attrs
 
   defp create_filename(name) do
     extension = Path.extname(name)
