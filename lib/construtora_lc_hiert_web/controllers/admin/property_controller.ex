@@ -21,10 +21,10 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
 
   def create(conn, %{"property" => params}) do
     case Properties.create_property(params) do
-      {:ok, _} ->
+      {:ok, property} ->
         conn
         |> put_flash(:info, gettext("Successfully created"))
-        |> redirect(to: Routes.admin_property_path(conn, :new))
+        |> redirect(to: Routes.admin_property_image_path(conn, :new, property))
 
       {:error, changeset} ->
         data = Properties.load_amenities(changeset.data)

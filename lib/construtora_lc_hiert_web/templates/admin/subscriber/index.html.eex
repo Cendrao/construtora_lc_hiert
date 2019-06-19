@@ -19,13 +19,17 @@
               <%=
                 link icon_tag(@conn, "active", class: "active"),
                   to: Routes.admin_subscriber_activation_path(@conn, :delete, subscriber.id),
-                  method: :delete
+                  method: :delete,
+                  data: [toggle: "tooltip"],
+                  title: "Clique para desativar inscrito"
               %>
             <% else %>
               <%=
                 link icon_tag(@conn, "inactive", class: "inactive"),
                   to: Routes.admin_subscriber_activation_path(@conn, :create, subscriber.id),
-                  method: :post
+                  method: :post,
+                  data: [toggle: "tooltip"],
+                  title: "Clique para ativar inscrito"
               %>
             <% end %>
           </td>

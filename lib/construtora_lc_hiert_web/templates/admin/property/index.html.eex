@@ -27,12 +27,18 @@
           <td><%= "#{property.city}-#{property.state}" %></td>
           <td><%= number_to_currency(property.price, unit: "R$ ", decimals: 2) %></td>
           <td width="24">
-            <a href="<%= Routes.admin_property_image_path(@conn, :new, property.id) %>">
+            <a
+              href="<%= Routes.admin_property_image_path(@conn, :new, property.id) %>"
+              data-toggle="tooltip"
+              title="Adicionar fotos">
               <%= icon_tag(@conn, "upload") %>
             </a>
           </td>
           <td width="24">
-            <a href="<%= Routes.admin_property_path(@conn, :edit, property.id) %>">
+            <a
+              href="<%= Routes.admin_property_path(@conn, :edit, property.id) %>"
+              data-toggle="tooltip"
+              title="Alterar dados">
               <%= icon_tag(@conn, "edit") %>
             </a>
           </td>
@@ -41,7 +47,11 @@
               link icon_tag(@conn, "delete", class: "delete"),
                 to: Routes.admin_property_path(@conn, :delete, property),
                 method: :delete,
-                data: [confirm: "Tem certeza que quer excluir este imóvel em #{property.address}?"]
+                data: [
+                  confirm: "Tem certeza que quer excluir este imóvel em #{property.address}?",
+                  toggle: "tooltip"
+                ],
+                title: "Excluir imóvel"
             %>
           </td>
         </tr>

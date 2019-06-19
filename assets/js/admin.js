@@ -7,5 +7,6 @@ import "phoenix_html"
 import "jquery"
 import "bootstrap"
 
+import "./admin/scripts"
 import "./admin/masks"
 import "./admin/uppy"

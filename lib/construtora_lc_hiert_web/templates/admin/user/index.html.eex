@@ -19,7 +19,10 @@
           <td><%= user.id %></td>
           <td><%= user.username %></td>
           <td width="24">
-            <a href="<%= Routes.admin_user_path(@conn, :edit, user.id) %>">
+            <a
+              href="<%= Routes.admin_user_path(@conn, :edit, user.id) %>"
+              data-toggle="tooltip"
+              title="Alterar dados">
               <%= icon_tag(@conn, "edit") %>
             </a>
           </td>
@@ -28,7 +31,11 @@
               link icon_tag(@conn, "delete", class: "delete"),
                 to: Routes.admin_user_path(@conn, :delete, user),
                 method: :delete,
-                data: [confirm: "Tem certeza que quer excluir #{user.username}?"]
+                data: [
+                  confirm: "Tem certeza que quer excluir #{user.username}?",
+                  toggle: "tooltip"
+                ],
+                title: "Excluir usuário"
             %>
           </td>
         </tr>

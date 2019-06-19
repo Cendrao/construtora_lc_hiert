@@ -19,7 +19,10 @@
           <td><%= amenity.id %></td>
           <td><%= amenity.name %></td>
           <td width="24">
-            <a href="<%= Routes.admin_amenity_path(@conn, :edit, amenity.id) %>">
+            <a
+              href="<%= Routes.admin_amenity_path(@conn, :edit, amenity.id) %>"
+              data-toggle="tooltip"
+              title="Alterar dados">
               <%= icon_tag(@conn, "edit") %>
             </a>
           </td>
@@ -28,7 +31,11 @@
               link icon_tag(@conn, "delete", class: "delete"),
                 to: Routes.admin_amenity_path(@conn, :delete, amenity),
                 method: :delete,
-                data: [confirm: "Tem certeza que quer excluir #{amenity.name}?"]
+                data: [
+                  confirm: "Tem certeza que quer excluir #{amenity.name}?",
+                  toggle: "tooltip"
+                ],
+                title: "Excluir comodidade"
             %>
           </td>
         </tr>
