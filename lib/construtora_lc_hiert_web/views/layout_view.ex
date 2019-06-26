@@ -29,4 +29,25 @@ defmodule ConstrutoraLcHiertWeb.LayoutView do
       nil
     end
   end
+
+  @doc """
+  Generates path for the JavaScript view we want to use in this combination of
+  controller/action.
+  """
+  def js_view_path(conn) do
+    [controller_name(conn), action_name(conn)]
+    |> Enum.join("/")
+  end
+
+  defp controller_name(conn) do
+    conn
+    |> Phoenix.Controller.controller_module()
+    |> to_string
+    |> String.split(".")
+    |> List.delete_at(0)
+    |> List.delete_at(0)
+    |> Enum.join("/")
+    |> String.replace("Controller", "")
+    |> String.downcase()
+  end
 end

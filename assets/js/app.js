@@ -1,17 +1,19 @@
-// =======================
-// JS for the main website
-// =======================
+// Import CSS
 import css from "../css/app.css"
 
+// Import dependencies
 import "phoenix_html"
 import "jquery"
 import "bootstrap"
 import "bootstrap-select"
 import "slick-carousel"
 
+// Import local files
 import "./page/plugins/meanmenu"
 
 import "./page/main"
 import "./page/ajax-form-animation"
-import "./page/google-map"
 import "./page/form"
+
+// Import specific page views
+import "./views/init"

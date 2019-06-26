@@ -14,7 +14,7 @@
   <%= open_graph(@conn) %>
 </head>
 
-<body>
+<body data-js-view-path="<%= js_view_path(@conn) %>">
   <!--[if lt IE 8]>
     <p class="browserupgrade">Você está usando um navegador muito antigo. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para ter uma melhor experiência.</p>
   <![endif]-->
