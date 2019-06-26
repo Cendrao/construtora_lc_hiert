@@ -24,6 +24,17 @@ To test your email messages on development environment you can visit
 
 It will be automatically deployed to production when pushed to master.
 
+### Create a new user
+
+You have to open the console running:
+```bash
+iex -S mix
+```
+And then create the user:
+```elixir
+ConstrutoraLcHiert.Accounts.create_user(%{username: "admin", password: "admin", master: true})
+```
+
 #### Environment variables
 
 You have to define the following variables **(Production environment only)**:
