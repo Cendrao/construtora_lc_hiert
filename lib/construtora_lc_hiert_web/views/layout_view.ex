@@ -1,6 +1,21 @@
 defmodule ConstrutoraLcHiertWeb.LayoutView do
   use ConstrutoraLcHiertWeb, :view
 
+  alias ConstrutoraLcHiertWeb.PageTitle
+  alias ConstrutoraLcHiertWeb.OpenGraph
+
+  def page_title(conn) do
+    view = view_module(conn)
+    action = action_name(conn)
+    PageTitle.for({view, action, conn.assigns})
+  end
+
+  def open_graph(conn) do
+    view = view_module(conn)
+    action = action_name(conn)
+    OpenGraph.for({view, action, conn})
+  end
+
   def current_user(conn) do
     Guardian.Plug.current_resource(conn)
   end
