@@ -210,3 +210,58 @@ a:hover .icon.delete {
 .dropdown .delete:hover {
   background-color: #ffcdd2;
 }
+
+/*
+ * Filter buttons
+ */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 5px
+}
+
+.filters .filter-box.head {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  font-size: 16px;
+  margin: 2px 0 8px;
+}
+
+.filters .filter-box.title {
+  padding: 4px 6px;
+  border: 1px solid #eee;
+  border-bottom: 0;
+  background-color: #f5f5f5;
+}
+
+.filters .filter-box.body {
+  border: 1px solid #eee;
+  padding: 6px;
+}
+
+.filters .filter-box.clear {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  justify-self: end;
+  margin-top: 5px;
+}
+
+.filters .btn {
+  margin-bottom: 5px;
+}
+
+.filters .btn:focus {
+  outline: 0;
+}
+
+.filters .btn.remove {
+  background: none;
+  border: 0;
+  color: #d9534f;
+}
+
+.filters .btn.remove:hover {
+  color: #c9302c;
+}

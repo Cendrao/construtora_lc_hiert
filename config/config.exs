@@ -15,7 +15,12 @@ config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Phs4CfFrmU3T57karO65nyLDgMsUyiADVJwuOqTVZMs/kQFv8WtcIh6dO+eeRu4P",
   render_errors: [view: ConstrutoraLcHiertWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ConstrutoraLcHiert.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: ConstrutoraLcHiert.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "RchJuV3VXV3kL+aC461AX8XRdvHEB9Hsc4QgBYzKtWs4E4s3HKGjdMOgm/hDjh/+"]
+
+# Enable writing LiveView templates
+config :phoenix,
+  template_engines: [leex: Phoenix.LiveView.Engine]
 
 # Configures Elixir's Logger
 config :logger, :console,

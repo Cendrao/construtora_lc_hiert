@@ -1,0 +1,47 @@
+<div class="filters">
+  <div class="filter-box head">Filtrar imóveis</div>
+
+  <div class="filter-box title">Tipo</div>
+  <div class="filter-box title">Cidade</div>
+  <div class="filter-box title">Bairro</div>
+
+  <div class="filter-box body">
+    <button phx-click="filter_type" phx-value="house"
+      class="btn <%= filter_button_class(@filters, "type", "house") %>">
+      Casas
+    </button>
+    <button phx-click="filter_type" phx-value="apartment"
+      class="btn <%= filter_button_class(@filters, "type", "apartment") %>">
+      Apartamentos
+    </button>
+    <button phx-click="filter_type" phx-value="lot"
+      class="btn <%= filter_button_class(@filters, "type", "lot") %>">
+      Lotes
+    </button>
+  </div>
+
+  <div class="filter-box body">
+    <%= for city <- @cities do %>
+      <button phx-click="filter_cities" phx-value="<%= city %>"
+        class="btn <%= filter_button_class(@filters, "city", city) %>">
+        <%= city %>
+      </button>
+    <% end %>
+  </div>
+
+  <div class="filter-box body">
+    <%= for neighborhood <- @neighborhoods do %>
+      <button phx-click="filter_neighborhoods" phx-value="<%= neighborhood %>"
+        class="btn <%= filter_button_class(@filters, "neighborhood", neighborhood) %>">
+        <%= neighborhood %>
+      </button>
+    <% end %>
+  </div>
+
+  <div class="filter-box clear">
+    <button class="btn remove" phx-click="remove_filters">
+      <%= icon_tag(@socket, "inactive") %>
+      Remover filtros
+    </button>
+  </div>
+</div>

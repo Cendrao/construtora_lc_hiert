@@ -14,7 +14,9 @@ config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
   url: [scheme: "https", host: "construtoralchiert.com.br", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  live_view: [signing_salt: System.get_env("LIVE_VIEW_SECRET_KEY")],
+  check_origin: ["//construtoralchiert.com.br", "//qa-construtora-lc-hiert.herokuapp.com"]
 
 # Configure your database
 config :construtora_lc_hiert, ConstrutoraLcHiert.Repo,

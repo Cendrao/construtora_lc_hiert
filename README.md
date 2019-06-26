@@ -1,6 +1,7 @@
 # Construtora LC Hiert
 
-|> [construtoralchiert.com.br](https://construtoralchiert.com.br)
+* qa |> [qa-construtora-lc-hiert.herokuapp.com](https://qa-construtora-lc-hiert.herokuapp.com)
+* prod |> [construtoralchiert.com.br](https://construtoralchiert.com.br)
 
 ## Installation
 
@@ -42,6 +43,7 @@ You have to define the following variables **(Production environment only)**:
 - Secret Keys (you can use `mix phx.gen.secret` to generate it):
   - SECRET_KEY_BASE
   - GUARDIAN_SECRET_KEY
+  - LIVE_VIEW_SECRET_KEY
 
 - Email Services Keys:
   - SENDGRID_API_KEY

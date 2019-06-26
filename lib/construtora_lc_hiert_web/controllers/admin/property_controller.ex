@@ -1,6 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   use ConstrutoraLcHiertWeb, :controller
 
+  alias Phoenix.LiveView
+  alias ConstrutoraLcHiertWeb.Live.Admin.PropertyListView
   alias ConstrutoraLcHiert.Properties.Property
   alias ConstrutoraLcHiert.Properties
   alias ConstrutoraLcHiert.Amenities
@@ -8,9 +10,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   plug :load_amenities when action in [:new, :create, :edit, :update]
 
   def index(conn, _params) do
-    properties = Properties.list_properties()
-
-    render(conn, "index.html", %{properties: properties})
+    LiveView.Controller.live_render(conn, PropertyListView, session: %{})
   end
 
   def new(conn, _params) do

@@ -1,6 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :construtora_lc_hiert
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", ConstrutoraLcHiertWeb.UserSocket,
     websocket: [timeout: 45_000],
     longpoll: false

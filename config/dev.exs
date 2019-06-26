@@ -52,7 +52,8 @@ config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/construtora_lc_hiert_web/views/.*(ex)$},
-      ~r{lib/construtora_lc_hiert_web/templates/.*(eex)$}
+      ~r{lib/construtora_lc_hiert_web/templates/.*(eex)$},
+      ~r{lib/construtora_lc_hiert_web/live/.*(ex)$}
     ]
   ]
 

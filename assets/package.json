@@ -16,7 +16,8 @@
     "phoenix_html": "file:../deps/phoenix_html",
     "popper.js": "^1.14.7",
     "slick-carousel": "^1.8.1",
-    "typeface-montserrat": "0.0.54"
+    "typeface-montserrat": "0.0.54",
+    "phoenix_live_view": "file:../deps/phoenix_live_view"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
