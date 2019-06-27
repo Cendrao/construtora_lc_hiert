@@ -269,6 +269,61 @@ defmodule ConstrutoraLcHiert.PropertiesTest do
     refute Properties.get_property!(property.id).deleted_at == nil
   end
 
+  describe "count_properties/1" do
+    test "returns the total number of properties" do
+      property_fixture(%{"complement" => "AP 1"})
+      property_fixture(%{"complement" => "AP 2"})
+
+      assert Properties.count_properties(:apartment) == 2
+    end
+  end
+
+  describe "get_cheapest_property/1" do
+    test "returns the property with the lowest price" do
+      first_property = property_fixture(%{"complement" => "AP 1", "price" => "100.000"})
+      _second_property = property_fixture(%{"complement" => "AP 2", "price" => "1.000.000"})
+
+      cheapest_property =
+        :apartment
+        |> Properties.get_cheapest_property()
+        |> Repo.preload([:amenities, :images])
+
+      assert cheapest_property == first_property
+    end
+  end
+
+  describe "get_most_expensive_property/1" do
+    test "returns the property with the highest price" do
+      _first_property = property_fixture(%{"complement" => "AP 1", "price" => "100.000"})
+      second_property = property_fixture(%{"complement" => "AP 2", "price" => "1.000.000"})
+
+      most_expensive_property =
+        :apartment
+        |> Properties.get_most_expensive_property()
+        |> Repo.preload([:amenities, :images])
+
+      assert most_expensive_property == second_property
+    end
+  end
+
+  describe "properties_avg_price/1" do
+    test "returns the average price of all properties" do
+      property_fixture(%{"complement" => "AP 1", "price" => "100.000"})
+      property_fixture(%{"complement" => "AP 2", "price" => "200.000"})
+
+      assert Properties.properties_avg_price(:apartment) == 150_000
+    end
+  end
+
+  describe "properties_price_sum/0" do
+    test "returns the sum of the price of all properties" do
+      property_fixture(%{"complement" => "AP 1", "price" => "100.000"})
+      property_fixture(%{"complement" => "AP 2", "price" => "200.000"})
+
+      assert Properties.properties_price_sum() == 300_000
+    end
+  end
+
   describe "load_amenities/1" do
     test "loads the amenities of property" do
       property = property_fixture()

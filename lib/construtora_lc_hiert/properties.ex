@@ -11,33 +11,12 @@ defmodule ConstrutoraLcHiert.Properties do
   alias ConstrutoraLcHiert.Paginator
   alias ConstrutoraLcHiert.Filters
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking property changes.
-
-  ## Examples
-
-      iex> change_property(property)
-      %Ecto.Changeset{source: %Property{}}
-
-  """
   def change_property(%Property{} = property) do
     property
     |> load_amenities()
     |> Property.changeset(%{})
   end
 
-  @doc """
-  Creates a property.
-
-  ## Examples
-
-      iex> create_property(%{address: "Rua X", address_number: 6, city: "Toledo", ...}, [%Amenity{}])
-      {:ok, %Property{}}
-
-      iex> create_property(%{address: nil, address_number: nil, city: nil, ...}, [%Amenity{}])
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_property(attrs) do
     %Property{}
     |> Property.changeset(attrs)
@@ -45,18 +24,6 @@ defmodule ConstrutoraLcHiert.Properties do
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a property.
-
-  ## Examples
-
-      iex> update_property(property, %{address: "Rua dos bobos"})
-      {:ok, %Property{}}
-
-      iex> update_property(property, %{address: nil})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def update_property(%Property{} = property, attrs) do
     property
     |> Property.changeset(attrs)
@@ -64,20 +31,6 @@ defmodule ConstrutoraLcHiert.Properties do
     |> Repo.update()
   end
 
-  @doc """
-  Gets a single property.
-
-  Raises `Ecto.NoResultsError` if the Property does not exist.
-
-  ## Examples
-
-      iex> get_property_by!(slug: "casa-rua-harmonia-942-sao-paulo-sp")
-      %Property{}
-
-      iex> get_property!(id)
-      %Property{}
-
-  """
   def get_property_by!(attrs) do
     Property
     |> Repo.get_by!(attrs)
@@ -93,16 +46,7 @@ defmodule ConstrutoraLcHiert.Properties do
   end
 
   @doc """
-  List all the data available in the database
-
-  ## Examples
-
-      iex> list_cities()
-      ["Toledo", "Umuarama"]
-
-      iex> list_neighborhoods()
-      ["Vila Industrial", "Jardim dos Príncipes", "Zona 2"]
-
+  List all the data available in the database (grouped)
   """
   def list_cities() do
     Property
@@ -189,45 +133,54 @@ defmodule ConstrutoraLcHiert.Properties do
     |> Repo.all()
   end
 
-  @doc """
-  Soft deletes a Property.
-
-  ## Examples
-
-      iex> soft_delete_property(property)
-      {:ok, %Property{}}
-
-  """
   def soft_delete_property(%Property{} = property) do
     property
     |> Property.changeset(%{deleted_at: NaiveDateTime.utc_now()})
     |> Repo.update()
   end
 
-  @doc """
-  Preloads the associations of a given property.
+  def count_properties(type) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> where([p], p.type == ^type)
+    |> select([p], count(p.id))
+    |> Repo.one()
+  end
 
-  ## Examples
+  def get_cheapest_property(type) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> where([p], p.type == ^type)
+    |> first(:price)
+    |> Repo.one()
+  end
 
-      iex> load_amenities(property)
-      %Property{..., amenities: [], ...}
+  def get_most_expensive_property(type) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> where([p], p.type == ^type)
+    |> last(:price)
+    |> Repo.one()
+  end
 
-      iex> load_images(property)
-      %Property{..., images: [], ...}
+  def properties_avg_price(type) do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> where([p], p.type == ^type)
+    |> select([p], avg(p.price))
+    |> Repo.one()
+  end
 
-  """
+  def properties_price_sum do
+    Property
+    |> where([p], is_nil(p.deleted_at))
+    |> select([p], sum(p.price))
+    |> Repo.one()
+  end
+
   def load_amenities(property), do: Repo.preload(property, :amenities)
   def load_images(property), do: Repo.preload(property, :images)
 
-  @doc """
-  Translate the type to a human readable name.
-
-  ## Examples
-
-      iex> translate_type(:apartment)
-      "Apartment"
-
-  """
   def translate_type(:apartment), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "Apartment")
   def translate_type(:house), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "House")
   def translate_type(:lot), do: Gettext.gettext(ConstrutoraLcHiertWeb.Gettext, "Lot")

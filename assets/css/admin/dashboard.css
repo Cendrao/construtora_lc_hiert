@@ -82,21 +82,31 @@ body {
 }
 
 /*
- * Placeholder dashboard ideas
+ * Dashboard
  */
 .placeholders {
-  margin-bottom: 30px;
   text-align: center;
 }
+
+.placeholders .number {
+  font-size: 60px;
+}
+
+.placeholder .icon {
+  height: 46px;
+  width: inherit;
+}
+
 .placeholders h4 {
   margin-bottom: 0;
 }
-.placeholder {
-  margin-bottom: 20px;
+
+.placeholders h4 a {
+  color: inherit;
 }
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
+
+.placeholder {
+  margin: 20px 0;
 }
 
 /*
