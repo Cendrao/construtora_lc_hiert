@@ -40,13 +40,14 @@ defmodule ConstrutoraLcHiert.PaginatorTest do
 
     paginator = Property |> preload([:images, :amenities]) |> Paginator.paginate(1)
 
-    assert paginator == %{
-             current_page: 1,
-             results_per_page: 12,
-             total_pages: 1,
-             total_results: 10,
-             list: properties
-           }
+    assert paginator.current_page == 1
+    assert paginator.results_per_page == 12
+    assert paginator.total_pages == 1
+    assert paginator.total_results == 10
+
+    Enum.each(properties, fn property ->
+      assert property in paginator.list
+    end)
   end
 
   defp create_properties(quantity) do
