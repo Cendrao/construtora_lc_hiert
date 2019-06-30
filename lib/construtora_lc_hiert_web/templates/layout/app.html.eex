@@ -2,6 +2,15 @@
 <html class="no-js" lang="pt-BR">
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16760908-7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-16760908-7');
+  </script>
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="Construtora LC Hiert - Venda de imóveis: casas, apartamentos e lotes em Toledo - PR.">
