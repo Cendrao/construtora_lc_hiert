@@ -1,12 +1,15 @@
-<div class="flat-item">
+<div class="flat-item" itemscope itemtype="http://schema.org/IndividualProduct">
   <div class="flat-item-image">
     <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
       <img
-        src="<%= image_url(@property.images, %{width: 360, height: 289}) %>"
+        itemprop="image"
+        src="<%= image_url(@property.images, %{width: 760, height: 389}) %>"
         alt="<%= description(@property) %>">
     </a>
     <div class="flat-link">
-      <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">Mais Detalhes</a>
+      <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
+        Mais Detalhes
+      </a>
     </div>
     <ul class="flat-desc">
       <li>
@@ -24,19 +27,19 @@
     </ul>
   </div>
   <div class="flat-item-info">
-    <div class="flat-title-price">
+    <div class="flat-title-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <h5>
         <a href="<%= Routes.property_path(@conn, :show, @property.slug) %>">
           <%= @property.neighborhood %>
         </a>
       </h5>
-      <span class="price">
+      <span class="price" itemprop="price">
         <%= number_to_currency(@property.price, unit: "R$ ", decimals: 2) %>
       </span>
     </div>
     <p>
       <%= icon_tag(@conn, "location") %>
-      <%= full_address(@property) %>
+      <span itemprop="name"><%= full_address(@property) %></span>
     </p>
   </div>
 </div>

@@ -1,3 +1,18 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "IndividualProduct",
+  "name": "<%= translate_type(@property.type) %>",
+  "description": "<%= full_address(@property) %>",
+  "image": "<%= image_url(@property.images, %{width: 760, height: 389}) %>",
+  "offers": {
+    "@type": "Offer",
+    "price": "<%= String.replace(@property.price, ".", "") %>",
+    "priceCurrency": "BRL",
+  }
+}
+</script>
+
 <section id="page-content" class="page-wrapper">
   <div class="properties-details-area pt-115 pb-60">
     <div class="container">

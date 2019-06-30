@@ -23,6 +23,28 @@
   <%= open_graph(@conn) %>
 </head>
 
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "image": "<%= Routes.static_path(@conn, "/images/logo.png") %>",
+  "telephone": "(45) 3055-4488",
+  "email": "construcao.lc@gmail.com",
+  "url": "https://www.construtoralchiert.com.br",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Carlos Barbosa, 1640",
+    "addressLocality": "Toledo",
+    "addressRegion": "PR"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://construtoralchiert.com/imoveis/busca?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <body data-js-view-path="<%= js_view_path(@conn) %>">
   <!--[if lt IE 8]>
     <p class="browserupgrade">Você está usando um navegador muito antigo. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para ter uma melhor experiência.</p>
