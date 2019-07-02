@@ -1,12 +1,13 @@
 defmodule ConstrutoraLcHiertWeb.SessionController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Accounts
-  alias ConstrutoraLcHiert.Accounts.User
   alias ConstrutoraLcHiert.Authentication.{Guardian, ErrorHandler}
+  alias ConstrutoraLcHiert.Account.Users.User
+  alias ConstrutoraLcHiert.Account.Users
+  alias ConstrutoraLcHiert.Account
 
   def new(conn, _) do
-    changeset = Accounts.change_user(%User{})
+    changeset = Users.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)
 
     if maybe_user do
@@ -22,7 +23,7 @@ defmodule ConstrutoraLcHiertWeb.SessionController do
 
   def create(conn, %{"user" => %{"username" => username, "password" => password}}) do
     username
-    |> Accounts.verify_user_credentials(password)
+    |> Account.verify_user_credentials(password)
     |> login_reply(conn)
   end
 

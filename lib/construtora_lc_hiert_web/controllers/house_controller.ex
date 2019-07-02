@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.HouseController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def index(conn, params) do
     params = %{"type" => :house, "page" => params["page"]}

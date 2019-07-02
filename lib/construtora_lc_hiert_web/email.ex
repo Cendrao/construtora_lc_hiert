@@ -1,4 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Email do
+  @moduledoc """
+  Provides all the emails available in the app.
+  """
+
   use Bamboo.Phoenix, view: ConstrutoraLcHiertWeb.EmailView
 
   def contact_message(email, name, message) do

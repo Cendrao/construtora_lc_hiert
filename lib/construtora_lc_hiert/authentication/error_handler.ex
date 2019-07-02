@@ -1,4 +1,8 @@
 defmodule ConstrutoraLcHiert.Authentication.ErrorHandler do
+  @moduledoc """
+  The error handler for authentication.
+  """
+
   import Plug.Conn
 
   use Phoenix.Controller

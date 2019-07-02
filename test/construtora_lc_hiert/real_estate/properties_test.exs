@@ -1,10 +1,10 @@
-defmodule ConstrutoraLcHiert.PropertiesTest do
+defmodule ConstrutoraLcHiert.RealEstate.PropertiesTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:property, :amenity]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
 
   test "change_property/1 returns a property changeset" do
     property = property_fixture()

@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.Admin.SubscriberController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Subscribers
+  alias ConstrutoraLcHiert.Customer.Subscribers
 
   def index(conn, _params) do
     subscribers = Subscribers.list_subscribers()

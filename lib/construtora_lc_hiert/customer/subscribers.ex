@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiert.Subscribers do
+defmodule ConstrutoraLcHiert.Customer.Subscribers do
   @moduledoc """
   The Subscribers context.
   """
@@ -6,11 +6,11 @@ defmodule ConstrutoraLcHiert.Subscribers do
   import Ecto.Query, warn: false
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Subscribers.Subscriber
+  alias ConstrutoraLcHiert.Customer.Subscribers.Subscriber
 
   def create_subscriber(attrs \\ %{}) do
     %Subscriber{}
-    |> Subscriber.changeset(attrs)
+    |> change_subscriber(attrs)
     |> Repo.insert()
   end
 
@@ -24,16 +24,23 @@ defmodule ConstrutoraLcHiert.Subscribers do
 
   def activate_subscriber(%Subscriber{} = subscriber) do
     subscriber
-    |> Subscriber.changeset(%{status: "active"})
+    |> change_subscriber(%{status: "active"})
     |> Repo.update()
   end
 
   def deactivate_subscriber(%Subscriber{} = subscriber) do
     subscriber
-    |> Subscriber.changeset(%{status: "inactive"})
+    |> change_subscriber(%{status: "inactive"})
     |> Repo.update()
   end
 
+  def change_subscriber(%Subscriber{} = subscriber, attrs \\ %{}) do
+    Subscriber.changeset(subscriber, attrs)
+  end
+
+  @doc """
+  Count all the subscribers that are active.
+  """
   def count_subscribers do
     Subscriber
     |> where([p], p.status == "active")

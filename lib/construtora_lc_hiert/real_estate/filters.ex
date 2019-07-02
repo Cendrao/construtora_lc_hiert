@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiert.Filters do
+defmodule ConstrutoraLcHiert.RealEstate.Filters do
   @moduledoc """
   Filters to apply in a list of properties
   """

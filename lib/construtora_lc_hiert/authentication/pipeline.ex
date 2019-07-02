@@ -1,4 +1,8 @@
 defmodule ConstrutoraLcHiert.Authentication.Pipeline do
+  @moduledoc """
+  The authentication pipeline.
+  """
+
   use Guardian.Plug.Pipeline,
     otp_app: :construtora_lc_hiert,
     error_handler: ConstrutoraLcHiert.Authentication.ErrorHandler,

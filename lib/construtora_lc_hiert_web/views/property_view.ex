@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.PropertyView do
   use ConstrutoraLcHiertWeb, :view
 
-  alias ConstrutoraLcHiert.Properties
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
   alias ConstrutoraLcHiert.Storage.Uploaders.Image
 
   @doc """

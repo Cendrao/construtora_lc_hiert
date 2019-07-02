@@ -2,7 +2,7 @@ defmodule ConstrutoraLcHiert.PaginatorTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:property]
 
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
   alias ConstrutoraLcHiert.Paginator
 
   describe "when the page is nil" do

@@ -1,7 +1,7 @@
-defmodule ConstrutoraLcHiert.EctoTypes.EctoPriceTest do
+defmodule ConstrutoraLcHiert.RealEstate.Properties.EctoPriceTest do
   use ConstrutoraLcHiert.DataCase
 
-  alias ConstrutoraLcHiert.EctoTypes.EctoPrice
+  alias ConstrutoraLcHiert.RealEstate.Properties.EctoPrice
 
   describe "cast/1" do
     test "returns a string when given string" do

@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.Helpers.PaginatorHelperTest do
 
   import Phoenix.HTML, only: [safe_to_string: 1]
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
   alias ConstrutoraLcHiertWeb.Helpers.PaginatorHelper
 
   describe "render/3" do

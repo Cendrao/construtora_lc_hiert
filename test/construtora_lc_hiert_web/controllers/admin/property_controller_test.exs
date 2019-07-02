@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
 
   describe "GET /admin/imoveis" do
     @tag :sign_in_user

@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Admin.AmenityController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Amenities.Amenity
-  alias ConstrutoraLcHiert.Amenities
+  alias ConstrutoraLcHiert.RealEstate.Amenities.Amenity
+  alias ConstrutoraLcHiert.RealEstate.Amenities
 
   def index(conn, _params) do
     amenities = Amenities.list_amenities()

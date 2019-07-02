@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.AmenityControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:amenity]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Amenities.Amenity
+  alias ConstrutoraLcHiert.RealEstate.Amenities.Amenity
 
   describe "GET /admin/comodidades" do
     @tag :sign_in_user

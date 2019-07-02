@@ -2,7 +2,7 @@ defmodule ConstrutoraLcHiertWeb.Live.Admin.PropertyListView do
   use Phoenix.LiveView
 
   alias ConstrutoraLcHiertWeb.Admin.PropertyView
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def render(assigns), do: PropertyView.render("index.html", assigns)
 

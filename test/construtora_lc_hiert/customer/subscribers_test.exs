@@ -1,9 +1,9 @@
-defmodule ConstrutoraLcHiert.SubscribersTest do
+defmodule ConstrutoraLcHiert.Customer.SubscribersTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:subscriber]
 
-  alias ConstrutoraLcHiert.Subscribers
-  alias ConstrutoraLcHiert.Subscribers.Subscriber
+  alias ConstrutoraLcHiert.Customer.Subscribers
+  alias ConstrutoraLcHiert.Customer.Subscribers.Subscriber
 
   describe "create_subscriber/1" do
     test "with valid data creates a subscriber" do
@@ -42,5 +42,13 @@ defmodule ConstrutoraLcHiert.SubscribersTest do
     subscriber = subscriber_fixture(status: "active")
 
     assert {:ok, %Subscriber{status: "inactive"}} = Subscribers.deactivate_subscriber(subscriber)
+  end
+
+  describe "change_subscriber/1" do
+    test "returns a subscriber changeset" do
+      subscriber = subscriber_fixture()
+
+      assert %Ecto.Changeset{} = Subscribers.change_subscriber(subscriber)
+    end
   end
 end

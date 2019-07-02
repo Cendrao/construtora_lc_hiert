@@ -1,13 +1,21 @@
-defmodule ConstrutoraLcHiert.Properties.Property do
+defmodule ConstrutoraLcHiert.RealEstate.Properties.Property do
+  @moduledoc """
+  The property schema.
+  """
+
   use Ecto.Schema
+
   import Ecto.Changeset
   import EctoEnum
 
-  alias ConstrutoraLcHiert.Properties.PropertySlug
-  alias ConstrutoraLcHiert.EctoTypes.EctoPrice
-  alias ConstrutoraLcHiert.PropertiesAmenities
-  alias ConstrutoraLcHiert.Amenities.Amenity
-  alias ConstrutoraLcHiert.Storage.PropertyImage
+  alias ConstrutoraLcHiert.RealEstate.Amenities.Amenity
+
+  alias ConstrutoraLcHiert.RealEstate.Properties.{
+    PropertySlug,
+    EctoPrice,
+    PropertiesAmenities,
+    PropertyImage
+  }
 
   @optional_params [:slug, :complement, :description, :status, :deleted_at]
 
@@ -54,7 +62,6 @@ defmodule ConstrutoraLcHiert.Properties.Property do
     timestamps()
   end
 
-  @doc false
   def changeset(property, attrs \\ %{}) do
     property
     |> cast(attrs, @required_params ++ @optional_params)

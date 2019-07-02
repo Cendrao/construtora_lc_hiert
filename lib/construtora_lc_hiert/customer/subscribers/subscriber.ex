@@ -1,4 +1,8 @@
-defmodule ConstrutoraLcHiert.Subscribers.Subscriber do
+defmodule ConstrutoraLcHiert.Customer.Subscribers.Subscriber do
+  @moduledoc """
+  The subscribers schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

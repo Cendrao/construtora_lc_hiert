@@ -1,12 +1,12 @@
 defmodule ConstrutoraLcHiertWeb.Helpers.CheckboxHelperTest do
   use ConstrutoraLcHiertWeb.ConnCase, async: true
 
-  alias ConstrutoraLcHiert.Properties
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
   alias ConstrutoraLcHiertWeb.Helpers.CheckboxHelper
 
   test "multiselect_checkboxes/4" do
-    changeset = Properties.change_property(%Property{})
+    changeset = %Property{} |> Properties.load_amenities() |> Properties.change_property()
 
     form = Phoenix.HTML.FormData.to_form(changeset, [])
 

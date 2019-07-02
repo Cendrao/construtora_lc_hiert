@@ -16,7 +16,7 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
   use ExUnit.CaseTemplate
 
   alias ConstrutoraLcHiert.Authentication.Guardian
-  alias ConstrutoraLcHiert.Accounts
+  alias ConstrutoraLcHiert.Account.Users
 
   using do
     quote do
@@ -39,7 +39,7 @@ defmodule ConstrutoraLcHiertWeb.ConnCase do
     on_exit(fn -> File.rm_rf("uploads/test") end)
 
     if tags[:sign_in_user] do
-      {:ok, user} = Accounts.create_user(%{username: "maico", password: "rusbé"})
+      {:ok, user} = Users.create_user(%{username: "maico", password: "rusbé"})
 
       conn = Guardian.Plug.sign_in(Phoenix.ConnTest.build_conn(), user)
 

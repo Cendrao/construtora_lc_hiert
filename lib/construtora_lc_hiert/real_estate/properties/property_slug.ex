@@ -1,11 +1,5 @@
-defmodule ConstrutoraLcHiert.Properties.PropertySlug do
-  use EctoAutoslugField.Slug, to: :slug
-
-  import Ecto.Changeset
-
-  alias ConstrutoraLcHiert.Properties
-
-  @doc """
+defmodule ConstrutoraLcHiert.RealEstate.Properties.PropertySlug do
+  @moduledoc """
   Generates a slug using property attributes.
 
   ## Example
@@ -28,6 +22,13 @@ defmodule ConstrutoraLcHiert.Properties.PropertySlug do
       "apartamento-rua-carlos-barbosa-1640-vila-industrial-toledo-pr"
 
   """
+
+  use EctoAutoslugField.Slug, to: :slug
+
+  import Ecto.Changeset
+
+  alias ConstrutoraLcHiert.RealEstate.Properties
+
   def get_sources(changeset, _opts) do
     base_fields = [:address, :address_number, :complement, :neighborhood, :city, :state]
 

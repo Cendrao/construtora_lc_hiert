@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
 
   alias ConstrutoraLcHiert.Mailer
   alias ConstrutoraLcHiertWeb.Email
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def index(conn, _params) do
     footer_properties = Properties.list_properties(%{}, 3)

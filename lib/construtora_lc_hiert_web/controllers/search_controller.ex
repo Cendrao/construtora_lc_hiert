@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.SearchController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def index(conn, params) do
     paged_properties = Properties.list_paged_properties(params)

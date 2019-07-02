@@ -1,7 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.RealEstate.PropertyImages
   alias ConstrutoraLcHiert.Storage
 
   def new(conn, %{"property_id" => id}) do
@@ -11,7 +12,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageController do
   end
 
   def create(conn, params) do
-    case Storage.create_property_image(params) do
+    case PropertyImages.create_property_image(params) do
       {:ok, _} ->
         json(conn, %{data: gettext("Successfully created")})
 
@@ -21,7 +22,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageController do
   end
 
   def delete(conn, %{"image" => id, "property_id" => property_id}) do
-    image = Storage.get_property_image_by!(id: id, property_id: property_id)
+    image = PropertyImages.get_property_image_by!(id: id, property_id: property_id)
 
     {:ok, _} = Storage.delete_property_image(image)
 

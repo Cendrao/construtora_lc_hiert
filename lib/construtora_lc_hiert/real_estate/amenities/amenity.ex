@@ -1,9 +1,13 @@
-defmodule ConstrutoraLcHiert.Amenities.Amenity do
+defmodule ConstrutoraLcHiert.RealEstate.Amenities.Amenity do
+  @moduledoc """
+  The amenities schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ConstrutoraLcHiert.PropertiesAmenities
-  alias ConstrutoraLcHiert.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Properties.PropertiesAmenities
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
 
   schema "amenities" do
     field :name, :string
@@ -13,7 +17,6 @@ defmodule ConstrutoraLcHiert.Amenities.Amenity do
     timestamps()
   end
 
-  @doc false
   def changeset(amenity, attrs \\ %{}) do
     amenity
     |> cast(attrs, [:name])

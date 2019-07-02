@@ -1,4 +1,8 @@
 defmodule ConstrutoraLcHiert.Storage.Uploaders.Image do
+  @moduledoc """
+  The image uploader.
+  """
+
   use Arc.Definition
   use Arc.Ecto.Definition
 

@@ -3,7 +3,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.UserControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:user]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Accounts.User
+  alias ConstrutoraLcHiert.Account.Users.User
 
   describe "GET /admin/usuarios" do
     @tag :sign_in_user

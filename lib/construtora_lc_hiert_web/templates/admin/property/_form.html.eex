@@ -125,7 +125,7 @@
         f,
         :amenities,
         Enum.map(@amenities, fn a -> { a.name, a.id } end),
-        selected: Enum.map(@changeset.data.amenities,&(&1.id))
+        selected: Enum.map(@changeset.data.amenities, &(&1.id))
       )
     %>
   </div>

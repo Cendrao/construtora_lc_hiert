@@ -8,10 +8,10 @@ defmodule ConstrutoraLcHiert.Fixtures do
   """
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties
-  alias ConstrutoraLcHiert.Accounts
-  alias ConstrutoraLcHiert.Amenities
-  alias ConstrutoraLcHiert.Subscribers
+  alias ConstrutoraLcHiert.Account.Users
+  alias ConstrutoraLcHiert.Customer.Subscribers
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.RealEstate.Amenities
 
   def property do
     quote do
@@ -85,7 +85,7 @@ defmodule ConstrutoraLcHiert.Fixtures do
         {:ok, user} =
           attrs
           |> Enum.into(@valid_user_attrs)
-          |> Accounts.create_user()
+          |> Users.create_user()
 
         user
       end

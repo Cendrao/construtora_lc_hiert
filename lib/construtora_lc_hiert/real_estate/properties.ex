@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiert.Properties do
+defmodule ConstrutoraLcHiert.RealEstate.Properties do
   @moduledoc """
   The Properties context.
   """
@@ -6,27 +6,20 @@ defmodule ConstrutoraLcHiert.Properties do
   import Ecto.Query, warn: false
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Properties.Property
-  alias ConstrutoraLcHiert.Amenities
   alias ConstrutoraLcHiert.Paginator
-  alias ConstrutoraLcHiert.Filters
-
-  def change_property(%Property{} = property) do
-    property
-    |> load_amenities()
-    |> Property.changeset(%{})
-  end
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.{Amenities, Filters}
 
   def create_property(attrs) do
     %Property{}
-    |> Property.changeset(attrs)
+    |> change_property(attrs)
     |> maybe_put_amenities(attrs)
     |> Repo.insert()
   end
 
   def update_property(%Property{} = property, attrs) do
     property
-    |> Property.changeset(attrs)
+    |> change_property(attrs)
     |> maybe_put_amenities(attrs)
     |> Repo.update()
   end
@@ -135,10 +128,17 @@ defmodule ConstrutoraLcHiert.Properties do
 
   def soft_delete_property(%Property{} = property) do
     property
-    |> Property.changeset(%{deleted_at: NaiveDateTime.utc_now()})
+    |> change_property(%{deleted_at: NaiveDateTime.utc_now()})
     |> Repo.update()
   end
 
+  def change_property(%Property{} = property, attrs \\ %{}) do
+    Property.changeset(property, attrs)
+  end
+
+  @doc """
+  Count the active properties given its type.
+  """
   def count_properties(type) do
     Property
     |> where([p], is_nil(p.deleted_at))

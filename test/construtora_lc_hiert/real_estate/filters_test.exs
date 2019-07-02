@@ -1,9 +1,9 @@
-defmodule ConstrutoraLcHiert.FiltersTest do
+defmodule ConstrutoraLcHiert.RealEstate.FiltersTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:property]
 
-  alias ConstrutoraLcHiert.Properties.Property
-  alias ConstrutoraLcHiert.Filters
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Filters
 
   test "filter results by query" do
     _first_property = property_fixture(%{"address" => "Rua Carlos Barbosa"})

@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.HomeController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def index(conn, _params) do
     featured_properties = Properties.list_properties(%{}, 6)

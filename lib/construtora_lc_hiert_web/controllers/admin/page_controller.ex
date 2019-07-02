@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PageController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
-  alias ConstrutoraLcHiert.Subscribers
+  alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiert.Customer.Subscribers
 
   def index(conn, _params) do
     apartments_count = Properties.count_properties(:apartment)

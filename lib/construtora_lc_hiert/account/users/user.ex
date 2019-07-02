@@ -1,9 +1,10 @@
-defmodule ConstrutoraLcHiert.Accounts.User do
+defmodule ConstrutoraLcHiert.Account.Users.User do
   @moduledoc """
-  The users context.
+  The Users schema.
   """
 
   use Ecto.Schema
+
   import Ecto.Changeset
 
   alias Comeonin.Bcrypt

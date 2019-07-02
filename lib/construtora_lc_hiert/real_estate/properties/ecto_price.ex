@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiert.EctoTypes.EctoPrice do
+defmodule ConstrutoraLcHiert.RealEstate.Properties.EctoPrice do
   @moduledoc """
   An EctoType to deal with Prices.
   """

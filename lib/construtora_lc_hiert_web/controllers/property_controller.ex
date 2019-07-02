@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.PropertyController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Properties
+  alias ConstrutoraLcHiert.RealEstate.Properties
 
   def show(conn, %{"slug" => slug}) do
     property = Properties.get_property_by!(slug: slug)

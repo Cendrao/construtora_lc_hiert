@@ -3,8 +3,8 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Storage
-  alias ConstrutoraLcHiert.Storage.PropertyImage
+  alias ConstrutoraLcHiert.RealEstate.PropertyImages
+  alias ConstrutoraLcHiert.RealEstate.Properties.PropertyImage
 
   describe "GET /admin/imoveis/:id/fotos/new" do
     setup [:create_property]
@@ -49,7 +49,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.ImageControllerTest do
         "property_id" => property.id
       }
 
-      {:ok, property_image} = Storage.create_property_image(params)
+      {:ok, property_image} = PropertyImages.create_property_image(params)
 
       delete(conn, "/admin/imoveis/#{property.id}/fotos", %{image: property_image.id})
 

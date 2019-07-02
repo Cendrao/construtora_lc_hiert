@@ -1,9 +1,13 @@
-defmodule ConstrutoraLcHiert.PropertiesAmenities do
+defmodule ConstrutoraLcHiert.RealEstate.Properties.PropertiesAmenities do
+  @moduledoc """
+  The association between properties and amenities schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ConstrutoraLcHiert.Properties.Property
-  alias ConstrutoraLcHiert.Amenities.Amenity
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
+  alias ConstrutoraLcHiert.RealEstate.Amenities.Amenity
 
   @primary_key false
   schema "properties_amenities" do

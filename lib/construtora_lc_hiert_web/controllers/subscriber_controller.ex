@@ -1,8 +1,8 @@
 defmodule ConstrutoraLcHiertWeb.SubscriberController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Subscribers
-  alias ConstrutoraLcHiert.Subscribers.ErrorHandler
+  alias ConstrutoraLcHiert.Customer.Subscribers
+  alias ConstrutoraLcHiert.Customer.Subscribers.ErrorHandler
 
   def create(conn, params) do
     params

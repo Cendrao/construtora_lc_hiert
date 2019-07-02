@@ -1,13 +1,13 @@
-defmodule ConstrutoraLcHiert.StorageTest do
+defmodule ConstrutoraLcHiert.RealEstate.PropertyImagesTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Storage
-  alias ConstrutoraLcHiert.Storage.PropertyImage
+  alias ConstrutoraLcHiert.RealEstate.PropertyImages
+  alias ConstrutoraLcHiert.RealEstate.Properties.PropertyImage
 
   def property_image_fixture(attrs) do
-    {:ok, property_image} = Storage.create_property_image(attrs)
+    {:ok, property_image} = PropertyImages.create_property_image(attrs)
 
     property_image
   end
@@ -24,7 +24,9 @@ defmodule ConstrutoraLcHiert.StorageTest do
         "property_id" => property.id
       }
 
-      assert {:ok, %PropertyImage{} = property_image} = Storage.create_property_image(attrs)
+      assert {:ok, %PropertyImage{} = property_image} =
+               PropertyImages.create_property_image(attrs)
+
       assert File.exists?("uploads/test/#{property.id}/#{property_image.image.file_name}")
     end
 
@@ -37,7 +39,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
         "property_id" => nil
       }
 
-      assert {:error, %Ecto.Changeset{}} = Storage.create_property_image(attrs)
+      assert {:error, %Ecto.Changeset{}} = PropertyImages.create_property_image(attrs)
     end
   end
 
@@ -56,7 +58,10 @@ defmodule ConstrutoraLcHiert.StorageTest do
       property_image = property_image_fixture(attrs)
 
       assert property_image =
-               Storage.get_property_image_by!(id: property_image.id, property_id: property.id)
+               PropertyImages.get_property_image_by!(
+                 id: property_image.id,
+                 property_id: property.id
+               )
     end
   end
 
@@ -74,9 +79,8 @@ defmodule ConstrutoraLcHiert.StorageTest do
 
       property_image = property_image_fixture(attrs)
 
-      assert {:ok, %PropertyImage{}} = Storage.delete_property_image(property_image)
+      assert {:ok, %PropertyImage{}} = PropertyImages.delete_property_image(property_image)
       assert_raise Ecto.NoResultsError, fn -> Repo.get!(PropertyImage, property_image.id) end
-      refute File.exists?("uploads/test/#{property.id}/#{property_image.image.file_name}")
     end
   end
 
@@ -104,7 +108,7 @@ defmodule ConstrutoraLcHiert.StorageTest do
         })
 
       assert {:ok, %PropertyImage{featured: true}} =
-               Storage.set_featured_property_image(first_property_image)
+               PropertyImages.set_featured_property_image(first_property_image)
 
       assert Repo.get(PropertyImage, second_property_image.id).featured == false
     end

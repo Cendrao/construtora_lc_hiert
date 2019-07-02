@@ -3,8 +3,8 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.Image.FeaturedControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:property]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Storage
-  alias ConstrutoraLcHiert.Storage.PropertyImage
+  alias ConstrutoraLcHiert.RealEstate.PropertyImages
+  alias ConstrutoraLcHiert.RealEstate.Properties.PropertyImage
 
   describe "POST /admin/imoveis/:id/fotos/destaque" do
     setup [:create_property]
@@ -37,7 +37,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.Property.Image.FeaturedControllerTest do
   end
 
   def create_image_fixture(attrs) do
-    {:ok, property_image} = Storage.create_property_image(attrs)
+    {:ok, property_image} = PropertyImages.create_property_image(attrs)
 
     property_image
   end

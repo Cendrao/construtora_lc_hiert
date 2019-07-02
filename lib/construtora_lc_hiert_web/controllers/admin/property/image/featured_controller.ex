@@ -1,12 +1,12 @@
 defmodule ConstrutoraLcHiertWeb.Admin.Property.Image.FeaturedController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Storage
+  alias ConstrutoraLcHiert.RealEstate.PropertyImages
 
   def create(conn, params) do
-    image = Storage.get_property_image_by!(id: params["image"])
+    image = PropertyImages.get_property_image_by!(id: params["image"])
 
-    {:ok, _} = Storage.set_featured_property_image(image)
+    {:ok, _} = PropertyImages.set_featured_property_image(image)
 
     conn
     |> put_flash(:info, gettext("Successfully featured"))

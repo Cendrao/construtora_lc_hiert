@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.Admin.Subscriber.ActivationController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Subscribers
+  alias ConstrutoraLcHiert.Customer.Subscribers
 
   def create(conn, %{"subscriber_id" => id}) do
     subscriber = Subscribers.get_subscriber!(id)

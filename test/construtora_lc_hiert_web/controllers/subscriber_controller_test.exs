@@ -3,7 +3,8 @@ defmodule ConstrutoraLcHiertWeb.SubscriberControllerTest do
   use ConstrutoraLcHiert.Fixtures, [:subscriber]
 
   alias ConstrutoraLcHiert.Repo
-  alias ConstrutoraLcHiert.Subscribers.Subscriber
+  alias ConstrutoraLcHiert.Customer.Subscribers.Subscriber
+  alias ConstrutoraLcHiert.Customer.Subscribers
 
   describe "POST /inscritos" do
     test "creates a new active subscriber", %{conn: conn} do
@@ -25,7 +26,7 @@ defmodule ConstrutoraLcHiertWeb.SubscriberControllerTest do
     end
 
     test "returns the json response when email is already registered", %{conn: conn} do
-      %Subscriber{} |> Subscriber.changeset(@valid_subscriber_attrs) |> Repo.insert!()
+      %Subscriber{} |> Subscribers.change_subscriber(@valid_subscriber_attrs) |> Repo.insert!()
 
       conn = post(conn, "/inscritos", @valid_subscriber_attrs)
 

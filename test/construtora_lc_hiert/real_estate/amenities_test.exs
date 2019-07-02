@@ -1,9 +1,9 @@
-defmodule ConstrutoraLcHiert.AmenitiesTest do
+defmodule ConstrutoraLcHiert.RealEstate.AmenitiesTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:amenity]
 
-  alias ConstrutoraLcHiert.Amenities
-  alias ConstrutoraLcHiert.Amenities.Amenity
+  alias ConstrutoraLcHiert.RealEstate.Amenities
+  alias ConstrutoraLcHiert.RealEstate.Amenities.Amenity
 
   describe "create_amenity/1" do
     test "with valid data creates a amenity" do
@@ -68,6 +68,14 @@ defmodule ConstrutoraLcHiert.AmenitiesTest do
 
     test "returns empty array when given nil" do
       assert Amenities.get_amenities(nil) == []
+    end
+  end
+
+  describe "change_amenity/1" do
+    test "returns an amenity changeset" do
+      amenity = amenity_fixture()
+
+      assert %Ecto.Changeset{} = Amenities.change_amenity(amenity)
     end
   end
 end
