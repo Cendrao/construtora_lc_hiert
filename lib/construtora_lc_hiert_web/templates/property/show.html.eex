@@ -8,7 +8,7 @@
   "offers": {
     "@type": "Offer",
     "price": "<%= String.replace(@property.price, ".", "") %>",
-    "priceCurrency": "BRL",
+    "priceCurrency": "BRL"
   }
 }
 </script>
