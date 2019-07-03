@@ -1,0 +1,9 @@
+Um novo imóvel foi cadastrado no site da Construtora LC Hiert
+
+Tipo: <%= ConstrutoraLcHiertWeb.PropertyView.translate_type(@property.type) %>
+Endereço: <%= ConstrutoraLcHiertWeb.PropertyView.address(@property) %>
+Bairro: <%= @property.neighborhood %>
+Cidade: <%= ConstrutoraLcHiertWeb.PropertyView.city(@property) %>
+
+Veja em nosso site:
+<%= Routes.property_path(ConstrutoraLcHiertWeb.Endpoint, :show, @property.slug)  %>

@@ -3,8 +3,6 @@ defmodule ConstrutoraLcHiert.Account do
   The Account context.
   """
 
-  import Ecto.Query, warn: false
-
   alias Comeonin.Bcrypt
   alias ConstrutoraLcHiert.Account.Users
 

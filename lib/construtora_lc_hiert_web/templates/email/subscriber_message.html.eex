@@ -1,0 +1,24 @@
+<h3>Um novo imóvel foi cadastrado no site da Construtora LC Hiert</h3>
+
+<p>
+  <b>Tipo:</b> <%= ConstrutoraLcHiertWeb.PropertyView.translate_type(@property.type) %>
+</p>
+
+<p>
+  <b>Endereço:</b> <%= ConstrutoraLcHiertWeb.PropertyView.address(@property) %>
+</p>
+
+<p>
+  <b>Bairro:</b> <%= @property.neighborhood %>
+</p>
+
+<p>
+  <b>Cidade:</b> <%= ConstrutoraLcHiertWeb.PropertyView.city(@property) %>
+</p>
+
+<%=
+  render("_button.html",
+    text: "Ver imóvel",
+    link: Routes.property_path(ConstrutoraLcHiertWeb.Endpoint, :show, @property.slug)
+  )
+%>

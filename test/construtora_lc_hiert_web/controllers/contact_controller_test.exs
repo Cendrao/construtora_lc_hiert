@@ -20,7 +20,7 @@ defmodule ConstrutoraLcHiertWeb.ContactControllerTest do
       post(conn, "/contato", @valid_params)
 
       assert_delivered_email(
-        Email.contact_message("guitar@human.com", "Guitarra", "Solta a pisadinha!")
+        Email.contact_message("guitar@human.com", name: "Guitarra", message: "Solta a pisadinha!")
       )
     end
 

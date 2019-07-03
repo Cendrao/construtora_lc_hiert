@@ -22,7 +22,17 @@ defmodule ConstrutoraLcHiert.Customer.SubscribersTest do
   describe "list_subscribers/0" do
     test "returns all subscribers" do
       subscriber = subscriber_fixture()
+
       assert Subscribers.list_subscribers() == [subscriber]
+    end
+  end
+
+  describe "list_subscribers/1" do
+    test "returns all active subscribers" do
+      active_subscriber = subscriber_fixture(%{status: "active", email: "akon@tece.com"})
+      _inactive_subscriber = subscriber_fixture(%{status: "inactive", email: "vitas@aaa.com"})
+
+      assert Subscribers.list_subscribers(:active) == [active_subscriber]
     end
   end
 

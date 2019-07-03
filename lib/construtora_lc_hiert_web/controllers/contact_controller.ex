@@ -1,7 +1,6 @@
 defmodule ConstrutoraLcHiertWeb.ContactController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiert.Mailer
   alias ConstrutoraLcHiertWeb.Email
   alias ConstrutoraLcHiert.RealEstate.Properties
 
@@ -13,8 +12,8 @@ defmodule ConstrutoraLcHiertWeb.ContactController do
 
   def create(conn, %{"email" => email, "name" => name, "message" => message}) do
     email
-    |> Email.contact_message(name, message)
-    |> Mailer.deliver_now()
+    |> Email.contact_message(name: name, message: message)
+    |> Email.deliver_now()
 
     json(conn, %{data: gettext("Message successfully sent")})
   rescue

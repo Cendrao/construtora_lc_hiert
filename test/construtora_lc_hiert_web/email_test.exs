@@ -6,7 +6,8 @@ defmodule ConstrutoraLcHiert.EmailTest do
 
   describe "contact_message" do
     test "assigns the correct data" do
-      email = Email.contact_message("serjao@berrante.com", "Sergio", "Aqui tem coragem!")
+      email =
+        Email.contact_message("serjao@berrante.com", name: "Sergio", message: "Aqui tem coragem!")
 
       assert email.to == "construcao.lc@gmail.com"
       assert email.from == "serjao@berrante.com"
@@ -15,7 +16,8 @@ defmodule ConstrutoraLcHiert.EmailTest do
     end
 
     test "sends the email" do
-      email = Email.contact_message("serjao@berrante.com", "Sergio", "Aqui tem coragem!")
+      email =
+        Email.contact_message("serjao@berrante.com", name: "Sergio", message: "Aqui tem coragem!")
 
       email |> ConstrutoraLcHiert.Mailer.deliver_now()
 

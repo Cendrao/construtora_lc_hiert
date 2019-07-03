@@ -22,6 +22,12 @@ defmodule ConstrutoraLcHiert.Customer.Subscribers do
     Repo.all(Subscriber)
   end
 
+  def list_subscribers(:active) do
+    Subscriber
+    |> where([s], s.status == "active")
+    |> Repo.all()
+  end
+
   def activate_subscriber(%Subscriber{} = subscriber) do
     subscriber
     |> change_subscriber(%{status: "active"})

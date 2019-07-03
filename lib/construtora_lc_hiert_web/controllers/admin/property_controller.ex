@@ -1,16 +1,16 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias Phoenix.LiveView
   alias ConstrutoraLcHiertWeb.Live.Admin.PropertyListView
   alias ConstrutoraLcHiert.RealEstate.Properties.Property
   alias ConstrutoraLcHiert.RealEstate.Properties
   alias ConstrutoraLcHiert.RealEstate.Amenities
+  alias ConstrutoraLcHiert.RealEstate
 
   plug :load_amenities when action in [:new, :create, :edit, :update]
 
   def index(conn, _params) do
-    LiveView.Controller.live_render(conn, PropertyListView, session: %{})
+    Phoenix.LiveView.Controller.live_render(conn, PropertyListView, session: %{})
   end
 
   def new(conn, _params) do
@@ -20,7 +20,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   end
 
   def create(conn, %{"property" => params}) do
-    case Properties.create_property(params) do
+    case RealEstate.register_property(params) do
       {:ok, property} ->
         conn
         |> put_flash(:info, gettext("Successfully created"))

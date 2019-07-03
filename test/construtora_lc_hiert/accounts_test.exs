@@ -1,4 +1,4 @@
-defmodule ConstrutoraLcHiert.Account.AccountTest do
+defmodule ConstrutoraLcHiert.AccountTest do
   use ConstrutoraLcHiert.DataCase
   use ConstrutoraLcHiert.Fixtures, [:user]
 
