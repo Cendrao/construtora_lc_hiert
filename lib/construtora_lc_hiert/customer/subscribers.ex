@@ -18,6 +18,16 @@ defmodule ConstrutoraLcHiert.Customer.Subscribers do
     Repo.get!(Subscriber, id)
   end
 
+  def get_subscriber_by!(attrs) do
+    Repo.get_by!(Subscriber, attrs)
+  end
+
+  def get_subscriber_by_email(nil), do: nil
+
+  def get_subscriber_by_email(email) do
+    Repo.get_by(Subscriber, email: email)
+  end
+
   def list_subscribers do
     Repo.all(Subscriber)
   end

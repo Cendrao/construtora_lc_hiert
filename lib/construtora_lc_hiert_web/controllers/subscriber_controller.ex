@@ -5,9 +5,15 @@ defmodule ConstrutoraLcHiertWeb.SubscriberController do
   alias ConstrutoraLcHiert.Customer.Subscribers.ErrorHandler
 
   def create(conn, params) do
-    params
-    |> Subscribers.create_subscriber()
-    |> reply(conn)
+    subscriber = Subscribers.get_subscriber_by_email(params["email"])
+
+    case subscriber do
+      nil ->
+        params |> Subscribers.create_subscriber() |> reply(conn)
+
+      _ ->
+        subscriber |> Subscribers.activate_subscriber() |> reply(conn)
+    end
   end
 
   defp reply({:ok, _}, conn) do

@@ -42,6 +42,19 @@ defmodule ConstrutoraLcHiert.Customer.SubscribersTest do
     assert Subscribers.get_subscriber!(subscriber.id) == subscriber
   end
 
+  test "get_subscriber_by!/1 returns the subscriber with given attrs" do
+    subscriber = subscriber_fixture()
+
+    assert Subscribers.get_subscriber_by!(id: subscriber.id, email: subscriber.email) ==
+             subscriber
+  end
+
+  test "get_subscriber_by_email/1 returns the subscriber with given email" do
+    subscriber = subscriber_fixture()
+
+    assert Subscribers.get_subscriber_by_email(subscriber.email) == subscriber
+  end
+
   test "activate_subscriber/1 changes the subscriber status to active" do
     subscriber = subscriber_fixture(status: "inactive")
 

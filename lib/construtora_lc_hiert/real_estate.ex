@@ -22,7 +22,7 @@ defmodule ConstrutoraLcHiert.RealEstate do
     |> Subscribers.list_subscribers()
     |> Enum.each(fn subscriber ->
       subscriber.email
-      |> Email.subscriber_message(property: property)
+      |> Email.subscriber_message(property: property, subscriber: subscriber)
       |> Email.deliver_now()
     end)
   end

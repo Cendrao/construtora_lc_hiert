@@ -32,13 +32,14 @@ defmodule ConstrutoraLcHiertWeb.Email do
     |> render(:contact_message)
   end
 
-  def subscriber_message(email, property: property) do
+  def subscriber_message(email, property: property, subscriber: subscriber) do
     base_email()
     |> from(@app_email)
     |> put_header("Reply-To", @app_email)
     |> to(email)
     |> subject("Novo imóvel @ #{@app_name}")
     |> assign(:property, property)
+    |> assign(:subscriber, subscriber)
     |> render(:subscriber_message)
   end
 

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+  <title>Descadastrado - Construtora LC Hiert</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/favicon.ico") %>">
+</head>
+
+<body>
+  <h3>Pronto! Você está descadastrado da nossa lista.</h3>
+
+  <p>
+    Caso queira voltar a receber nossos e-mails, basta entrar em nosso site
+    e se cadastrar novamente :)
+  </p>
+
+  <%= link("Abrir site", to: Routes.home_path(@conn, :index)) %>
+</body>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</html>

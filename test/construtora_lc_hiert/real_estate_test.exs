@@ -21,7 +21,9 @@ defmodule ConstrutoraLcHiert.RealEstateTest do
 
       {:ok, property} = RealEstate.register_property(@valid_property_attrs)
 
-      assert_delivered_email(Email.subscriber_message(subscriber.email, property: property))
+      assert_delivered_email(
+        Email.subscriber_message(subscriber.email, property: property, subscriber: subscriber)
+      )
     end
 
     test "does not send email to inactive subscribers" do

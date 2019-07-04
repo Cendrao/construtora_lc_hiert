@@ -39,7 +39,11 @@ defmodule ConstrutoraLcHiertWeb.Router do
       get "/:slug", PropertyController, :show
     end
 
-    post "/inscritos", SubscriberController, :create
+    scope "/inscritos" do
+      post "/", SubscriberController, :create
+      get "/desinscrever/:id", UnsubscribeController, :index
+      delete "/desinscrever/:id", UnsubscribeController, :delete
+    end
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create

@@ -84,6 +84,18 @@
         padding-top: 10px;
       }
 
+      .unsubscribe {
+        color: #bbb;
+        font-size: 11px;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 0;
+      }
+
+      .unsubscribe a {
+        color: #aaa;
+      }
+
       .footer {
         clear: both;
         margin-top: 10px;

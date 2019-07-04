@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+  <title>Descadastrar - Construtora LC Hiert</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="<%= Routes.static_path(@conn, "/favicon.ico") %>">
+</head>
+
+<body>
+  <h3>Olá, <%= @subscriber.email %>!</h3>
+
+  <p>
+    Tem certeza que deseja se descadastrar da nossa lista de e-mails? :(
+    <br>
+    Se clicar no botão abaixo você não irá mais saber quando tivermos
+    novos imóveis novos à venda.
+  </p>
+
+  <%=
+    link("Descadastrar",
+      to: Routes.unsubscribe_path(@conn, :delete, @subscriber.uuid),
+      method: :delete
+    )
+  %>
+</body>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</html>

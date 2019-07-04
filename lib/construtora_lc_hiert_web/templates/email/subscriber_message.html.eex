@@ -22,3 +22,10 @@
     link: Routes.property_path(ConstrutoraLcHiertWeb.Endpoint, :show, @property.slug)
   )
 %>
+
+<p class="unsubscribe">
+  Caso não queira mais receber nossos e-mails, você pode se
+  <a href="<%= Routes.unsubscribe_path(ConstrutoraLcHiertWeb.Endpoint, :index, @subscriber.uuid) %>">
+    descadastrar da lista.
+  </a>
+</p>
