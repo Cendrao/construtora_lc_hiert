@@ -19,7 +19,6 @@
       <div class="row">
         <div class="col-md-8">
           <div class="pro-details-image mb-60">
-
             <div class="pro-details-big-image">
               <div class="tab-content">
                 <%= for image <- @property.images do %>
@@ -122,6 +121,16 @@
 
           <div class="pro-details-description mb-50">
             <p><%= @property.description %></p>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Gostou deste imóvel?</h5>
+
+              <a href="<%= Routes.contact_path(@conn, :index) %>" class="button-2 btn-hover-2">
+                Entre em contato conosco
+              </a>
+            </div>
           </div>
         </div>
 

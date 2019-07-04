@@ -308,6 +308,20 @@
     border: 1px solid #fff;
     color: #fff;
 }
+.button-2 {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #1f223e;
+    color: #1f223e;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 18px;
+    text-align: center;
+}
+.btn-hover-2:hover {
+    background: #ff7f00;
+    border: 1px solid #ff7f00;
+    color: #fff;
+}
 
 /* -----------------------------------
   About-area
