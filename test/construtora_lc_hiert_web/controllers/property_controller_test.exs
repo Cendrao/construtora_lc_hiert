@@ -8,7 +8,7 @@ defmodule ConstrutoraLcHiertWeb.PropertyControllerTest do
     test "accesses the property show page", %{conn: conn, property: property} do
       conn = get(conn, "/imoveis/#{property.slug}")
 
-      assert String.match?(html_response(conn, 200), ~r/.*Detalhes.*Comodidades.*/s)
+      assert html_response(conn, 200) =~ ~r/Detalhes.*#{property.address}/s
     end
   end
 

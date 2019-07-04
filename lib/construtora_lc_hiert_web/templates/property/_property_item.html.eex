@@ -16,14 +16,20 @@
         <%= icon_tag(@conn, "area") %>
         <span><%= trunc(@property.area) %> m²</span>
       </li>
-      <li>
-        <%= icon_tag(@conn, "bed") %>
-        <span><%= @property.qty_rooms %></span>
-      </li>
-      <li>
-        <%= icon_tag(@conn, "bath") %>
-        <span><%= @property.qty_bathrooms %></span>
-      </li>
+
+      <%= if @property.qty_rooms do %>
+        <li>
+          <%= icon_tag(@conn, "bed") %>
+          <span><%= @property.qty_rooms %></span>
+        </li>
+      <% end %>
+
+      <%= if @property.qty_bathrooms do %>
+        <li>
+          <%= icon_tag(@conn, "bath") %>
+          <span><%= @property.qty_bathrooms %></span>
+        </li>
+      <% end %>
     </ul>
   </div>
   <div class="flat-item-info">

@@ -55,6 +55,22 @@ defmodule ConstrutoraLcHiert.RealEstate.PropertiesTest do
                type: ["can't be blank"]
              } = errors_on(changeset)
     end
+
+    test "when the type is lot with invalid data returns error changeset" do
+      attrs = Map.put(@invalid_property_attrs, "type", :lot)
+
+      assert {:error, %Ecto.Changeset{} = changeset} = Properties.create_property(attrs)
+
+      assert %{
+               address: ["can't be blank"],
+               address_number: ["can't be blank"],
+               area: ["can't be blank"],
+               city: ["can't be blank"],
+               neighborhood: ["can't be blank"],
+               price: ["can't be blank"],
+               state: ["can't be blank"]
+             } = errors_on(changeset)
+    end
   end
 
   describe "update_property/2" do

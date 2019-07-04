@@ -57,22 +57,35 @@
                         <%= icon_tag(@conn, "area") %>
                         <%= trunc(@property.area) %> m²
                       </li>
-                      <li>
-                        <%= icon_tag(@conn, "bed") %>
-                        <%= @property.qty_rooms %> quarto(s)
-                      </li>
-                      <li>
-                        <%= icon_tag(@conn, "bath") %>
-                        <%= @property.qty_bathrooms %> banheiro(s)
-                      </li>
-                      <li>
-                        <%= icon_tag(@conn, "kitchen") %>
-                        <%= @property.qty_kitchens %> cozinha(s)
-                      </li>
-                      <li>
-                        <%= icon_tag(@conn, "car") %>
-                        <%= @property.qty_garages %> garagem(ns)
-                      </li>
+
+                      <%= if @property.qty_rooms do %>
+                        <li>
+                          <%= icon_tag(@conn, "bed") %>
+                          <%= @property.qty_rooms %> quarto(s)
+                        </li>
+                      <% end %>
+
+                      <%= if @property.qty_bathrooms do %>
+                        <li>
+                          <%= icon_tag(@conn, "bath") %>
+                          <%= @property.qty_bathrooms %> banheiro(s)
+                        </li>
+                      <% end %>
+
+                      <%= if @property.qty_kitchens do %>
+                        <li>
+                          <%= icon_tag(@conn, "kitchen") %>
+                          <%= @property.qty_kitchens %> cozinha(s)
+                        </li>
+                      <% end %>
+
+                      <%= if @property.qty_garages do %>
+                        <li>
+                          <%= icon_tag(@conn, "car") %>
+                          <%= @property.qty_garages %> garagem(ns)
+                        </li>
+                      <% end %>
+
                       <li>
                         <%= icon_tag(@conn, "money") %>
                         <%= number_to_currency(@property.price, unit: "R$ ", decimals: 2) %>
@@ -87,20 +100,22 @@
               </div>
 
               <div class="col-sm-6 col-xs-12">
-                <div class="pro-details-amenities">
-                  <h5>Comodidades</h5>
+                <%= if Enum.any?(@property.amenities) do %>
+                  <div class="pro-details-amenities">
+                    <h5>Comodidades</h5>
 
-                  <div class="pro-details-amenities-inner bg-gray">
-                    <ul class="amenities-list">
-                      <%= for amenity <- @property.amenities do %>
-                        <li>
-                          <%= icon_tag(@conn, "check") %>
-                          <%= amenity.name %>
-                        </li>
-                      <% end %>
-                    </ul>
+                    <div class="pro-details-amenities-inner bg-gray">
+                      <ul class="amenities-list">
+                        <%= for amenity <- @property.amenities do %>
+                          <li>
+                            <%= icon_tag(@conn, "check") %>
+                            <%= amenity.name %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </div>
             </div>
           </div>
