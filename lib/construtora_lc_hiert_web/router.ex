@@ -48,6 +48,8 @@ defmodule ConstrutoraLcHiertWeb.Router do
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
+
+    get "/sitemap.xml", SitemapController, :index
   end
 
   scope "/admin", ConstrutoraLcHiertWeb, as: :admin do
