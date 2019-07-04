@@ -10,6 +10,6 @@ defmodule ConstrutoraLcHiertWeb.SitemapController do
 
     conn
     |> put_resp_content_type("text/xml")
-    |> render("index.html", properties: properties)
+    |> render("index.xml", properties: properties)
   end
 end
