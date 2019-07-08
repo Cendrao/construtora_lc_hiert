@@ -37,7 +37,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
 
   def edit(conn, %{"id" => id}) do
     property = Properties.get_property!(id)
-    changeset = Property.changeset(property)
+    changeset = Properties.change_property(property)
 
     render(conn, "edit.html", property: property, changeset: changeset)
   end

@@ -5,7 +5,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyViewTest do
 
   describe "filter_button_class/3" do
     test "display the default button class" do
-      filters = %{"city" => "Umuarama"}
+      filters = %{city: "Umuarama"}
       button_key = "city"
       button_value = "São Paulo"
 
@@ -13,7 +13,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyViewTest do
     end
 
     test "display the active button class" do
-      filters = %{"city" => "Umuarama"}
+      filters = %{city: "Umuarama"}
       button_key = "city"
       button_value = "Umuarama"
 

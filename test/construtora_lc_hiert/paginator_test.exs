@@ -52,7 +52,7 @@ defmodule ConstrutoraLcHiert.PaginatorTest do
 
   defp create_properties(quantity) do
     for n <- 1..quantity do
-      property_fixture(%{"address_number" => Integer.to_string(n)})
+      property_fixture(%{address_number: to_string(n)})
     end
   end
 end

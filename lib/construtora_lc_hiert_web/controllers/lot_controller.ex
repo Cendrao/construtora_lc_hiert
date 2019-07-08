@@ -4,8 +4,8 @@ defmodule ConstrutoraLcHiertWeb.LotController do
   alias ConstrutoraLcHiert.RealEstate.Properties
 
   def index(conn, params) do
-    params = %{"type" => :lot, "page" => params["page"]}
-    paged_properties = Properties.list_paged_properties(params)
+    permitted_params = %{type: :lot, page: params["page"]}
+    paged_properties = Properties.list_paged_properties(permitted_params)
     footer_properties = Enum.take(paged_properties.list, 3)
 
     conn

@@ -66,13 +66,13 @@ defmodule ConstrutoraLcHiert.RealEstate.Properties do
 
   ## Examples
 
-      iex> list_paged_properties(%{"page" => 1})
+      iex> list_paged_properties(%{page: 1})
       { list: [%Property{id: 1}, %Property{id: 2}, %Property{id: 3}], page: 1, ... }
 
-      iex> list_paged_properties(%{"page" => 2})
+      iex> list_paged_properties(%{page: 2})
       { list: [%Property{id: 4}, %Property{id: 5}, %Property{id: 6}], page: 2, ... }
 
-      iex> list_paged_properties(%{"type" => "apartment", "page" => 1})
+      iex> list_paged_properties(%{type: :apartment, page: 1})
       { list: [%Property{id: 1}, %Property{id: 3}, %Property{id: 6}], page: 1, ... }
 
 
@@ -84,7 +84,7 @@ defmodule ConstrutoraLcHiert.RealEstate.Properties do
       iex> list_properties()
       [%Property{}, %Property{}, %Property{}, %Property{}, %Property{}, ...]
 
-      iex> list_properties(%{"type" => "apartment", "q" => "rua harmonia"})
+      iex> list_properties(%{type: :apartment, q: "rua harmonia"})
       [%Property{}, %Property{}, ...]
 
   """
@@ -94,7 +94,7 @@ defmodule ConstrutoraLcHiert.RealEstate.Properties do
     |> order_by([p], desc: p.updated_at)
     |> preload([:images, :amenities])
     |> Filters.apply(params)
-    |> Paginator.paginate(params["page"])
+    |> Paginator.paginate(params[:page])
   end
 
   def list_properties() do
@@ -188,7 +188,8 @@ defmodule ConstrutoraLcHiert.RealEstate.Properties do
   defp maybe_put_amenities(changeset, []), do: changeset
 
   defp maybe_put_amenities(changeset, attrs) do
-    amenities = Amenities.get_amenities(attrs["amenities"])
+    selected_amenities = attrs["amenities"] || attrs[:amenities]
+    amenities = Amenities.get_amenities(selected_amenities)
 
     Ecto.Changeset.put_assoc(changeset, :amenities, amenities)
   end

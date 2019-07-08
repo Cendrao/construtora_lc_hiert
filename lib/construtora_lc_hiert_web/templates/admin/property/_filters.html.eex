@@ -6,7 +6,7 @@
   <div class="filter-box title">Bairro</div>
 
   <div class="filter-box body">
-    <button phx-click="filter_type" phx-value="house"
+    <button phx-click="filter_types" phx-value="house"
       class="btn <%= filter_button_class(@filters, "type", "house") %>">
       Casas
     </button>
