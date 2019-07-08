@@ -265,18 +265,48 @@
   Subscribe area
 ----------------------------------- */
 .subscribe {
-    margin: 15px auto 0;
+    margin: 0 auto;
     position: relative;
     width: calc(100% - 90px);
 }
+
+.subscribe-area .coming-home {
+    position: absolute;
+    width: 80%;
+    top: -135px;
+    color: #1f223e;
+}
+
+.subscribe-area .section-title {
+    margin-top: 32px;
+}
+
+.subscribe-area .section-title h4 {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.subscribe-area .section-title h3 {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.subscribe p.subscribe-title {
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+}
+
 .subscribe input {
     float: left;
     margin-bottom: 0;
-    width: 80%;
+    width: 70%;
 }
+
 .subscribe input::placeholder {
     color: #808080;
 }
+
 .subscribe button {
     background: #95c41f none repeat scroll 0 0;
     height: 40px;
@@ -285,6 +315,7 @@
     color: #fff;
     text-transform: uppercase;
 }
+
 .subscribe-response {
     color: #ff7f00;
     margin: 20px 0 0;

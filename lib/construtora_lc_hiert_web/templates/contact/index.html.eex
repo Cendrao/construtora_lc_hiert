@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <div class="google-map-area">
+  <div class="google-map-area mb-115">
     <div id="googleMap"></div>
   </div>
 

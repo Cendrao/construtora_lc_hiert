@@ -651,6 +651,14 @@
     margin: 20px 0 0;
     width: 100%;
   }
+  .subscribe-area .section-title {
+    text-align: left;
+  }
+  .subscribe-area .coming-home {
+    right: 0;
+    width: 60%;
+    color: #ff7f00;
+  }
 
   /*footer-area*/
   .footer-top .col-xs-12 + .col-xs-12 {

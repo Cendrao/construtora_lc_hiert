@@ -1,4 +1,4 @@
-<div class="services-area pt-115 pb-60">
+<div class="services-area pt-70 pb-70">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -12,8 +12,8 @@
     </div>
 
     <div class="row">
-      <div class="service-carousel">
-        <div class="col-md-12">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
               <img src="<%= Routes.static_path(@conn, "/images/service/apto.jpg") %>" alt="Venda de apartamentos">
@@ -25,7 +25,7 @@
           </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
               <img src="<%= Routes.static_path(@conn, "/images/service/casa.jpg") %>" alt="Venda de casas">
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
               <img src="<%= Routes.static_path(@conn, "/images/service/lote.jpg") %>" alt="Venda de lotes">

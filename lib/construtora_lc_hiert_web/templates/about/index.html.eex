@@ -1,5 +1,5 @@
 <section id="page-content" class="page-wrapper">
-  <div class="about-sheltek-area pt-115 pb-30">
+  <div class="about-sheltek-area pt-115 pb-30 mb-70">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-push-6 col-xs-12">
@@ -37,6 +37,7 @@
     </div>
   </div>
 
-  <%= render(ConstrutoraLcHiertWeb.SharedView, "_services.html", assigns) %>
   <%= render(ConstrutoraLcHiertWeb.SharedView, "_subscribe.html", assigns) %>
+
+  <%= render(ConstrutoraLcHiertWeb.SharedView, "_services.html", assigns) %>
 </section>

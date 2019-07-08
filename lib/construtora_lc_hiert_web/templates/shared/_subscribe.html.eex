@@ -4,18 +4,26 @@
 
       <div class="col-md-3 col-sm-4 col-xs-12">
         <div class="section-title text-white">
-          <h3>SAIBA DE TODAS</h3>
-          <h2 class="h1">NOVIDADES</h2>
+          <svg class="coming-home">
+            <use xlink:href="<%= Routes.static_path(@conn, "/images/coming_home.svg") %>#coming_home" />
+          </svg>
+
+          <h4>SAIBA DE TODAS</h4>
+          <h3>NOVIDADES</h3>
         </div>
       </div>
 
       <div class="col-md-9 col-sm-8 col-xs-12">
         <div class="subscribe">
+          <p class="subscribe-title">
+            Receba um email toda vez que adicionarmos um novo imóvel em nosso site:
+          </p>
+
           <p class="js-ajax-form-animation-response subscribe-response"></p>
 
           <%= form_for @conn, Routes.subscriber_path(@conn, :create), [class: 'js-ajax-form-animation'], fn f -> %>
             <%= email_input f, :email, placeholder: "Digite seu e-mail aqui...", required: true %>
-            <%= submit "Enviar" %>
+            <%= submit "Cadastrar" %>
           <% end %>
         </div>
       </div>

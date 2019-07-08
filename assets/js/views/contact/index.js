@@ -14,7 +14,6 @@ export default class View extends MainView {
 
       const marker = new google.maps.Marker({
         position: map.getCenter(),
-        animation: google.maps.Animation.BOUNCE,
         icon: '/images/map-marker.png',
         map: map
       });
