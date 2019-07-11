@@ -3,6 +3,21 @@ defmodule ConstrutoraLcHiertWeb.Helpers.CurrencyHelper do
   Give some currency helper functions.
   """
 
+  @doc """
+  Transform the given number into a currency.
+
+  ## Examples
+
+      iex> number_to_currency(2_000_000.00, unit: "R$ ", decimals: 2)
+      "R$ 2.000.000,00"
+
+      iex> number_to_currency(2_000_000, unit: "R$ ", decimals: 2)
+      "R$ 2.000.000,00"
+
+      iex> number_to_currency("2.000.000", unit: "R$ ", decimals: 2)
+      "R$ 2.000.000,00"
+
+  """
   def number_to_currency(number, opts \\ [decimals: 0, unit: ""])
 
   def number_to_currency(number, opts) when is_float(number) do
@@ -19,10 +34,19 @@ defmodule ConstrutoraLcHiertWeb.Helpers.CurrencyHelper do
     |> add_unit_prefix(opts[:unit])
   end
 
-  defp get_only_numbers(value) do
-    {float_value, _} = Float.parse(Regex.replace(~r/[^\d]/, value, ""))
+  defp get_only_numbers(value) when is_binary(value) do
+    {new_value, _} =
+      ~r/[^\d]/
+      |> Regex.replace(value, "")
+      |> Float.parse()
 
-    float_value
+    new_value
+  end
+
+  defp get_only_numbers(value) do
+    value
+    |> to_string()
+    |> get_only_numbers()
   end
 
   defp add_decimals(value, decimals) do

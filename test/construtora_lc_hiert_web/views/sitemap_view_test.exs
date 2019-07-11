@@ -1,9 +1,5 @@
 defmodule ConstrutoraLcHiertWeb.SitemapViewTest do
-  use ConstrutoraLcHiertWeb.ConnCase, async: true
+  use ConstrutoraLcHiertWeb.ConnCase
 
-  alias ConstrutoraLcHiertWeb.SitemapView
-
-  test "format_date/1" do
-    assert SitemapView.format_date(~N[2019-07-03 23:15:00]) == "2019-07-03"
-  end
+  doctest ConstrutoraLcHiertWeb.SitemapView, import: true
 end

@@ -3,29 +3,32 @@ defmodule ConstrutoraLcHiertWeb.SearchController.PermittedParams do
   The permitted params for properties searching.
   """
 
-  defstruct [
-    :q,
-    :city,
-    :neighborhood,
-    :min_area,
-    :max_area,
-    :type,
-    :qty_bathrooms,
-    :qty_rooms,
-    :page
-  ]
+  @types %{
+    q: :string,
+    city: :string,
+    neighborhood: :string,
+    min_area: :integer,
+    max_area: :integer,
+    type: :string,
+    qty_bathrooms: :integer,
+    qty_rooms: :integer,
+    page: :integer
+  }
 
-  def new(params) do
-    %{
-      q: params["q"],
-      city: params["city"],
-      neighborhood: params["neighborhood"],
-      min_area: params["min_area"],
-      max_area: params["max_area"],
-      type: params["type"],
-      qty_bathrooms: params["qty_bathrooms"],
-      qty_rooms: params["qty_rooms"],
-      page: params["page"]
-    }
+  @fields Map.keys(@types)
+
+  @doc """
+  Type casting for filters and pagination
+
+  ## Examples
+
+      iex> new(%{"city" => "Umuarama", "page" => "2"})
+      %{city: "Umuarama", page: 2}
+
+  """
+  def new(params) when is_map(params) do
+    {%{}, @types}
+    |> Ecto.Changeset.cast(params, @fields)
+    |> Ecto.Changeset.apply_changes()
   end
 end
