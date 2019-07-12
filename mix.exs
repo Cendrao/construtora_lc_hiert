@@ -48,13 +48,13 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:bcrypt_elixir, "~> 0.12"},
       {:bamboo, "~> 1.2"},
       {:bamboo_smtp, "~> 1.7.0"},
-      {:ecto_autoslug_field, "~> 1.0"},
+      {:ecto_autoslug_field, "~> 2.0"},
       {:ecto_enum, "~> 1.2"},
       {:arc_ecto, "~> 0.11.1"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
       {:sweet_xml, "~> 0.6"},
-      {:sentry, "~> 6.4"},
+      {:sentry, "~> 7.1"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"}
     ]
   end
