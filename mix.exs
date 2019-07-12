@@ -55,7 +55,10 @@ defmodule ConstrutoraLcHiert.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:sweet_xml, "~> 0.6"},
       {:sentry, "~> 7.1"},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"}
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+
+      # Dev/test dependencies
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
