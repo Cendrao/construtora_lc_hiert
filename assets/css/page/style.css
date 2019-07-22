@@ -751,3 +751,25 @@
   width: 38px;
   height: 38px;
 }
+
+.carousel-paginator {
+  position: relative;
+}
+
+.slick-controls .previous, .slick-controls .next {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: calc(50% - 14px);
+  color: #3b5265;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.slick-controls .previous {
+  left: -28px;
+}
+
+.slick-controls .next {
+  right: -28px;
+}

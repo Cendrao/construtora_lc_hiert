@@ -14,7 +14,7 @@
 </script>
 
 <section id="page-content" class="page-wrapper">
-  <div class="properties-details-area pt-115 pb-60">
+  <div class="properties-details-area pt-115 pb-100">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -31,16 +31,23 @@
               </div>
             </div>
 
-            <div class="pro-details-carousel">
-              <%= for image <- @property.images do %>
-                <div class="pro-details-item">
-                  <a href="#<%= image.id %>" data-toggle="tab">
-                    <img
-                      src="<%= image_url(image, %{width: 180, height: 115}) %>"
-                      alt="<%= description(@property) %>">
-                  </a>
-                </div>
-              <% end %>
+            <div class="carousel-paginator">
+              <div class="pro-details-carousel">
+                <%= for image <- @property.images do %>
+                  <div class="pro-details-item">
+                    <a href="#<%= image.id %>" data-toggle="tab">
+                      <img
+                        src="<%= image_url(image, %{width: 180, height: 115}) %>"
+                        alt="<%= description(@property) %>">
+                    </a>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="slick-controls">
+                <%= icon_tag(@conn, "chevron-left", class: "previous") %>
+                <%= icon_tag(@conn, "chevron-right", class: "next") %>
+              </div>
             </div>
           </div>
 
