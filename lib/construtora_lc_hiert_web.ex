@@ -21,8 +21,10 @@ defmodule ConstrutoraLcHiertWeb do
     quote do
       use Phoenix.Controller, namespace: ConstrutoraLcHiertWeb
 
-      import Plug.Conn
       import ConstrutoraLcHiertWeb.Gettext
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
+      import Plug.Conn
+
       alias ConstrutoraLcHiertWeb.Router.Helpers, as: Routes
     end
   end
@@ -33,20 +35,21 @@ defmodule ConstrutoraLcHiertWeb do
         root: "lib/construtora_lc_hiert_web/templates",
         namespace: ConstrutoraLcHiertWeb
 
-      # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, action_name: 1]
-
-      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
-
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      # Import convenience functions from controllers
       import ConstrutoraLcHiertWeb.ErrorHelpers
       import ConstrutoraLcHiertWeb.Gettext
       import ConstrutoraLcHiertWeb.Helpers.CheckboxHelper
       import ConstrutoraLcHiertWeb.Helpers.IconHelper
       import ConstrutoraLcHiertWeb.Helpers.CurrencyHelper
+
+      import Phoenix.Controller,
+        only: [get_flash: 1, get_flash: 2, view_module: 1, action_name: 1]
+
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
+
       alias ConstrutoraLcHiertWeb.Router.Helpers, as: Routes
     end
   end
@@ -54,15 +57,17 @@ defmodule ConstrutoraLcHiertWeb do
   def router do
     quote do
       use Phoenix.Router
-      import Plug.Conn
+
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+      import Plug.Conn
     end
   end
 
   def channel do
     quote do
       use Phoenix.Channel
+
       import ConstrutoraLcHiertWeb.Gettext
     end
   end

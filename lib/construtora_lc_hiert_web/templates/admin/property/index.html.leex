@@ -48,8 +48,9 @@
           <td width="24">
             <%=
               link icon_tag(@socket, "delete", class: "delete"),
-                to: Routes.admin_property_path(@socket, :delete, property),
-                method: :delete,
+                to: "#delete",
+                phx_click: "delete_property",
+                phx_value: property.id,
                 data: [
                   confirm: "Tem certeza que quer excluir este imóvel em #{property.address}?",
                   toggle: "tooltip"

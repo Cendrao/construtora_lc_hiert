@@ -1,9 +1,9 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
-  use ConstrutoraLcHiertWeb.ConnCase
   use ConstrutoraLcHiert.Fixtures, [:property]
+  use ConstrutoraLcHiertWeb.ConnCase
 
-  alias ConstrutoraLcHiert.Repo
   alias ConstrutoraLcHiert.RealEstate.Properties.Property
+  alias ConstrutoraLcHiert.Repo
 
   describe "GET /admin/imoveis" do
     @tag :sign_in_user
@@ -80,20 +80,6 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyControllerTest do
                "Oops! Ocorreu um problema. Por favor, resolva os erros abaixo."
 
       assert html_response(conn, 200) =~ "não pode ficar em branco"
-    end
-  end
-
-  describe "DELETE /admin/imoveis/:id" do
-    setup [:create_property]
-
-    @tag :sign_in_user
-    test "deletes the user", %{conn: conn, property: property} do
-      conn = delete(conn, "/admin/imoveis/#{property.id}")
-
-      refute Repo.get(Property, property.id).deleted_at == nil
-
-      assert get_flash(conn, :info) =~ "Excluído com sucesso"
-      assert redirected_to(conn) == "/admin/imoveis"
     end
   end
 

@@ -10,11 +10,11 @@
       class="btn <%= filter_button_class(@filters, "type", "house") %>">
       Casas
     </button>
-    <button phx-click="filter_type" phx-value="apartment"
+    <button phx-click="filter_types" phx-value="apartment"
       class="btn <%= filter_button_class(@filters, "type", "apartment") %>">
       Apartamentos
     </button>
-    <button phx-click="filter_type" phx-value="lot"
+    <button phx-click="filter_types" phx-value="lot"
       class="btn <%= filter_button_class(@filters, "type", "lot") %>">
       Lotes
     </button>

@@ -1,8 +1,11 @@
-defmodule ConstrutoraLcHiertWeb.Live.Admin.PropertyListView do
+defmodule ConstrutoraLcHiertWeb.Live.Admin.PropertiesIndexView do
   use Phoenix.LiveView
 
-  alias ConstrutoraLcHiertWeb.Admin.PropertyView
+  import ConstrutoraLcHiertWeb.Gettext
+
   alias ConstrutoraLcHiert.RealEstate.Properties
+  alias ConstrutoraLcHiertWeb.Admin.PropertyView
+  alias ConstrutoraLcHiertWeb.Router.Helpers, as: Routes
 
   def render(assigns), do: PropertyView.render("index.html", assigns)
 
@@ -34,6 +37,17 @@ defmodule ConstrutoraLcHiertWeb.Live.Admin.PropertyListView do
 
   def handle_event("remove_filters", _value, socket) do
     build_filters(socket)
+  end
+
+  def handle_event("delete_property", property_id, socket) do
+    property = Properties.get_property!(property_id)
+
+    {:ok, _} = Properties.soft_delete_property(property)
+
+    {:stop,
+     socket
+     |> put_flash(:info, gettext("Successfully deleted"))
+     |> redirect(to: Routes.admin_property_path(socket, :index))}
   end
 
   defp build_filters(socket, key, value) do

@@ -1,7 +1,7 @@
 defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   use ConstrutoraLcHiertWeb, :controller
 
-  alias ConstrutoraLcHiertWeb.Live.Admin.PropertyListView
+  alias ConstrutoraLcHiertWeb.Live.Admin.PropertiesIndexView
   alias ConstrutoraLcHiert.RealEstate.Properties.Property
   alias ConstrutoraLcHiert.RealEstate.Properties
   alias ConstrutoraLcHiert.RealEstate.Amenities
@@ -10,7 +10,7 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
   plug :load_amenities when action in [:new, :create, :edit, :update]
 
   def index(conn, _params) do
-    Phoenix.LiveView.Controller.live_render(conn, PropertyListView, session: %{})
+    live_render(conn, PropertiesIndexView, session: %{})
   end
 
   def new(conn, _params) do
@@ -56,16 +56,6 @@ defmodule ConstrutoraLcHiertWeb.Admin.PropertyController do
         |> put_flash(:error, gettext("Error occurred! Please fix the warnings"))
         |> render("edit.html", property: property, changeset: changeset)
     end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    property = Properties.get_property!(id)
-
-    {:ok, _} = Properties.soft_delete_property(property)
-
-    conn
-    |> put_flash(:info, gettext("Successfully deleted"))
-    |> redirect(to: Routes.admin_property_path(conn, :index))
   end
 
   defp load_amenities(conn, _) do
