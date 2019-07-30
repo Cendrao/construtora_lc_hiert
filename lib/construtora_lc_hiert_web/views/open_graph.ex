@@ -16,6 +16,7 @@ defmodule ConstrutoraLcHiertWeb.OpenGraph do
   defp meta_tags({PropertyView, :show, %{property: property}, request_url}) do
     [
       %{property: "og:site_name", content: @app_name},
+      %{property: "og:type", content: "website"},
       %{
         property: "og:title",
         content: PageTitle.for({PropertyView, :show, %{property: property}})
@@ -27,7 +28,7 @@ defmodule ConstrutoraLcHiertWeb.OpenGraph do
       %{property: "og:url", content: request_url},
       %{
         property: "og:image",
-        content: PropertyView.image_url(property.images, %{width: 1200, height: 630})
+        content: image_url(property.images, %{width: 1200, height: 630})
       }
     ]
     |> Enum.map(&meta_tag/1)

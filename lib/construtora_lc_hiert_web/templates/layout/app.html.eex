@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="pt-BR">
+<html class="no-js" lang="pt-BR" dir="ltr">
 
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16760908-7"></script>
@@ -21,29 +21,32 @@
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
 
   <%= open_graph(@conn) %>
-</head>
 
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "LocalBusiness",
-  "image": "<%= Routes.static_path(@conn, "/images/logo.png") %>",
-  "telephone": "(45) 3055-4488",
-  "email": "construcao.lc@gmail.com",
-  "url": "https://www.construtoralchiert.com.br",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Carlos Barbosa, 1640",
-    "addressLocality": "Toledo",
-    "addressRegion": "PR"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://construtoralchiert.com/imoveis/busca?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+  <link rel="preload" as="font" href="<%= Routes.static_path(@conn, "/fonts/montserrat-latin-300.woff2") %>" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<%= Routes.static_path(@conn, "/fonts/montserrat-latin-400.woff2") %>" type="font/woff2" crossorigin="anonymous">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "LocalBusiness",
+    "image": "https://ik.imagekit.io/ricardoruwer/lchiert/images/logo.png",
+    "telephone": "(45) 3055-4488",
+    "email": "construcao.lc@gmail.com",
+    "url": "https://www.construtoralchiert.com.br",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Carlos Barbosa, 1640",
+      "addressLocality": "Toledo",
+      "addressRegion": "PR"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://construtoralchiert.com/imoveis/busca?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
-}
-</script>
+  </script>
+</head>
 
 <body data-js-view-path="<%= js_view_path(@conn) %>">
   <!--[if lt IE 8]>
@@ -58,7 +61,7 @@
     <%= render(ConstrutoraLcHiertWeb.SharedView, "_footer.html", assigns) %>
   </div>
 
-  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  <script type="text/javascript" async src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 </body>
 
 </html>

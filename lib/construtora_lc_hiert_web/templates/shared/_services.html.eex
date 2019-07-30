@@ -16,7 +16,7 @@
         <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
-              <img src="<%= Routes.static_path(@conn, "/images/service/apto.jpg") %>" alt="Venda de apartamentos">
+              <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/service/apto.jpg" alt="Venda de apartamentos">
             </div>
             <div class="service-item-info">
               <h5>Venda de Apartamentos</h5>
@@ -28,7 +28,7 @@
         <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
-              <img src="<%= Routes.static_path(@conn, "/images/service/casa.jpg") %>" alt="Venda de casas">
+              <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/service/casa.jpg" alt="Venda de casas">
             </div>
             <div class="service-item-info">
               <h5>Venda de Casas</h5>
@@ -40,7 +40,7 @@
         <div class="col-md-4 col-xs-12">
           <div class="service-item">
             <div class="service-item-image">
-              <img src="<%= Routes.static_path(@conn, "/images/service/lote.jpg") %>" alt="Venda de lotes">
+              <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/service/lote.jpg" alt="Venda de lotes">
             </div>
             <div class="service-item-info">
               <h5>Venda de Lotes</h5>

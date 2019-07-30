@@ -1,8 +1,3 @@
-/*----------------------------------------
-  Google Fonts
-----------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700,800');
-
 /* -----------------------------------
   call-to-action-area
 ----------------------------------- */
@@ -294,7 +289,7 @@
 .subscribe p.subscribe-title {
     color: #fff;
     font-size: 18px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .subscribe input {
@@ -633,7 +628,7 @@
 }
 
 .contact-bg {
-  background: rgba(0, 0, 0, 0.1) url('/images/bg/contact.jpg') no-repeat scroll right center / cover;
+  background: rgba(0, 0, 0, 0.1) url('https://ik.imagekit.io/ricardoruwer/lchiert/images/bg/contact.jpg') no-repeat scroll right center / cover;
 }
 
 .contact-messge {

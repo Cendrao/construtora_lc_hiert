@@ -1,5 +1,5 @@
-import MainView from '../main'
-import injectGapiScript from "../../page/google-map"
+import MainView from '../main';
+import injectGapiScript from '../../page/google-map';
 
 export default class View extends MainView {
   mount() {
@@ -14,86 +14,86 @@ export default class View extends MainView {
 
       const marker = new google.maps.Marker({
         position: map.getCenter(),
-        icon: '/images/map-marker.png',
+        icon: 'https://ik.imagekit.io/ricardoruwer/lchiert/images/map-marker.png',
         map: map
       });
 
       const styles = [
         {
-          "featureType": "administrative",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            { "color": "#8d8d8d" }
+          'featureType': 'administrative',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            { 'color': '#8d8d8d' }
           ]
         },
         {
-          "featureType": "landscape",
-          "elementType": "all",
-          "stylers": [
-            { "color": "#f5f5f5" }
+          'featureType': 'landscape',
+          'elementType': 'all',
+          'stylers': [
+            { 'color': '#f5f5f5' }
           ]
         },
         {
-          "featureType": "poi",
-          "elementType": "all",
-          "stylers": [
-            { "visibility": "off" }
+          'featureType': 'poi',
+          'elementType': 'all',
+          'stylers': [
+            { 'visibility': 'off' }
           ]
         },
         {
-          "featureType": "poi",
-          "elementType": "labels.text",
-          "stylers": [
-            { "visibility": "off" }
+          'featureType': 'poi',
+          'elementType': 'labels.text',
+          'stylers': [
+            { 'visibility': 'off' }
           ]
         },
         {
-          "featureType": "road",
-          "elementType": "all",
-          "stylers": [
-            { "saturation": -100 },
-            { "lightness": 45 }
+          'featureType': 'road',
+          'elementType': 'all',
+          'stylers': [
+            { 'saturation': -100 },
+            { 'lightness': 45 }
           ]
         },
         {
-          "featureType": "road.highway",
-          "elementType": "all",
-          "stylers": [
-            { "visibility": "simplified" }
+          'featureType': 'road.highway',
+          'elementType': 'all',
+          'stylers': [
+            { 'visibility': 'simplified' }
           ]
         },
         {
-          "featureType": "road.arterial",
-          "elementType": "labels.icon",
-          "stylers": [
-            { "visibility": "off" }
+          'featureType': 'road.arterial',
+          'elementType': 'labels.icon',
+          'stylers': [
+            { 'visibility': 'off' }
           ]
         },
         {
-          "featureType": "transit",
-          "elementType": "all",
-          "stylers": [
-            { "visibility": "off" }
+          'featureType': 'transit',
+          'elementType': 'all',
+          'stylers': [
+            { 'visibility': 'off' }
           ]
         },
         {
-          "featureType": "water",
-          "elementType": "all",
-          "stylers": [
-            { "color": "#dbdbdb" },
-            { "visibility": "on" }
+          'featureType': 'water',
+          'elementType': 'all',
+          'stylers': [
+            { 'color': '#dbdbdb' },
+            { 'visibility': 'on' }
           ]
         }
-      ]
+      ];
       map.setOptions({styles: styles});
-    }
+    };
 
     !window.google && injectGapiScript();
 
-    super.mount()
+    super.mount();
   }
 
   unmount() {
-    super.unmount()
+    super.unmount();
   }
 }

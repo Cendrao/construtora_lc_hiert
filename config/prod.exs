@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :construtora_lc_hiert, ConstrutoraLcHiertWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT")],
+  http: [:inet6, port: System.get_env("PORT"), compress: true],
   url: [scheme: "https", host: "construtoralchiert.com.br", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),

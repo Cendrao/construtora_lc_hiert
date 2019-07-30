@@ -14,7 +14,7 @@ defmodule ConstrutoraLcHiertWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :construtora_lc_hiert,
-    gzip: false,
+    gzip: true,
     only: ~w(css fonts images js robots.txt),
     only_matching: ~w(favicon)
 

@@ -44,12 +44,12 @@
                 </div>
                 <div class="contact-address-info">
                   <span>
-                    <a href="//www.construtoralchiert.com.br" target="_blank">
+                    <a href="//www.construtoralchiert.com.br" target="_blank" rel="noopener">
                       www.construtoralchiert.com.br
                     </a>
                   </span>
                   <span>
-                    <a href="//www.facebook.com/construtoralchiert" target="_blank">
+                    <a href="//www.facebook.com/construtoralchiert" target="_blank" rel="noopener">
                       www.facebook.com/construtoralchiert
                     </a>
                   </span>

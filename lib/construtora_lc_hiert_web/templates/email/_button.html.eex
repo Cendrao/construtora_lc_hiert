@@ -6,7 +6,7 @@
           <tbody>
             <tr>
               <td>
-                <a href="<%= @link %>" target="_blank"><%= @text %></a>
+                <a href="<%= @link %>" target="_blank" rel="noopener"><%= @text %></a>
               </td>
             </tr>
           </tbody>
