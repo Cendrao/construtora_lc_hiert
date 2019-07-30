@@ -21,7 +21,7 @@ defmodule ConstrutoraLcHiertWeb.Helpers.PaginatorHelper do
     params = build_params(conn, page)
 
     content_tag(:li, disabled: disabled) do
-      link to: "?#{params}" do
+      link to: "?#{params}", rel: "prev" do
         IconHelper.icon_tag(conn, "left-arrow")
       end
     end
@@ -45,7 +45,7 @@ defmodule ConstrutoraLcHiertWeb.Helpers.PaginatorHelper do
     params = build_params(conn, page)
 
     content_tag(:li, disabled: disabled) do
-      link to: "?#{params}" do
+      link to: "?#{params}", rel: "next" do
         IconHelper.icon_tag(conn, "right-arrow")
       end
     end

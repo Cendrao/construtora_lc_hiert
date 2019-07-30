@@ -30,7 +30,7 @@
         </div>
         <div class="col-sm-6 col-sm-pull-6 col-xs-12">
           <div class="about-image">
-            <img src="<%= Routes.static_path(@conn, "/images/about/about.jpg") %>" alt="">
+            <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/about/about.jpg" alt="Construtora LC Hiert">
           </div>
         </div>
       </div>

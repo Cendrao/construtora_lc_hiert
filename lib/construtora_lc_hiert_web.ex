@@ -44,6 +44,7 @@ defmodule ConstrutoraLcHiertWeb do
       import ConstrutoraLcHiertWeb.Helpers.CheckboxHelper
       import ConstrutoraLcHiertWeb.Helpers.IconHelper
       import ConstrutoraLcHiertWeb.Helpers.CurrencyHelper
+      import ConstrutoraLcHiertWeb.Helpers.ImageHelper
 
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, action_name: 1]

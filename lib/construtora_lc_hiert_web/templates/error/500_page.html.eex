@@ -32,7 +32,7 @@
       justify-items: center;
       align-items: center;
       height: 100vh;
-      background: url('/images/errors/500.jpg');
+      background: url('https://ik.imagekit.io/ricardoruwer/lchiert/images/errors/500.jpg');
       background-repeat: repeat-x;
       background-size: cover;
       background-position: left top;
