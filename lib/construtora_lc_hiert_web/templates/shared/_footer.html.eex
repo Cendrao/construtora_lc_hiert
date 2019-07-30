@@ -30,12 +30,12 @@
                 </div>
                 <div class="address-info">
                   <span>
-                    <a href="//www.construtoralchiert.com.br" target="_blank">
+                    <a href="//www.construtoralchiert.com.br" target="_blank" rel="noopener">
                       www.construtoralchiert.com.br
                     </a>
                   </span>
                   <span>
-                    <a href="//www.facebook.com/construtoralchiert" target="_blank">
+                    <a href="//www.facebook.com/construtoralchiert" target="_blank" rel="noopener">
                       www.facebook.com/construtoralchiert
                     </a>
                   </span>
@@ -62,7 +62,7 @@
                     <div class="latest-news-image">
                       <a href="<%= Routes.property_path(@conn, :show, property.slug) %>">
                         <img
-                          src="<%= ConstrutoraLcHiertWeb.PropertyView.image_url(property.images, %{width: 82, height: 53}) %>"
+                          src="<%= image_url(property.images, %{width: 82, height: 53}) %>"
                           alt="<%= ConstrutoraLcHiertWeb.PropertyView.full_address(property) %>">
                       </a>
                     </div>
@@ -93,9 +93,9 @@
               <p class="js-ajax-form-animation-response"></p>
 
               <%= form_for @conn, Routes.contact_path(@conn, :create), [class: 'js-ajax-form-animation'], fn f -> %>
-                <%= text_input f, :name, placeholder: "Digite seu nome...", required: true %>
-                <%= email_input f, :email, placeholder: "Digite seu e-mail...", required: true %>
-                <%= textarea f, :message, placeholder: "Escreva sua mensagem...", required: true %>
+                <%= text_input f, :name, placeholder: "Digite seu nome...", title: "Nome", required: true %>
+                <%= email_input f, :email, placeholder: "Digite seu e-mail...", title: "E-mail", required: true %>
+                <%= textarea f, :message, placeholder: "Escreva sua mensagem...", title: "Mensagem", required: true %>
 
                 <%= submit "Enviar" %>
               <% end %>

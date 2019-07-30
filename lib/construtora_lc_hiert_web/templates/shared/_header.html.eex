@@ -5,7 +5,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="logo">
             <a href="<%= Routes.home_path(@conn, :index) %>">
-              <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
+              <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/logo.png" alt="Construtora LC Hiert">
             </a>
           </div>
         </div>
@@ -49,7 +49,7 @@
           <div class="col-md-12">
             <div class="sticky-logo">
               <a href="<%= Routes.home_path(@conn, :index) %>">
-                <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Construtora LC Hiert">
+                <img src="https://ik.imagekit.io/ricardoruwer/lchiert/images/logo.png" alt="Construtora LC Hiert">
               </a>
             </div>
             <nav id="primary-menu">

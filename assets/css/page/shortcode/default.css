@@ -100,7 +100,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #1f223e;
     -webkit-font-variant-ligatures: common-ligatures;
             font-variant-ligatures: common-ligatures;
@@ -170,16 +170,13 @@ li a {
 }
 p {
   color: #606060;
-  font-family: "Montserrat",sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 300;
   line-height: 24px;
   margin-bottom: 15px;
 }
-.g-font-1 {
-  font-family: "Raleway",sans-serif;
-}
-.g-font-2 {
+.g-font-1, .g-font-2 {
   font-family: 'Montserrat', sans-serif;
 }
 .font-w-5 {
@@ -478,32 +475,6 @@ textarea:focus {
     color: #444;
     font-size: 13px;
 }
-
-
-/*custom-select*/
-.custom-select-2 {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-.custom-select-2 {
-  color: #606060;
-  background: rgba(0, 0, 0, 0) url("/images/icons/down-arrow.png") no-repeat scroll 97% center;
-  border: 1px solid #e1e1e1;
-  height: 40px;
-  line-height: 38px;
-  margin-bottom: 20px;
-  width: 100%;
-  font-family: 'montserrat';
-  font-weight: 300;
-}
-.custom-select-2 option {
-  font-size: 13px;
-  padding: 3px 0 0 20px;
-}
-
-
-
 /*************************
   6. Basic margin padding
 *************************/
@@ -902,15 +873,15 @@ textarea:focus {
   13. image background
  **************************************/
 .bg-slider {
-  background: url('/images/bg/slide.jpg');
+  background: url('https://ik.imagekit.io/ricardoruwer/lchiert/images/bg/slide.jpg');
 }
 
 .bg-booking {
-  background: url('/images/bg/subscribe.jpg');
+  background: url('https://ik.imagekit.io/ricardoruwer/lchiert/images/bg/subscribe.jpg');
 }
 
 .bg-footer {
-  background: url('/images/bg/footer.jpg');
+  background: url('https://ik.imagekit.io/ricardoruwer/lchiert/images/bg/footer.jpg');
 }
 
 .bg-slider,
@@ -925,12 +896,6 @@ textarea:focus {
   background-size: cover;
   position: relative;
   z-index: 0;
-}
-
-.pattern-bg {
-  background: url('/images/pattern/pattern-bg.png') repeat;
-  background-position: top right;
-  background-color: rgba(236, 239, 247, 1);
 }
 
 /*************************************

@@ -12,28 +12,46 @@
     </div>
     <div class="col-sm-6 col-xs-12">
       <div class="find-home-item">
-        <%= text_input f, :min_area, placeholder: "Área mínima" %>
+        <%= text_input f, :min_area, placeholder: "Área mínima", title: "Área mínima" %>
       </div>
     </div>
     <div class="col-sm-6 col-xs-12">
       <div class="find-home-item">
-        <%= text_input f, :max_area, placeholder: "Área máxima" %>
+        <%= text_input f, :max_area, placeholder: "Área máxima", title: "Área máxima" %>
       </div>
     </div>
     <div class="col-sm-6 col-xs-12">
       <div class="find-home-item  custom-select">
-        <%= select f, :qty_rooms, ConstrutoraLcHiertWeb.PropertyView.property_rooms_for_select(), class: "selectpicker", title: "Qtde. Quartos" %>
+        <%=
+          select f,
+            :qty_rooms,
+            ConstrutoraLcHiertWeb.PropertyView.property_rooms_for_select(),
+            class: "selectpicker",
+            title: "Qtde. Quartos"
+        %>
       </div>
     </div>
     <div class="col-sm-6 col-xs-12">
       <div class="find-home-item custom-select">
-        <%= select f, :qty_bathrooms, ConstrutoraLcHiertWeb.PropertyView.property_bathrooms_for_select(), class: "selectpicker", title: "Qtde. Banheiros" %>
+        <%=
+          select f,
+            :qty_bathrooms,
+            ConstrutoraLcHiertWeb.PropertyView.property_bathrooms_for_select(),
+            class: "selectpicker",
+            title: "Qtde. Banheiros"
+        %>
       </div>
     </div>
     <div class="col-sm-6 col-xs-12">
       <div class="find-home-item">
         <div class="find-home-item custom-select">
-          <%= select f, :type, ConstrutoraLcHiertWeb.PropertyView.property_types_for_select(), class: "selectpicker", title: "Tipo" %>
+          <%=
+            select f,
+              :type,
+              ConstrutoraLcHiertWeb.PropertyView.property_types_for_select(),
+              class: "selectpicker",
+              title: "Tipo"
+          %>
         </div>
       </div>
     </div>
