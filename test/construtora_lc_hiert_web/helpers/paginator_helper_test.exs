@@ -19,7 +19,7 @@ defmodule ConstrutoraLcHiertWeb.Helpers.PaginatorHelperTest do
       assert paginator ==
                "<ul class=\"paginator\">" <>
                  "<li disabled>" <>
-                 "<a href=\"?page=0&amp;q=rua+harmonia\" rel=\"prev\">" <>
+                 "<a href=\"?q=rua+harmonia\" rel=\"prev\">" <>
                  "<svg class=\" icon\"><use xlink:href=\"/images/icons.svg#left-arrow\"></svg>" <>
                  "</a>" <>
                  "</li>" <>
