@@ -6,11 +6,11 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@uppy/core": "^1.2.0",
-    "@uppy/dashboard": "^1.2.0",
-    "@uppy/xhr-upload": "^1.2.0",
+    "@uppy/core": "^1.4.0",
+    "@uppy/dashboard": "^1.3.0",
+    "@uppy/xhr-upload": "^1.3.0",
     "bootstrap": "^3.4.1",
-    "bootstrap-select": "^1.13.10",
+    "bootstrap-select": "^1.13.11",
     "jquery": "^3.4.1",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
@@ -20,8 +20,8 @@
     "typeface-montserrat": "^0.0.75"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.1",
@@ -30,7 +30,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "url-loader": "^1.1.2",
-    "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
