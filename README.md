@@ -33,7 +33,7 @@ iex -S mix
 ```
 And then create the user:
 ```elixir
-ConstrutoraLcHiert.Accounts.create_user(%{username: "admin", password: "admin", master: true})
+ConstrutoraLcHiert.Account.Users.create_user(%{username: "admin", password: "admin", master: true})
 ```
 
 #### Environment variables
