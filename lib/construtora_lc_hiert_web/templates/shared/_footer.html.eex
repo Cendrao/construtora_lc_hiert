@@ -74,8 +74,7 @@
                         </a>
                       </h6>
                       <p>
-                        <%= property.qty_rooms %> quarto(s) e <%= property.qty_bathrooms %> banheiro(s)
-                        - Bairro <%= property.neighborhood %>
+                        <%= ConstrutoraLcHiertWeb.PropertyView.property_information(property) %>
                       </p>
                     </div>
                   </li>

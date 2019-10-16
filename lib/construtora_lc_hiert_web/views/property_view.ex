@@ -93,4 +93,20 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
   def property_rooms_for_select() do
     %{"1 Quarto": 1, "2 Quartos": 2, "3 Quartos": 3, "4 Quartos": 4, "5 Quartos": 5}
   end
-end
+
+  @doc """
+  Display property information of the given property
+
+  ## Examples
+
+      iex> property_information(property)
+      "3 quarto(s) e 3 banheiro(s) - Bairro Alto de Pinheiros"
+  """
+  def property_information(%{type: :lot} = property) do
+    "#{trunc(property.area)}m² - Bairro #{property.neighborhood}"
+  end
+
+  def property_information(%{} = property) do
+    "#{property.qty_rooms} quarto(s) e #{property.qty_bathrooms} banheiro(s) - Bairro #{property.neighborhood}"
+  end
+      end
