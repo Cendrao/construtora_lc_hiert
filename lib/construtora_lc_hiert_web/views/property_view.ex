@@ -102,11 +102,11 @@ defmodule ConstrutoraLcHiertWeb.PropertyView do
       iex> property_information(property)
       "3 quarto(s) e 3 banheiro(s) - Bairro Alto de Pinheiros"
   """
-  def property_information(%{type: :lot} = property) do
+  def property_information(%Property{type: :lot} = property) do
     "#{trunc(property.area)}m² - Bairro #{property.neighborhood}"
   end
 
-  def property_information(%{} = property) do
+  def property_information(%Property{} = property) do
     "#{property.qty_rooms} quarto(s) e #{property.qty_bathrooms} banheiro(s) - Bairro #{property.neighborhood}"
   end
       end
