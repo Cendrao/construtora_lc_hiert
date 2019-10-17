@@ -108,13 +108,13 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
   end
 
   describe "property_information/1" do
-    test "returns the text with the area when is a lot" do
+    test "returns the text with the area when it's a lot" do
       property = %Property{type: :lot, area: 100, neighborhood: "Lapa"}
 
       assert PropertyView.property_information(property) == "100m² - Bairro Lapa"
     end
 
-    test "returns a string with the number of bathrooms and dorms when is not a lot" do
+    test "returns a string with the number of bathrooms and dorms when it isn't a lot" do
       property = %Property{type: :apartment, qty_bathrooms: 2, qty_rooms: 3, neighborhood: "Lapa"}
 
       assert PropertyView.property_information(property) == "3 quarto(s) e 2 banheiro(s) - Bairro Lapa"
