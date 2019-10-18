@@ -2,6 +2,7 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
   use ConstrutoraLcHiertWeb.ConnCase, async: true
 
   alias ConstrutoraLcHiertWeb.PropertyView
+  alias ConstrutoraLcHiert.RealEstate.Properties.Property
 
   describe "full_address/1" do
     test "display the full address" do
@@ -103,6 +104,20 @@ defmodule ConstrutoraLcHiertWeb.PropertyViewTest do
                "4 Quartos": 4,
                "5 Quartos": 5
              }
+    end
+  end
+
+  describe "property_information/1" do
+    test "returns the text with the area when it's a lot" do
+      property = %Property{type: :lot, area: 100, neighborhood: "Lapa"}
+
+      assert PropertyView.property_information(property) == "100m² - Bairro Lapa"
+    end
+
+    test "returns a string with the number of bathrooms and dorms when it isn't a lot" do
+      property = %Property{type: :apartment, qty_bathrooms: 2, qty_rooms: 3, neighborhood: "Lapa"}
+
+      assert PropertyView.property_information(property) == "3 quarto(s) e 2 banheiro(s) - Bairro Lapa"
     end
   end
 end
